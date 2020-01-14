@@ -1,0 +1,10 @@
+<div class="container mt-4">
+
+<h1 class="text-dark">New Message</h1>
+	<div class="jumbotron text-center shadow">
+		<p>Messages created will be sent to every user who has a registered mobile phone and has opted in to SMS (Text Messages)</p>
+	</div>
+<%= render 'form', message: @message %>
+
+<%= link_to 'Back', messages_path %>
+</div>

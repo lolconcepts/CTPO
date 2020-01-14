@@ -1,0 +1,84 @@
+
+<%= simple_form_for(@church) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+  	<%= f.input :name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Church Name" },
+                placeholder: 'Corner Church'%>
+    <%= f.input :address,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Church Address" },
+                placeholder: '123 Main Street'%>
+    <%= f.input :city,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "City" },
+                placeholder: 'Anycity'%>
+    <%= f.input :state,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "State" },
+                placeholder: 'MA'%>
+    <%= f.input :zip,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "zipcode" },
+                placeholder: '02382'%>
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" },
+                placeholder: 'info@cornerchurch.com'%>
+    <%= f.input :website,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "Website" },
+                placeholder: 'www.cornerchurch.org'%>
+    <%= f.input :telephone,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "church telephone" },
+                placeholder: '508-826-8385'%>
+    <%= f.input :service_time,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "service time" },
+                placeholder: 'Sundays @ 9:00AM'%>
+    <%= f.input :pastor,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "pastor" },
+                placeholder: 'Rev. Debra Rose'%>
+    <%= f.input :pastor_email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "pastor email" },
+                placeholder: 'pastor@cornerchurch.com'%>
+  	<%= f.input :fb,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "Facebook" },
+                placeholder: 'https://facebook.com/cornerchurch'%>
+    <%= f.input :twitter,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "Twitter" },
+                placeholder: '@cornerchurchMA'%>
+    <%= f.input :instagram,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "Instagram" },
+                placeholder: '@cornerchurchMA'%>
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.button :submit ,:class => "btn btn-primary"%>
+  </div>
+<% end %>
+

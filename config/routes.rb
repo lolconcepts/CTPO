@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :churches
   resources :carriers
+  resources :messages
   root to: 'pages#home'
   devise_for :users
   

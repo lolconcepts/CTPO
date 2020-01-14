@@ -10,11 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_200704) do
+ActiveRecord::Schema.define(version: 2020_01_14_165002) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "name"
     t.string "suffix"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "churches", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "email"
+    t.string "website"
+    t.string "telephone"
+    t.string "service_time"
+    t.string "pastor"
+    t.string "pastor_email"
+    t.string "fb"
+    t.string "twitter"
+    t.string "instagram"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body"
+    t.integer "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

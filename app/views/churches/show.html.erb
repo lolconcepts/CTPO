@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h2>General Info</h2>
+<b>Name:</b>
+<%=@church.name%><br>
+<b>Address:</b>
+<%=@church.address%><br>
+<b>City:</b>
+<%=@church.city%><br>
+<b>State:</b>
+<%=@church.state%><br>
+<b>Zipcode:</b>
+<%=@church.zip%><br>
+<%= link_to '<i class="fab fa-facebook-square fa-2x"></i>'.html_safe , @church.fb %>
+<%= link_to '<i class="fab fa-twitter-square fa-2x"></i>'.html_safe , @church.twitter %>
+<%= link_to '<i class="fab fa-instagram fa-2x"></i>'.html_safe , @church.instagram %>
+<hr>
+<h2>Pastor Info</h2>
+<b>Pastor:</b>
+<%=@church.pastor%>(<%=@church.pastor_email%>)
+<h2>Service Info</h2>
+<%=@church.service_time%><br>
+
+
+<%= link_to 'Edit', edit_church_path(@church) %> |
+<%= link_to 'Back', churches_path %>
