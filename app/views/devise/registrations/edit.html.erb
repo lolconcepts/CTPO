@@ -12,14 +12,15 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :fname ,label: 'First Name', required: true %>
-    <%= f.input :lname ,label: 'Last Name', required: true %>
-    <%= f.input :address ,label: 'Address' , required: true %>
-    <%= f.input :address2 ,label: 'Address2' , required: true %>
-    <%= f.input :city ,label: 'City', required: true %>
-    <%= f.input :state ,label: 'State', required: true %>
-    <%= f.input :zip , label: 'Zip', required: true %>
-    <%= f.input :telephone ,label: 'Telephone', required: true %>
+    <%= f.input :fname ,label: 'First Name', required: true,placeholder: 'John' %>
+    <%= f.input :lname ,label: 'Last Name', required: true,placeholder: 'Smith' %>
+    <%= f.input :role ,label: 'Role' , required: false,placeholder: 'SPRC' %>
+    <%= f.input :address ,label: 'Address' , required: true,placeholder: '158 Washington St' %>
+    <%= f.input :address2 ,label: 'Address2' , required: false, placeholder: 'Apt223' %>
+    <%= f.input :city ,label: 'City', required: true, placeholder: 'Whitman' %>
+    <%= f.input :state ,label: 'State', required: true, placeholder: 'MA' %>
+    <%= f.input :zip , label: 'Zip', required: true, placeholder: '02382' %>
+    <%= f.input :telephone ,label: 'Telephone', required: true, placeholder: '508-826-8385' %>
     <%= f.label :carrier %>
     <%= f.collection_select :carrier_id, Carrier.all, :id, :name %>
     <%= f.input :sms_ok, label: 'SMS Ok?' %>

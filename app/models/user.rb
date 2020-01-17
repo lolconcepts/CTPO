@@ -6,5 +6,10 @@ class User < ApplicationRecord
 
    mount_uploader :avatar, AvatarUploader
 
-    profanity_filter :fname, :lname, :address, :address2, :city, :state, :zip, :method => 'stars'
+   profanity_filter :fname, :lname, :address, :address2, :city, :state, :zip, :method => 'stars'
+
+   def fullname
+   	return self.fname + " " + self.lname
+   end
+
 end
