@@ -9,7 +9,11 @@ class User < ApplicationRecord
    profanity_filter :fname, :lname, :address, :address2, :city, :state, :zip, :method => 'stars'
 
    def fullname
-   	return self.fname + " " + self.lname
+   	if self.fname && self.lname
+   		return self.fname + " " + self.lname
+   	else
+   		return ""
+   	end
    end
 
 end

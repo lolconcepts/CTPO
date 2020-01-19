@@ -6,12 +6,20 @@
 }
 	
 </style>
+
+<h1>Please Print this nametag and cut it out for the parishoner</h1>
 <div style="background-color: white; width: 4in; height: 3in; text-align: center; border: 1px solid black;">
 	<h3>&nbsp;</h3>
   <h3>&nbsp;</h3>
-	<h5><%= @church.name %></h5>
+	<h5>
+	<% if @church %>	
+		<%= @church.name %>
+		<% else %>
+		<%end%>		
+	</h5>
 <h1><%= @user.fullname %></h1>
 <h2><%= @user.role %></h2>
-<img src="united-methodist-church-logo-png-5.png" alt="" width="150" height="150" class="logo"/>
+<!--<img src="united-methodist-church-logo-png-5.png" alt="" width="150" height="150" class="logo"/> -->
 	<p>&nbsp;</p>
 <p>&nbsp;</p>
+
