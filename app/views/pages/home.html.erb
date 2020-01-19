@@ -43,7 +43,12 @@
     </nav>
 
     <div class="jumbotron jumbotron-fluid text-center">
-       <h1 class="display-4"><%= @church.name %>&nbsp;</h1>
+       <h1 class="display-4">
+        <% if @church %>
+        <%= @church.name %>
+        <% end %>
+
+      &nbsp;</h1>
        <p class="lead">Welcome&nbsp;</p>
        <hr class="my-4">
        <p>If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
