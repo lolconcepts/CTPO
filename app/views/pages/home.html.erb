@@ -18,7 +18,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                    <a class="dropdown-item" href="#">Show Parishoners</a>
-                   <a class="dropdown-item" href="#">Print Name Tags</a>
+                   <a class="dropdown-item" href="/nametags">Print Name Tags</a>
                    <div class="dropdown-divider"></div>
                    <a class="dropdown-item" href="#">Edit Church Info</a>
 					<a class="dropdown-item" href="#">Print Offering Cards</a>
@@ -28,7 +28,7 @@
              <%end%>
              <% if current_user %>
               <li class="nav-item">
-                <a class="nav-link" href="/nametag" target="_blank">Print Name Tag</a>
+                <%= link_to 'Edit', edit_user_registration_url, :class => "nav-link" %>
              </li>
              <% end %>
               <li class="nav-item">
@@ -56,9 +56,8 @@
        <p class="lead">
           
        </p>
-                    	<% if current_user %>
-					<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => "nav-link" %>
-					<%= link_to 'Edit', edit_user_registration_url, :class => "nav-link" %>
+        <% if current_user %>
+				
 				<% else %>
 					<%= link_to 'Sign up', new_user_registration_path, :class => "nav-link" %>
 					<%= link_to 'Sign In', new_user_session_path, :class => "nav-link" %>

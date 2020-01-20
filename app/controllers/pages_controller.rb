@@ -3,12 +3,19 @@ class PagesController < ApplicationController
   	@church = Church.first
   end
   def nametag
-  	@user = current_user || User.find(:params[:uid])
+  	@user = User.find(params[:uid])
   	@church = Church.first
   end
+  def nametags
+    @users = User.all
+  end
+
   def offering
   	@amount = params[:amount] || "0"
   	@cover = params[:cover] || false
-
   end
+  def all_users
+    @users = User.all
+  end
+
 end
