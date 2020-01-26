@@ -65,6 +65,24 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { :host => 'lolconcepts.com' }
+
+  config.action_mailer.smtp_settings = {
+    :address              => "mail.lolconcepts.com",
+    :port                 => 587,
+    :user_name            => ENV['MAIL_USER'],
+    :password             => ENV['MAIL_PASSWORD'],
+    :authentication       => 'plain',
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => "none"
+
+  }
+
+  config.stripe.secret_key = ENV['STRIPE_SK_TEST']
+  config.stripe.publishable_key = ENV['STRIPE_PK_TEST']
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

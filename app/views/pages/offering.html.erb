@@ -26,7 +26,7 @@
   </article>
   <% @desc = "Offering - #{@church.name}" %>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key=pk_test_VBb5s0rmIq441dlhcJMukWnO
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="<%= @desc %>"
           data-amount=<%=@offering %>
           data-locale="auto"></script>
