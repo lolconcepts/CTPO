@@ -47,6 +47,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarGive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Give
                 </a>
+                <% if  @church_count == 1 %>
                 <div class="dropdown-menu" aria-labelledby="navbarGive">
                    <%=link_to 'Give $5', offering_path(:amount => '500'),:class => "dropdown-item" %>
                    <%=link_to 'Give $10', offering_path(:amount => '1000'),:class => "dropdown-item" %>
@@ -54,6 +55,7 @@
                    <%=link_to 'Give $50', offering_path(:amount => '5000'),:class => "dropdown-item" %>
                    <%=link_to 'Give $100', offering_path(:amount => '10000'),:class => "dropdown-item" %>
                 </div>
+                <% end %>
              </li>
              <li class="nav-item text-right">
               <% if current_user && current_user.fullname %>

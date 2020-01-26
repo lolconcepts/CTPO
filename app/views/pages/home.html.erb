@@ -16,6 +16,7 @@
         <%= link_to 'Complete Profile', edit_registration_url, :class => "nav-link" %>
        <% end %>
        <p>If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
+       <% if  @church_count == 1 %>
        <p class="lead">
           <%=link_to 'Give $5', offering_path(:amount => '500') %>
           <%=link_to 'Give $10', offering_path(:amount => '1000') %>
@@ -23,6 +24,7 @@
           <%=link_to 'Give $50', offering_path(:amount => '5000') %>
           <%=link_to 'Give $100', offering_path(:amount => '10000') %>
        </p>
+       <% end %>
         <% if current_user %>
 				
 				<% else %>
