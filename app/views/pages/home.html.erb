@@ -9,6 +9,12 @@
       &nbsp;</h1>
        <p class="lead">Welcome&nbsp;</p>
        <hr class="my-4">
+       <% if current_user && current_user.admin && @church_count == 0 %>
+          <%= link_to 'Create New Church', new_church_path, :class => "nav-link" %>
+       <% end %>
+       <% if current_user && current_user.fullname == ""%>
+        <%= link_to 'Complete Profile', edit_registration_url, :class => "nav-link" %>
+       <% end %>
        <p>If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
        <p class="lead">
           <%=link_to 'Give $5', offering_path(:amount => '500') %>

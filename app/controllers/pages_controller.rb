@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
   	@church = Church.first
+    @church_count = Church.count
   end
   def nametag
   	@user = User.find(params[:uid])
