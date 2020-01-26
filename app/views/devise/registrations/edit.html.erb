@@ -1,11 +1,21 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+    <div class="col-lg-4 center-block">
+<h1>Hi There, 
+<%if current_user.fname %>
+    <%= current_user.fname %>
+<%else%>
+    ... You haven't filled out your name, so I am embarrassed I can't greet you.
+<%end%>
+
+</h1>
+<p>Please take a few moments to update your details so that we can keep in touch!</p>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :multipart => true }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= image_tag(current_user.avatar_url) if current_user.avatar? %><br>
-    <%= f.file_field :avatar %>
+    Photo<%= f.file_field :avatar %>
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -48,3 +58,4 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>

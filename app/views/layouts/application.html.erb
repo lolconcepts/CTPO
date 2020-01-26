@@ -12,6 +12,57 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <a class="navbar-brand" href="#">Church 2.0&nbsp;</a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+             <li class="nav-item active">
+                <%=link_to 'Home <span class="sr-only">(current)</span>'.html_safe,root_url,:class => "nav-link"  %>
+             </li>
+             <% if current_user && current_user.admin %>
+             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Administration
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                   
+                   <%=link_to 'Show Parishoners','/all_users',:class => "dropdown-item"  %>
+                   <div class="dropdown-divider"></div>
+                   <%=link_to 'Edit Church Info',edit_church_url(1),:class => "dropdown-item"  %>
+                   <a class="dropdown-item" href="#">Print Offering Cards</a>
+                   <a class="dropdown-item" href="#">Notification Center</a>
+                </div>
+             </li>
+             <%end%>
+             <% if current_user %>
+              <li class="nav-item">
+                <%= link_to 'Edit', edit_user_registration_url, :class => "nav-link" %>
+             </li>
+             <% end %>
+             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarGive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Give
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarGive">
+                   <%=link_to 'Give $5', offering_path(:amount => '500'),:class => "dropdown-item" %>
+                   <%=link_to 'Give $10', offering_path(:amount => '1000'),:class => "dropdown-item" %>
+                   <%=link_to 'Give $25', offering_path(:amount => '2500'),:class => "dropdown-item" %>
+                   <%=link_to 'Give $50', offering_path(:amount => '5000'),:class => "dropdown-item" %>
+                   <%=link_to 'Give $100', offering_path(:amount => '10000'),:class => "dropdown-item" %>
+                </div>
+             </li>
+             <li class="nav-item text-right">
+              <% if current_user && current_user.fullname %>
+                <%= link_to "Logged in as #{current_user.fullname}", destroy_user_session_path, method: :delete, :class => "nav-link" %>
+              <% end %>
+             </li>
+          </ul>
+       </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -1,47 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <a class="navbar-brand" href="#">Church 2.0&nbsp;</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-             </li>
-             <% if current_user && current_user.admin %>
-             <li class="nav-item">
-                <a class="nav-link" href="#">Parishoners</a>
-             </li>
-             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Administration
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                   <a class="dropdown-item" href="#">Show Parishoners</a>
-                   <a class="dropdown-item" href="/nametags">Print Name Tags</a>
-                   <div class="dropdown-divider"></div>
-                   <a class="dropdown-item" href="#">Edit Church Info</a>
-					<a class="dropdown-item" href="#">Print Offering Cards</a>
-					<a class="dropdown-item" href="#">Notification Center</a>
-                </div>
-             </li>
-             <%end%>
-             <% if current_user %>
-              <li class="nav-item">
-                <%= link_to 'Edit', edit_user_registration_url, :class => "nav-link" %>
-             </li>
-             <% end %>
-              <li class="nav-item">
-                <a class="nav-link" href="#" target="_blank">Make An Offering</a>
-             </li>
-             <li class="nav-item text-right">
-             	<% if current_user && current_user.fullname %>
-             		<%= link_to "Logged in as #{current_user.fullname}", destroy_user_session_path, method: :delete, :class => "nav-link" %>
-             	<% end %>
-             </li>
-          </ul>
-       </div>
-    </nav>
+
 
     <div class="jumbotron jumbotron-fluid text-center">
        <h1 class="display-4">
@@ -54,7 +11,11 @@
        <hr class="my-4">
        <p>If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
        <p class="lead">
-          
+          <%=link_to 'Give $5', offering_path(:amount => '500') %>
+          <%=link_to 'Give $10', offering_path(:amount => '1000') %>
+          <%=link_to 'Give $25', offering_path(:amount => '2500') %>
+          <%=link_to 'Give $50', offering_path(:amount => '5000') %>
+          <%=link_to 'Give $100', offering_path(:amount => '10000') %>
        </p>
         <% if current_user %>
 				

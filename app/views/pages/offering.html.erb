@@ -1,0 +1,38 @@
+<div class="jumbotron">
+  <div class="container text-center">
+<span class="h1 text-uppercase">Offering</span>
+</div>
+</div>
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>You are about to make an offering to <%= @church.name %>
+      </h3>
+    </div><!-- end of col -->
+  </div><!-- end of row -->
+    <div class="row">
+    <div class="col">
+      <%= form_tag charge_url :amount => @offering, :id => 1 do %>
+  <article>
+    
+    <label class="amount text-dark h1">
+      <span>Amount: $<%=(@offering).to_f/100.00 %></span>
+    </label>
+  </article>
+  <% @desc = "Offering - #{@church.name}" %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key=pk_test_VBb5s0rmIq441dlhcJMukWnO
+          data-description="<%= @desc %>"
+          data-amount=<%=@offering %>
+          data-locale="auto"></script>
+
+<% end %>
+
+    </div><!-- end of col -->
+  </div><!-- end of row -->
+</div><!-- end of container -->
