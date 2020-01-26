@@ -17,7 +17,7 @@
   </div><!-- end of row -->
     <div class="row">
     <div class="col">
-      <%= form_tag charge_url :amount => @offering, :id => 1 do %>
+      <%= form_tag charge_url :amount => @offering, :id => current_user.id do %>
   <article>
     
     <label class="amount text-dark h1">

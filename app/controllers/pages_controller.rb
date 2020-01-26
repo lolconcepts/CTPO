@@ -34,7 +34,7 @@ class PagesController < ApplicationController
     @church = Church.first
     @amount = params[:amount]
     @amount = @amount.to_i
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) || User.first
     @description = "Offering - #{@church.name}"
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
 
     offering = Offering.create({
       :stripe_id => params[:stripe_id],
-      :uid => params[:uid],
+      :uid => params[:id] || 999,
       :amount => @amount
     })
     flash[:notice] = "Thank you for your generous gift of $#{@amount/100}"
