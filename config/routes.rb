@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :volunteers
+  resources :requests
   resources :events
   resources :churches
   resources :carriers

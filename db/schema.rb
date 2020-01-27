@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_200819) do
+ActiveRecord::Schema.define(version: 2020_01_27_210725) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "name"
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(version: 2020_01_27_200819) do
     t.boolean "cover"
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.string "who"
+    t.text "reason"
+    t.boolean "call_back"
+    t.boolean "visit"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -98,6 +109,15 @@ ActiveRecord::Schema.define(version: 2020_01_27_200819) do
     t.index ["carrier_id"], name: "index_users_on_carrier_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "volunteers", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
