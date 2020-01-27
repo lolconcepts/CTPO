@@ -16,4 +16,8 @@ class User < ApplicationRecord
    	end
    end
 
+   def makeAdmin
+    self.admin = true
+    self.save
+   end
 end

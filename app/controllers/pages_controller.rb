@@ -11,6 +11,13 @@ class PagesController < ApplicationController
     @users = User.all
   end
 
+  def adminify
+    @user = User.find(params[:id])
+    @user.makeAdmin 
+    flash[:notice] = "#{@user.fullname} has been granted Admin Rights."
+    redirect_to all_users_url
+  end
+
   def offering
   	@amount = params[:amount] || "0"
   	@cover = params[:cover] || 0

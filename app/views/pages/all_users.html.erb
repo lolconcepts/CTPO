@@ -1,8 +1,8 @@
 <h1>Listing of Parishioners</h1>
-<table>
+<table class="table">
 	<thead>
 		<tr>
-			<td>Print Name Tag</td>
+			<td></td>
 			<td>Name</td>
 			<td>Address</td>
 			<td>City</td>
@@ -12,8 +12,12 @@
 	</thead>
 <% @users.each do |user| %>
 	<tr>
-			<td><%= link_to 'Print NameTag', nametag_path(:uid => user.id) %> </td>
-			<td><%= user.fullname%> </td>
+			<td><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> | <%= link_to 'Make Admin', adminify_path(:id => user.id) %></td>
+			<td><%= user.fullname%>
+			<% if user.admin %>
+				<span class="badge badge-primary">Administrator</span>
+			<% end %>
+			</td>
 			<td><%= user.address%> </td>
 			<td><%= user.city%> </td>
 			<td><%= user.email%> </td>
