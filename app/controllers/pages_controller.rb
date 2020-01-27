@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   def home
   	@church = Church.first
     @church_count = Church.count
+    @events = Event.all.where("'when' > ?", DateTime.now)
   end
   def nametag
   	@user = User.find(params[:uid])
