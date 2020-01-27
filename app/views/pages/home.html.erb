@@ -1,21 +1,23 @@
-
-
-    <div class="jumbotron jumbotron-fluid text-center">
-       <h1 class="display-4">
+  <div class="jumbotron jumbotron-fluid text-center">
+       
         <% if @church %>
-        <%= @church.name %>
+          <h1 class="display-4">
+          <%= @church.name %>
+        <% else %>
+            <span class="text-monospace bg-warning">The Church has not been configured completely.</span>
         <% end %>
 
       &nbsp;</h1>
-       <p class="lead">Welcome&nbsp;</p>
+       <p class="display-4">Welcome ;)&nbsp;</p>
        <hr class="my-4">
        <% if current_user && current_user.admin && @church_count == 0 %>
+       <span class="text-monospace text-info">Since you are the first user, I have made you an ADMIN. Please create your church by using the link below</span>
           <%= link_to 'Create New Church', new_church_path, :class => "nav-link" %>
        <% end %>
        <% if current_user && current_user.fullname == ""%>
         <%= link_to 'Complete Profile', edit_registration_url, :class => "nav-link" %>
        <% end %>
-       <p>If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
+       <p class="text-monospace text-muted">If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
        <% if  @church_count == 1 %>
        <p class="lead">
           <%=link_to 'Give $5', offering_path(:amount => '500') %>

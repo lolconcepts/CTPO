@@ -60,5 +60,7 @@ class PagesController < ApplicationController
     redirect_to root_path
   end
 
+  def test
+  end
 
 end

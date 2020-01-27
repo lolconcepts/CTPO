@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   match 'all_users/', :to => 'pages#all_users', :via => :get
   match 'offering/', :to => 'pages#offering', :via => :get
   match 'charge/', :to => 'pages#charge', :via => :post
+  match 'test/',:to => 'pages#test', :via => :get
   #resources :sessions, only: [:create,:destroy]
   post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'
