@@ -29,10 +29,13 @@
        <% end %>
         <% if current_user %>
 				  <% if @events.count > 0 %>
+          <h3>Upcoming Events</h3>
             <% @events.each do |event| %>
-              <%= event.description %><br>
-              <%= event.cost %><br>
-              <%= event.when %><br>
+            <div class="bg-warning rounded-lg">
+              <span class="text-monospace h2"><%= event.description %></span><br>
+              <%= event.cost || "Free" %><br>
+              <%= event.when.strftime("%m/%d/%Y at %I:%M%p") %><br>
+            </div>
               <hr>
             <% end %>
           <% end %>
