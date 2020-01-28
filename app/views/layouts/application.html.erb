@@ -29,6 +29,7 @@
 
                    
                    <%=link_to 'Show Parishoners','/all_users',:class => "dropdown-item"  %>
+                   <%=link_to 'Create New Event',new_event_url,:class => "dropdown-item"  %>
                    <div class="dropdown-divider"></div>
                    <%=link_to 'Edit Church Info',edit_church_url(1),:class => "dropdown-item"  %>
                    <a class="dropdown-item" href="#">Print Offering Cards</a>
@@ -38,7 +39,7 @@
              <%end%>
              <% if current_user %>
               <li class="nav-item">
-                <%= link_to 'Edit', edit_user_registration_url, :class => "nav-link" %>
+                
              </li>
              <% end %>
              <li class="nav-item dropdown">
@@ -52,6 +53,17 @@
                    <%=link_to 'Give $25', offering_path(:amount => '2500'),:class => "dropdown-item" %>
                    <%=link_to 'Give $50', offering_path(:amount => '5000'),:class => "dropdown-item" %>
                    <%=link_to 'Give $100', offering_path(:amount => '10000'),:class => "dropdown-item" %>
+                </div>
+                <% end %>
+             </li>
+             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarOptions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Options
+                </a>
+                <% if  @church_count == 1 %>
+                <div class="dropdown-menu" aria-labelledby="navbarOptions">
+                   <%=link_to 'Prayer Request',new_request_url,:class => "dropdown-item"  %>
+                   <%= link_to 'Edit', edit_user_registration_url, :class => "dropdown-item" %>
                 </div>
                 <% end %>
              </li>

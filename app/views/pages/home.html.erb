@@ -19,6 +19,9 @@
        <% end %>
        <p class="text-monospace text-muted">If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
        <% if  @church_count == 1 %>
+       <% if current_user && current_user.admin %>
+      <a href="/requests"><span>You have <%= @requests %> Prayer Request</span></a>
+       <% end %>
        <p class="lead">
           <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success" %>
           <%=link_to 'Give $10', offering_path(:amount => '1000'),:class =>"btn btn-success" %>
