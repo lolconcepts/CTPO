@@ -20,18 +20,18 @@
        <p class="text-monospace text-muted">If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
        <% if  @church_count == 1 %>
        <p class="lead">
-          <%=link_to 'Give $5', offering_path(:amount => '500') %>
-          <%=link_to 'Give $10', offering_path(:amount => '1000') %>
-          <%=link_to 'Give $25', offering_path(:amount => '2500') %>
-          <%=link_to 'Give $50', offering_path(:amount => '5000') %>
-          <%=link_to 'Give $100', offering_path(:amount => '10000') %>
+          <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success" %>
+          <%=link_to 'Give $10', offering_path(:amount => '1000'),:class =>"btn btn-success" %>
+          <%=link_to 'Give $25', offering_path(:amount => '2500'),:class =>"btn btn-success" %>
+          <%=link_to 'Give $50', offering_path(:amount => '5000'),:class =>"btn btn-success" %>
+          <%=link_to 'Give $100', offering_path(:amount => '10000'),:class =>"btn btn-success" %>
        </p>
        <% end %>
         <% if current_user %>
 				  <% if @events.count > 0 %>
           <h3>Upcoming Events</h3>
             <% @events.each do |event| %>
-            <div class="bg-warning rounded-lg">
+            <div class="bg-warning rounded border border-dark">
               <span class="text-monospace h2"><%= event.description %></span><br>
               <%= event.cost || "Free" %><br>
               <%= event.when.strftime("%m/%d/%Y at %I:%M%p") %><br>
