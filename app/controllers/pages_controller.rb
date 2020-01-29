@@ -43,7 +43,12 @@ class PagesController < ApplicationController
     @church = Church.first
     @amount = params[:amount]
     @amount = @amount.to_i
-    @user = User.find(params[:id]) || User.first
+    if params[:id]
+      @user = User.find(params[:id])
+    else
+      User.first
+    end
+
     @description = "Offering - #{@church.name}"
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
