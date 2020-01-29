@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
    def smsAddress
     if self.carrier_id && self.telephone
-      @sms = "#{self.telephone}#{Carrier.find(self.carrier_id).suffix}"
+      @sms = "#{self.telephone.tr('-','')}#{Carrier.find(self.carrier_id).suffix}"
     else
       @sms = ""
     end

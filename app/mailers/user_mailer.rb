@@ -19,7 +19,7 @@ class UserMailer < ApplicationMailer
   
   # Send out a note to ALL students. Template:=> /views/user_mailer/email_blast.text.erb
   def email_blast(subject,message)
-    @users = User.all.where(:sms_ok => true,:disabled => nil).where.not(telephone: [nil,""],carrier_id: [nil])
+    @users = User.all.where(:sms_ok => true,:disabled => false).where.not(telephone: [nil,""],carrier_id: [nil])
     @email_list = []
     @users.each do |s|
       email = s.smsAddress
