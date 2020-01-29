@@ -4,6 +4,11 @@ class PagesController < ApplicationController
     @church_count = Church.count
     @events = Event.all.where("'when' >= ?", DateTime.now)
     @requests = Request.count
+    @offeringsToday = 0
+    @dailyOfferings = Offering.all.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    @dailyOfferings.each do |offering|
+      @offeringsToday += offering.amount.to_i/100
+    end
   end
   def nametag
   	@user = User.find(params[:uid])

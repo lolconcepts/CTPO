@@ -21,6 +21,7 @@
        <% if  @church_count == 1 %>
        <% if current_user && current_user.admin %>
       <a href="/requests"><span>You have <%= @requests %> Prayer Request</span></a>
+      <h3>Today's Offerings: $<%= @offeringsToday %></h3>
        <% end %>
        <p class="lead">
           <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success" %>
@@ -32,6 +33,7 @@
        <% end %>
         <% if current_user %>
 				  <% if @events.count > 0 %>
+          
           <h3>Upcoming Events</h3>
             <% @events.each do |event| %>
             <div class="bg-warning rounded-pill border border-dark">
@@ -41,6 +43,7 @@
             </div>
               <hr>
             <% end %>
+          
           <% end %>
 				<% else %>
 					<%= link_to 'Sign up', new_user_registration_path, :class => "nav-link" %>
