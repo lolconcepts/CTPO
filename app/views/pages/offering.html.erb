@@ -18,9 +18,9 @@
     <div class="row">
     <div class="col">
       <% if current_user %>
-        @uid = current_user.id
+        <% @uid = current_user.id %>
       <% else %>
-        @uid = "9999"
+        <% @uid = "9999" %>
       <% end %>
       <%= form_tag charge_url :amount => @offering, :id => @uid do %>
   <article>
