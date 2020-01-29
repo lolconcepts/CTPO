@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
     @count = User.all.where(:sms_ok => true).where.not(telephone: [nil,""],carrier_id: [nil]).count
     @message.count = @count
 
-    #StudentMailer.email_blast(@subject,@message.body).deliver #deliver message
+    UserMailer.email_blast(@subject,@message.body).deliver #deliver message
  
     respond_to do |format|
       if @message.save
