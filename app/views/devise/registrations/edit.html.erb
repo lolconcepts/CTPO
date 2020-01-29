@@ -1,5 +1,4 @@
-<div class="row">
-    <div class="col-lg-4 center-block">
+
 <h1>Hi There, 
 <%if current_user.fname %>
     <%= current_user.fname %>
@@ -25,6 +24,7 @@
     <%= f.input :fname ,label: 'First Name', required: true,placeholder: 'John' %>
     <%= f.input :lname ,label: 'Last Name', required: true,placeholder: 'Smith' %>
     <%= f.input :role ,label: 'Role' , required: false,placeholder: 'SPRC' %>
+    <%= f.input :skill , label: 'Skills', required: false, placeholder: 'Carpentry, Painting' %>
     <%= f.input :address ,label: 'Address' , required: true,placeholder: '158 Washington St' %>
     <%= f.input :address2 ,label: 'Address2' , required: false, placeholder: 'Apt223' %>
     <%= f.input :city ,label: 'City', required: true, placeholder: 'Whitman' %>
@@ -50,7 +50,7 @@
 
   <div class="form-actions">
     <%= f.button :submit, "Update" , :class => "btn btn-primary" %>
-  </div>
+  </div><!-- END FORM ACTION BUTTON -->
 <% end %>
 
 <h3>Cancel my account</h3>
@@ -58,4 +58,3 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
-</div>

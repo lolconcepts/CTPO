@@ -34,7 +34,7 @@
 				  <% if @events.count > 0 %>
           <h3>Upcoming Events</h3>
             <% @events.each do |event| %>
-            <div class="bg-warning rounded border border-dark">
+            <div class="bg-warning rounded-pill border border-dark">
               <span class="text-monospace h2"><%= event.description %></span><br>
               <%= event.cost || "Free" %><br>
               <%= event.when.strftime("%m/%d/%Y at %I:%M%p") %><br>
