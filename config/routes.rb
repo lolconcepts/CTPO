@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   match 'charge/', :to => 'pages#charge', :via => :post
   match 'test/',:to => 'pages#test', :via => :get
   match '/adminify',:to => 'pages#adminify', :via => :get
+  match '/card', :to => 'pages#offeringcard', :via => :get
+  match '/sucard', :to => 'pages#sucard', :via => :get
   #resources :sessions, only: [:create,:destroy]
   post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'

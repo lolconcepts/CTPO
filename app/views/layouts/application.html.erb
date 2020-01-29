@@ -32,7 +32,8 @@
                    <%=link_to 'Create New Event',new_event_url,:class => "dropdown-item"  %>
                    <div class="dropdown-divider"></div>
                    <%=link_to 'Edit Church Info',edit_church_url(1),:class => "dropdown-item"  %>
-                   <a class="dropdown-item" href="#">Print Offering Cards</a>
+                   <a class="dropdown-item" href="/card">Print Offering Cards</a>
+                   <a class="dropdown-item" href="/sucard">Print Sign-up Card</a>
                    <a class="dropdown-item" href="/messages">Notification Center</a>
                 </div>
              </li>
@@ -63,7 +64,9 @@
                 <% if  @church_count == 1 %>
                 <div class="dropdown-menu" aria-labelledby="navbarOptions">
                    <%=link_to 'Prayer Request',new_request_url,:class => "dropdown-item"  %>
+                   <% if current_user %>
                    <%= link_to 'Edit', edit_user_registration_url, :class => "dropdown-item" %>
+                   <% end %>
                 </div>
                 <% end %>
              </li>
@@ -80,8 +83,9 @@
        </div>
     </nav>
     <div class="container-fluid">
-
-    <%= yield %>
-  </div>
+      
+        <%= yield %>
+      
+    </div>
   </body>
 </html>

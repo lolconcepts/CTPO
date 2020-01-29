@@ -77,5 +77,11 @@ class PagesController < ApplicationController
 
   def test
   end
+  def offeringcard
+    @church = Church.first
+  end
+  def sucard
+    @church = Church.first
+  end
 
 end

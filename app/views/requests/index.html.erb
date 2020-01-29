@@ -38,9 +38,9 @@
         </td>
         <td>
           <% if request.email %>
-          <i class="far fa-check-circle"></i>
+          <%= request.email %>
             <% else %>
-            No
+            No Email Provided
           <% end %>
         </td>
         <td><%= request.phone %></td>
