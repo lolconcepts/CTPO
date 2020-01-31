@@ -21,7 +21,11 @@
        <% if  @church_count == 1 %>
        <% if current_user && current_user.admin %>
       <a href="/requests"><span>You have <%= @requests %> Prayer Request</span></a>
-      <h3>Today's Offerings: $<%= @offeringsToday %></h3>
+      <% if @offeringsToday > 0 %>
+        <h3>Today's Offerings: $<%= @offeringsToday %></h3>
+        <h3>Stripe Fee's: $<%= @stripe_fees %></h3>
+        <h3>Deposits: $<%= @offeringsToday - @stripe_fees %></h3>
+      <% end %>
        <% end %>
        <p class="lead">
           <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success" %>
