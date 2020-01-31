@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @dailyOfferings = Offering.all.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
     @dailyOfferings.each do |offering|
       @offeringsToday += offering.amount.to_i/100
-      @stripe_fees += ((offering.amount.to_i * 0.029/100) + 0.30)
+      @stripe_fees += ((offering.amount.to_i * 0.029/100) + 0.30).round(2)
     end
 
   end
