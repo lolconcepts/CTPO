@@ -1,19 +1,19 @@
-<div class="row text-center">
-	<div class="col">
+<div class="row text-center d-flex justify-content-center">
+	<div class="col-6">
 		<h1><%=@church.name%></h1>
 		<h2>Online Signup</h2>
-		<p>We are pleased to announce that we have created a notifications system. Please take a moment to scan the code below and create an account.</p>
-		<p>We will be able to use this information to send important notifications to you about our church. You will also be able to use the system to send in prayer requests for <%=@church.pastor %>, as well as see a list of upcoming events being held.</p>
-		<p>If you have any questions or concerns, please feel free to reach out to the church at</p>
-		<p>
+		<p class="lead text-left">We are pleased to announce that we have created a notifications system. Please take a moment to scan the code below and create an account.</p>
+		<p class="lead text-left">We will be able to use this information to send important notifications to you about our church. You will also be able to use the system to send in prayer requests for <%=@church.pastor %>, as well as see a list of upcoming events being held.</p>
+		<p class="lead text-left">If you have any questions or concerns, please feel free to reach out to the church at</p>
+		<p class="lead text-left">
 			Email: <%=@church.email%><br>
 			Telephone: <%=@church.telephone%><br>
 		</p>
-		<p>Blessings,<br>
+		<p class="lead text-left">Blessings,<br>
 			<%=@church.pastor%>
 		</p>
 <% @url = "<img src=" + "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=#{new_user_registration_url}" %>
 			<% @alternate_text = "Give to #{@church.name}" %>
-			<div id="tnet-QR"><%= raw(@url) %> title=<%= @alternate_text %> /></img>
+			<div id="tnet-QR" class="border"><%= raw(@url) %> title=<%= @alternate_text %> /></img>
 	</div><!-- END COL -->
 </div><!-- END ROW -->
