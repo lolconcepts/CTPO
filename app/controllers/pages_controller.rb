@@ -78,8 +78,7 @@ class PagesController < ApplicationController
     redirect_to root_path
   end
 
-  def thanks
-    @church = Church.first
+  def test
   end
   def offeringcard
     @church = Church.first
