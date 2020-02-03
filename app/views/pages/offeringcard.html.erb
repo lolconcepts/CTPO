@@ -2,7 +2,7 @@
 	<div class="col-4 border rounded">
 		<h1><%=@church.name%></h1>
 		<h2>Online Giving</h2>
-		<p class="lead">If you got to church and don't have cash or a check for offering, fear not! Simply scan the code below with your smartphone to give today.If you have an account already, then first login. By signing up and logging, in we will be able to send you a statement at the end of the year for your generous gifts.</p>
+		<p class="lead">If you go to church and don't have cash or a check for offering, fear not! Simply scan the code below with your smartphone to give today.If you have an account already, then first login. By signing up and logging, in we will be able to send you a statement at the end of the year for your generous gifts.</p>
 <% @url = "<img src=" + "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=#{root_url}" %>
 			<% @alternate_text = "Give to #{@church.name}" %>
 			<div id="tnet-QR"><%= raw(@url) %> title=<%= @alternate_text %> /></img>

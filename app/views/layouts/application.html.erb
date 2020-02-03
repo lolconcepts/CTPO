@@ -47,7 +47,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarGive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Give
                 </a>
-                <% if  @church_count == 1 %>
+                <% if  @church_count == 1 && !ENV['STRIPE_SK_TEST'].nil? %>
                 <div class="dropdown-menu" aria-labelledby="navbarGive">
                    <%=link_to 'Give $5', offering_path(:amount => '500'),:class => "dropdown-item" %>
                    <%=link_to 'Give $10', offering_path(:amount => '1000'),:class => "dropdown-item" %>
