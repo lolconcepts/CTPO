@@ -25,7 +25,7 @@ class User < ApplicationRecord
     @offeringsToday = 0
     @gifts = Offering.all.where(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_day,uid: self.id)
     @gifts.each do | g|
-      @offeringsToday += g.amount.to_i/100
+      @offeringsToday += g.amount.to_f/100
     end
     return @offeringsToday
    end
