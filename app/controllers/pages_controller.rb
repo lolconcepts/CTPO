@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   def home
   	@church = Church.first
     @church_count = Church.count
-    @events = Event.all.where("'estart' >= ?", DateTime.now)
+    @events = Event.all.where('estart >= ?', DateTime.now)
     @requests = Request.count
     @offeringsToday = 0
     @stripe_fees = 0
