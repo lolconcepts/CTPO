@@ -1,0 +1,21 @@
+<h1>Offerings Received (Year-To-Date)</h1>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<td>Date</td>
+			<td>Amount</td>
+			<td>Donor</td>
+		</tr>
+	</thead>
+	<% @offerings.each do |o| %>
+	<tr>
+		<td><%= o.created_at.strftime("%m/%d/%Y") %></td>
+		<td><%= o.normalized_amount %></td>
+		<% if o.uid %>
+			<td><%= User.find(o.uid).fullname %></td>
+		<% else %>
+			<td>Guest</td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>
