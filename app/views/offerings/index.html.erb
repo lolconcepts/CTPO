@@ -11,7 +11,7 @@
 	<tr>
 		<td><%= o.created_at.strftime("%m/%d/%Y") %></td>
 		<td><%= o.normalized_amount %></td>
-		<% if o.uid %>
+		<% if o.uid && o.uid != "9999" %>
 			<td><%= User.find(o.uid).fullname %></td>
 		<% else %>
 			<td>Guest</td>
