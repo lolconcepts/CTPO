@@ -10,37 +10,51 @@
       &nbsp;</h1>
        <p class="display-4">Welcome ;)&nbsp;</p>
        <hr class="my-4">
+
+       <!-- ADMIN USER AND NO CHURCH -->
        <% if current_user && current_user.admin && @church_count == 0 %>
-       <span class="text-monospace text-info">Since you are the first user, I have made you an ADMIN. Please create your church by using the link below</span>
-          <%= link_to 'Create New Church', new_church_path, :class => "nav-link" %>
+         <span class="text-monospace text-info">Since you are the first user, I have made you an ADMIN. Please create your church by using the link below</span>
+            <%= link_to 'Create New Church', new_church_path, :class => "nav-link" %>
        <% end %>
+
+       <!-- ANY USER AND NO PROFILE COMPLETED -- FILL IN ALL DETAILS -->
        <% if current_user && current_user.fullname == ""%>
         <%= link_to 'Complete Profile', edit_registration_url, :class => "nav-link" %>
        <% end %>
+       <!-- GENERAL INFORMATION -->
        <p class="text-monospace text-muted">If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
-       <% if  @church_count == 1 %>
-       <% if current_user && current_user.admin %>
-      <a href="/requests"><span>You have <%= @requests %> Prayer Request</span></a>
-       <% end %>
-        <% if current_user.finance %>
-          <% if @offeringsToday > 0 %>
-            <h3>Today's Offerings: $<%= @offeringsToday %></h3>
-            <h3>Stripe Fee's: $<%= @stripe_fees %></h3>
-            <h3>Deposits: $<%= @offeringsToday - @stripe_fees %></h3>
-          <% end %>
-        <% end %>
-       <% if  @church_count == 1 && !ENV['STRIPE_SK_TEST'].nil? %>
 
-       <p class="lead">
-          <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success" %>
-          <%=link_to 'Give $10', offering_path(:amount => '1000'),:class =>"btn btn-success" %>
-          <%=link_to 'Give $25', offering_path(:amount => '2500'),:class =>"btn btn-success" %>
-          <%=link_to 'Give $50', offering_path(:amount => '5000'),:class =>"btn btn-success" %>
-          <%=link_to 'Give $100', offering_path(:amount => '10000'),:class =>"btn btn-success" %>
-       </p>
-       <% end %>
-       <% end %>
+       <!-- ONLY DISPLAY IF CHURCH HAS BEEN CONFIGURED -->
+       <% if  @church_count == 1 %>
+          <!-- SHOW PRAYER REQUESTS FOR ADMIN USERS ONLY -->
+          <% if current_user && current_user.admin %>
+            <a href="/requests"><span>You have <%= @requests %> Prayer Request</span></a>
+          <% end %>
+          <!-- SHOW OFFERING ONLY IF USER HAS FINANCE ATTRIBUTE -->
+          <% if current_user && current_user.finance %>
+            <!-- ONLY SHOW IF OFFERING HAVE BEEN MADE ONLINE -->
+            <% if @offeringsToday > 0 %>
+              <h3>Today's Offerings: $<%= @offeringsToday %></h3>
+              <h3>Stripe Fee's: $<%= @stripe_fees %></h3>
+              <h3>Deposits: $<%= @offeringsToday - @stripe_fees %></h3>
+            <% end %>
+          <% end %>
+
+         <!-- ONLY ALLOW OFFERINGS IF STRIPE IS CONFIGURED -->
+         <% if  @church_count == 1 && !ENV['STRIPE_SK_TEST'].nil? %>
+           <p class="lead">
+              <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success" %>
+              <%=link_to 'Give $10', offering_path(:amount => '1000'),:class =>"btn btn-success" %>
+              <%=link_to 'Give $25', offering_path(:amount => '2500'),:class =>"btn btn-success" %>
+              <%=link_to 'Give $50', offering_path(:amount => '5000'),:class =>"btn btn-success" %>
+              <%=link_to 'Give $100', offering_path(:amount => '10000'),:class =>"btn btn-success" %>
+           </p>
+         <% end %>
+       <% end %><!-- END OF MAKING SURE THERE IS A CHURCH -->
+
+       <!-- OPTIONS FOR LOGGED IN USERS -->
         <% if current_user %>
+          <!-- SHOW IF THERE ARE ANY EVENTS -->
 				  <% if @events.count > 0 %>
           
           <h3>Upcoming Events</h3>
@@ -52,12 +66,11 @@
             </div>
               <hr>
             <% end %>
-          
-          <% end %>
-				<% else %>
+          <% end %><!-- END OF EVENTS CHECK -->
+				<% else %><!-- SHOW WHEN NOT LOGGED IN -->
 					<%= link_to 'Sign up', new_user_registration_path, :class => "nav-link" %>
 					<%= link_to 'Sign In', new_user_session_path, :class => "nav-link" %>
-				<% end %>
+				<% end %><!-- END OF LOGGED IN USER CHECK -->
     </div>
 
 
