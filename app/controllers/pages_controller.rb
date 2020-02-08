@@ -16,7 +16,11 @@ class PagesController < ApplicationController
   def nametag
   	@user = User.find(params[:uid])
   	@church = Church.first
-    @pronouns = Pronoun.find(@user.pronoun_id).description
+    if @user.pronoun_id == nil
+      @pronouns = Pronoun.first
+    else
+      @pronouns = Pronoun.find(@user.pronoun_id).description
+    end
     if @pronouns == "Prefer Not To Use" || @pronouns == "Prefer Not To Choose"
       @pronouns = ""
     else
