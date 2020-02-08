@@ -35,7 +35,7 @@
     <%= f.label :carrier %>
     <%= f.collection_select :carrier_id, Carrier.all, :id, :name %>
     <%= f.input :sms_ok, label: 'SMS Ok?' %>
-
+    <%= f.input :custom_gift, label: 'Custom Gift Amount',placeholder: '15' %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,

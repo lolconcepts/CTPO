@@ -28,6 +28,14 @@ class User < ApplicationRecord
     self.save
    end
 
+   def custom
+     if self.custom_gift != nil
+      return self.custom_gift + "00"
+     else
+      return "0"
+     end
+   end
+   
    def gifts
     @offeringsToday = 0
     @gifts = Offering.all.where(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_day,uid: self.id)

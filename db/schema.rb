@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_185435) do
+ActiveRecord::Schema.define(version: 2020_02_08_200124) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "name"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_185435) do
     t.boolean "disabled", default: false
     t.boolean "finance", default: false
     t.integer "pronoun_id"
+    t.string "custom_gift"
     t.index ["carrier_id"], name: "index_users_on_carrier_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["pronoun_id"], name: "index_users_on_pronoun_id"
