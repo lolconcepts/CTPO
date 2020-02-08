@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   	@user = User.find(params[:uid])
   	@church = Church.first
     if @user.pronoun_id == nil
-      @pronouns = Pronoun.first
+      @pronouns = Pronoun.first.description
     else
       @pronouns = Pronoun.find(@user.pronoun_id).description
     end
