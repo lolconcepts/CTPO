@@ -20,6 +20,11 @@
              <li class="nav-item">
                 <%=link_to 'Home <span class="sr-only"></span>'.html_safe,root_url,:class => "nav-link"  %>
              </li>
+             <% if current_user && current_user.finance %>
+               <li class="nav-item">
+                  <%=link_to 'Offerings List','/offerings',:class => "nav-link"  %>
+               </li>
+             <% end %>
              <% if current_user && current_user.admin %>
              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

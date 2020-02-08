@@ -9,7 +9,9 @@
 			<td>Email</td>
 			<td>Phone</td>
 			<td>Skills</td>
-			<td>Year To Date Online Gifts</td>
+			<% if current_user.finance %>
+				<td>Year To Date Online Gifts</td>
+			<% end %>
 		</tr>
 	</thead>
 <% @users.each do |user| %>
@@ -20,13 +22,18 @@
 			<% if user.admin %>
 				<span class="badge badge-primary">Administrator</span>
 			<% end %>
+			<% if user.finance %>
+				<span class="badge badge-success">Finance Team</span>
+			<% end %>
 			</td>
 			<td><%= user.address%> </td>
 			<td><%= user.city%> </td>
 			<td><%= user.email%> </td>
 			<td><%= user.telephone %> </td>
 			<td><%= user.skill %> </td>
-			<td>$<%= user.gifts %></td>
+			<% if current_user.finance %>
+				<td>$<%= user.gifts %></td>
+			<% end %>
 		</tr>
 <% end %>
 </table>
