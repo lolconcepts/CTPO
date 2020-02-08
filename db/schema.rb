@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_171549) do
+ActiveRecord::Schema.define(version: 2020_02_08_185435) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "name"
@@ -63,6 +63,12 @@ ActiveRecord::Schema.define(version: 2020_02_08_171549) do
     t.boolean "cover"
   end
 
+  create_table "pronouns", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "requests", force: :cascade do |t|
     t.string "who"
     t.text "reason"
@@ -110,8 +116,10 @@ ActiveRecord::Schema.define(version: 2020_02_08_171549) do
     t.string "skill"
     t.boolean "disabled", default: false
     t.boolean "finance", default: false
+    t.integer "pronoun_id"
     t.index ["carrier_id"], name: "index_users_on_carrier_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["pronoun_id"], name: "index_users_on_pronoun_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

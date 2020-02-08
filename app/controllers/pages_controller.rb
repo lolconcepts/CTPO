@@ -16,6 +16,12 @@ class PagesController < ApplicationController
   def nametag
   	@user = User.find(params[:uid])
   	@church = Church.first
+    @pronouns = Pronoun.find(@user.pronoun_id).description
+    if @pronouns == "Prefer Not To Use" || @pronouns == "Prefer Not To Choose"
+      @pronouns = ""
+    else
+      @pronouns = "pronouns: " + @pronouns
+    end
   end
   def nametags
     @users = User.all
@@ -25,6 +31,12 @@ class PagesController < ApplicationController
     @user = User.find(params[:id])
     @user.makeAdmin 
     flash[:notice] = "#{@user.fullname} has been granted Admin Rights."
+    redirect_to all_users_url
+  end
+  def financify
+    @user = User.find(params[:id])
+    @user.makeFinance 
+    flash[:notice] = "#{@user.fullname} has been granted Finance Team Rights."
     redirect_to all_users_url
   end
 

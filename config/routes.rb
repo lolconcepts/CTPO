@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pronouns
   resources :volunteers
   resources :requests
   resources :events
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   match 'charge/', :to => 'pages#charge', :via => :post
   match 'test/',:to => 'pages#test', :via => :get
   match '/adminify',:to => 'pages#adminify', :via => :get
+  match '/financify',:to => 'pages#financify', :via => :get
   match '/card', :to => 'pages#offeringcard', :via => :get
   match '/sucard', :to => 'pages#sucard', :via => :get
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user

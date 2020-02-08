@@ -84,6 +84,9 @@
                 <% else %>
                 <%= link_to "Logged in as #{current_user.fullname}", destroy_user_session_path, method: :delete, :class => "navbar-text" %>
                 <% end %>
+                 <% if current_user.finance %>
+                  <span class="badge badge-success"> Finance Team</span>
+                <% end %>
                 
               <% end %>
        </div>

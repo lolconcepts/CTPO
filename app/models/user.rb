@@ -4,9 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable #,:confirmable, :lockable, :timeoutable, :trackable
 
+
    mount_uploader :avatar, AvatarUploader
 
    profanity_filter :fname, :lname, :address, :address2, :city, :state, :zip, :method => 'stars'
+
+   has_one :pronoun
 
    def fullname
    	if self.fname && self.lname
@@ -18,6 +21,10 @@ class User < ApplicationRecord
 
    def makeAdmin
     self.admin = true
+    self.save
+   end
+   def makeFinance
+    self.finance = true
     self.save
    end
 

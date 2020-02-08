@@ -23,6 +23,7 @@
 
     <%= f.input :fname ,label: 'First Name', required: true,placeholder: 'John' %>
     <%= f.input :lname ,label: 'Last Name', required: true,placeholder: 'Smith' %>
+    Pronouns <%= f.collection_select :pronoun_id, Pronoun.all, :id, :description %>
     <%= f.input :role ,label: 'Role' , required: false,placeholder: 'SPRC' %>
     <%= f.input :skill , label: 'Skills', required: false, placeholder: 'Carpentry, Painting' %>
     <%= f.input :address ,label: 'Address' , required: true,placeholder: '158 Washington St' %>

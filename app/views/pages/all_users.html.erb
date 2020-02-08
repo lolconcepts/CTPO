@@ -16,7 +16,7 @@
 	</thead>
 <% @users.each do |user| %>
 	<tr>
-			<td><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> | <%= link_to 'Make Admin', adminify_path(:id => user.id) %>
+			<td><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> | <%= link_to 'Make Admin', adminify_path(:id => user.id) %> | <%= link_to 'Make Finance', financify_path(:id => user.id) %>
 			</td>
 			<td><%= user.fullname%>
 			<% if user.admin %>
