@@ -23,7 +23,11 @@
 									Hello... :)
 								<%end%>	
 							</div>
-							<div class="display-2"><%= @user.fullname %></div>
+							<% if @user.fullname.length < 10 %>
+								<div class="display-2"><%= @user.fullname %></div>
+							<% else %>
+								<div class="display-4"><%= @user.fullname %></div>
+							<% end %>
 							<div class="h3 text-primary"><%= @pronouns %></div>
 							<div class="display-4"><%= @user.role %></div>
 
