@@ -29,13 +29,23 @@ class User < ApplicationRecord
    end
 
    def custom
-     if self.custom_gift != nil
+    if self.custom_gift != nil && self.cover
+      return calc_cover(self.custom_gift).to_s
+    elsif self.custom_gift != nil && !self.cover
       return self.custom_gift + "00"
-     else
+    else
       return "0"
-     end
+    end
    end
    
+   def calc_cover(gift)
+    cover = (gift.to_f * 0.029) + 0.30
+    cover = cover.round(2)
+    cover = (cover * 100).to_i
+    gift = (gift +  "00").to_i
+    return cover + gift
+   end
+
    def gifts
     @offeringsToday = 0
     @gifts = Offering.all.where(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_day,uid: self.id)
