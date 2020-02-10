@@ -46,11 +46,11 @@
             <% if current_user && current_user.custom_gift != nil %>
               <%=link_to "Give $#{current_user.custom_gift}", offering_path(:amount => current_user.custom),:class =>"btn btn-success" %>
             <% else %>
-              <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success" %>
-              <%=link_to 'Give $10', offering_path(:amount => '1000'),:class =>"btn btn-success" %>
-              <%=link_to 'Give $25', offering_path(:amount => '2500'),:class =>"btn btn-success" %>
-              <%=link_to 'Give $50', offering_path(:amount => '5000'),:class =>"btn btn-success" %>
-              <%=link_to 'Give $100', offering_path(:amount => '10000'),:class =>"btn btn-success" %>
+              <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success text-light" %>
+              <%=link_to 'Give $10', offering_path(:amount => '1000'),:class =>"btn btn-success text-light" %>
+              <%=link_to 'Give $25', offering_path(:amount => '2500'),:class =>"btn btn-success text-light" %>
+              <%=link_to 'Give $50', offering_path(:amount => '5000'),:class =>"btn btn-success text-light" %>
+              <%=link_to 'Give $100', offering_path(:amount => '10000'),:class =>"btn btn-success text-light" %>
             <% end %>
             
            </p>
@@ -62,10 +62,10 @@
           <!-- SHOW IF THERE ARE ANY EVENTS -->
 				  <% if @events.count > 0 %>
           
-          <h3>Upcoming Events</h3>
+          <h3 class="h3 text-center">Upcoming Events</h3>
             <% @events.each do |event| %>
-            <div class="bg-warning rounded-pill border border-dark">
-              <span class="text-monospace h2"><%= event.description %></span><br>
+            <div class="bg-warning border border-dark text-center">
+              <span class="text-monospace h4"><%= event.description %></span><br>
               <%= event.cost || "Free" %><br>
               <%= event.estart.strftime("%m/%d/%Y at %I:%M%p") %><br>
             </div>
@@ -73,8 +73,8 @@
             <% end %>
           <% end %><!-- END OF EVENTS CHECK -->
 				<% else %><!-- SHOW WHEN NOT LOGGED IN -->
-					<%= link_to 'Sign up', new_user_registration_path, :class => "nav-link" %>
-					<%= link_to 'Sign In', new_user_session_path, :class => "nav-link" %>
+					<%= link_to 'Sign up', new_user_registration_path, :class => "btn btn-primary text-light" %>
+					<%= link_to 'Sign In', new_user_session_path, :class => "btn btn-primary text-light" %>
 				<% end %><!-- END OF LOGGED IN USER CHECK -->
     </div>
 
