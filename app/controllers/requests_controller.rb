@@ -28,6 +28,7 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
+        UserMailer.new_pr.deliver #deliver message
         format.html { redirect_to root_url, notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @request }
       else
