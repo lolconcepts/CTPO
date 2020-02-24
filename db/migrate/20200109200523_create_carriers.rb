@@ -16,6 +16,8 @@ class CreateCarriers < ActiveRecord::Migration[5.2]
     			   :suffix => '@mymetropcs.com')
     Carrier.create(:name => 'Verizon',
     			   :suffix => '@vtext.com')
+    Carrier.create(:name => 'Comcast/XFinity',
+             :suffix => '@vtext.com')
   end
 
   def down
