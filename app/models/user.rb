@@ -39,7 +39,7 @@ class User < ApplicationRecord
    end
    
    def calc_cover(gift)
-    cover = (gift.to_f * 0.029) + 0.30
+    cover = (gift.to_f * 0.0305) + 0.30
     cover = cover.round(2)
     cover = (cover * 100).to_i
     gift = (gift +  "00").to_i

@@ -59,7 +59,7 @@ class PagesController < ApplicationController
   end
   def calc_cover(amount)
     cash = amount.to_f
-    cash = (cash * 0.029 + 0.30)
+    cash = (cash * 0.0305 + 0.30)
     return cash.to_s + "00"
   end
   def charge
