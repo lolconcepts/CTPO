@@ -87,6 +87,7 @@ class PagesController < ApplicationController
       :uid => params[:id] || 9999,
       :amount => @amount
     })
+    UserMailer.new_gift.deliver #deliver message
     flash[:notice] = "Thank you for your generous gift of $#{@amount/100}"
     redirect_to root_path
   rescue Stripe::CardError => e

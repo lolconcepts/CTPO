@@ -30,6 +30,21 @@ class UserMailer < ApplicationMailer
     @subj = "CTPO-Notice"
     mail(:bcc => @email_list, :subject => @subj, :body => "new prayer request")
   end
+
+  def new_gift
+    @users = User.all.where(:sms_ok => true,:disabled => false).where.not(telephone: [nil,""],carrier_id: [nil]).where(:finance => true)
+    @email_list = []
+    @users.each do |s|
+      email = s.smsAddress
+      if email != ""
+        @email_list << email
+      end
+    end
+    @email_list = @email_list.uniq
+    @subj = "CTPO-Notice"
+    mail(:bcc => @email_list, :subject => @subj, :body => "new offering received")
+  end
+
   
   # Send out a note to ALL students. Template:=> /views/user_mailer/email_blast.text.erb
   def email_blast(subject,message)
