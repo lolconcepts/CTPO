@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
  	if User.count == 1
  		#Make Admin
  		current_user.admin = true
+ 		current_user.finance = true
  		current_user.save
  	end
     if current_user.fullname == "" 
