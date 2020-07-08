@@ -9,7 +9,20 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
     <%= favicon_link_tag asset_path('apple-touch-icon.png'), :rel => 'icon', :type =>  'image/png' %>
+    <style type="text/css">
+      .home_video {
+ width: 100vw;
+ height: 100vh;
+ position: absolute;
+ display: flex;
+ justify-content: center;
+ object-fit: cover;
+ top: 0;
+ z-index: -2;
+}
+    </style>
   </head>
 
   <body>
@@ -35,17 +48,19 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                   
-                   <%=link_to 'Show Parishoners','/all_users',:class => "dropdown-item"  %>
-                   <%=link_to 'Create New Event',new_event_url,:class => "dropdown-item"  %>
+                   <%=link_to '<i class="fab fa-cc-stripe"></i> Stripe (Payment Processor)'.html_safe,'https://dashboard.stripe.com',:class => "dropdown-item"  %>
+                   <%=link_to '<i class="far fa-calendar"></i> Calendly (Scheduling)'.html_safe,'https://www.calendly.com',:class => "dropdown-item"  %>
                    <div class="dropdown-divider"></div>
-                   <%=link_to 'Edit Church Info',edit_church_url(1),:class => "dropdown-item"  %>
+                   <%=link_to ' <i class="fas fa-users"></i> Show Parishoners'.html_safe,'/all_users',:class => "dropdown-item"  %>
+                   <%=link_to '<i class="far fa-calendar-plus"></i> Create New Event'.html_safe,new_event_url,:class => "dropdown-item"  %>
+                   <div class="dropdown-divider"></div>
+                   <%=link_to '<i class="fas fa-church"></i> Edit Church Info'.html_safe,edit_church_url(1),:class => "dropdown-item"  %>
                    <% if current_user && current_user.finance %>
                    <a class="dropdown-item" href="/offerings">View Online Giving</a>
                    <% end %>
-                   <a class="dropdown-item" href="/card">Print Offering Cards</a>
-                   <a class="dropdown-item" href="/sucard">Print Sign-up Card</a>
-                   <a class="dropdown-item" href="/messages">Notification Center</a>
+                   <a class="dropdown-item" href="/card"><i class="fas fa-wallet"></i> Print Offering Cards</a>
+                   <a class="dropdown-item" href="/sucard"><i class="fas fa-user-plus"></i> Print Sign-up Card</a>
+                   <a class="dropdown-item" href="/messages"><i class="fas fa-sms"></i> Notification Center</a>
                 </div>
              </li>
              <%end%>
@@ -74,9 +89,9 @@
                 </a>
                 <% if  @church_count == 1 %>
                 <div class="dropdown-menu" aria-labelledby="navbarOptions">
-                   <%=link_to 'Prayer Request',new_request_url,:class => "dropdown-item"  %>
+                   <%=link_to '<i class="fas fa-pray"></i> Prayer Request'.html_safe,new_request_url,:class => "dropdown-item"  %>
                    <% if current_user %>
-                   <%= link_to 'Edit', edit_user_registration_url, :class => "dropdown-item" %>
+                   <%= link_to '<i class="fas fa-user-edit"></i> Edit'.html_safe, edit_user_registration_url, :class => "dropdown-item" %>
                    <% end %>
                 </div>
                 <% end %>
@@ -96,6 +111,7 @@
               <% end %>
        </div>
     </nav>
+    
     <div class="container-fluid">
       
         <%= yield %>

@@ -3,11 +3,12 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
             
-  <div class="form-inputs">
+  <div class="form-inputs bg-white p-4">
   <%= f.input :description,
                 required: true,
                 autofocus: true,
-                placeholder: 'My Event'%>
+                placeholder: 'My Event',
+                class: "mr-4 bg-green" %>
   <%= f.input :cost,
                 required: true,
                 autofocus: true,
@@ -18,7 +19,7 @@
               autofocus: true %>  
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions bg-white">
     <%= f.button :submit %>
   </div>
 <% end %>

@@ -1,24 +1,33 @@
-<h1>Listing of Parishioners</h1>
-<table class="table">
+<div class="flex flex-col">
+  <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+<h1 class="mb-2 text-white text-xl">Listing of Parishioners</h1>
+<table class="min-w-full">
 	<thead>
 		<tr>
-			<td></td>
-			<td>Name</td>
-			<td>Address</td>
-			<td>City</td>
-			<td>Email</td>
-			<td>Phone</td>
-			<td>Skills</td>
+			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
+			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
+			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Address</th>
+			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">City</th>
+			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</th>
+			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Skills</th>
+			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
 			<% if current_user.finance %>
-				<td>Year To Date Online Gifts</td>
+				<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Year To Date Online Gifts</th>
 			<% end %>
 		</tr>
 	</thead>
+	<tbody>
+		
+
+
+	
 <% @users.each do |user| %>
-	<tr>
-			<td><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> | <%= link_to 'Make Admin', adminify_path(:id => user.id) %> | <%= link_to 'Make Finance', financify_path(:id => user.id) %>
+	<tr class="bg-white">
+			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> | <%= link_to 'Make Admin', adminify_path(:id => user.id) %> | <%= link_to 'Make Finance', financify_path(:id => user.id) %>
 			</td>
-			<td><%= user.fullname%>
+			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.fullname%>
 			<% if user.admin %>
 				<span class="badge badge-primary">Administrator</span>
 			<% end %>
@@ -26,14 +35,18 @@
 				<span class="badge badge-success">Finance Team</span>
 			<% end %>
 			</td>
-			<td><%= user.address%> </td>
-			<td><%= user.city%> </td>
-			<td><%= user.email%> </td>
-			<td><%= user.telephone %> </td>
-			<td><%= user.skill %> </td>
+			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.address%> </td>
+			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.city%> </td>
+			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.email%> </td>
+			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.telephone %> </td>
+			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.skill %> </td>
 			<% if current_user.finance %>
-				<td>$<%= user.gifts %></td>
+				<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">$<%= user.gifts %></td>
 			<% end %>
 		</tr>
+		</tbody>
 <% end %>
 </table>
+</div>
+</div>
+</div>

@@ -1,4 +1,4 @@
-  <div class="jumbotron jumbotron-fluid text-center">
+  <div class="jumbotron jumbotron-fluid text-center opacity-75 rounded">
        
         <% if @church %>
           <h1 class="display-4">
@@ -77,5 +77,5 @@
 					<%= link_to 'Sign In', new_user_session_path, :class => "btn btn-primary text-light" %>
 				<% end %><!-- END OF LOGGED IN USER CHECK -->
     </div>
-
+<%= video_tag "church.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
 
