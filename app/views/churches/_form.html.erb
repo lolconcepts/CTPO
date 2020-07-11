@@ -1,85 +1,332 @@
-
-<%= simple_form_for(@church) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    Logo<%= f.file_field :avatar %>
-  	<%= f.input :name,
+<%= form_for(@church) do |f| %>
+ <div>
+    <div>
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Church Profile
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          This information will be displayed publicly so be careful what you share.
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Church Name
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                <%= f.text_field :name,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Church Name" },
-                placeholder: 'Corner Church'%>
-    <%= f.input :address,
+                placeholder: 'Corner Church',
+                                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Address
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                <%= f.text_field :address,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Church Address" },
-                placeholder: '123 Main Street'%>
-    <%= f.input :city,
+                placeholder: '123 Main Street',
+                                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            City
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+             
+                <%= f.text_field :city,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "City" },
-                placeholder: 'Anycity'%>
-    <%= f.input :state,
+                placeholder: 'Anycity', 
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="about" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            State
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                <%= f.text_field :state,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "State" },
-                placeholder: 'MA'%>
-    <%= f.input :zip,
+                placeholder: 'MA',
+                class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          
+          </div>
+        </div>
+
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="about" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Zip
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                <%= f.text_field :zip,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "zipcode" },
-                placeholder: '02382'%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" },
-                placeholder: 'info@cornerchurch.com'%>
-    <%= f.input :website,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "Website" },
-                placeholder: 'www.cornerchurch.org'%>
-    <%= f.input :telephone,
+                input_html: { autocomplete: "Zipcode" },
+                placeholder: '02382',
+                class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          
+          </div>
+        </div>
+
+         <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="about" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Church Telephone
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                    <%= f.telephone_field :telephone,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "church telephone" },
-                placeholder: '508-826-8385'%>
-    <%= f.input :service_time,
+                placeholder: '508-826-8385',
+                class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          
+          </div>
+        </div>
+
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="about" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Church Email
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                   <%= f.email_field :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" },
+                placeholder: 'info@cornerchurch.com',
+                class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          
+          </div>
+        </div>
+
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="about" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Church Website
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                <%= f.text_field :website,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "Website" },
+                placeholder: 'www.cornerchurch.org',
+                class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          
+          </div>
+        </div>
+
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="about" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Church Service Time
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                    <%= f.text_field :service_time,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "service time" },
-                placeholder: 'Sundays @ 9:00AM'%>
-    <%= f.input :pastor,
+                placeholder: 'Sundays @ 9:00AM',
+                class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          
+          </div>
+        </div>
+
+        <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Church Logo
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div>
+                <%= f.file_field :avatar %>
+            </div>
+          </div>
+        </div>
+        
+    <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Pastor Information
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          This information is included in printables.
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="first_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Pastor Name
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+               <%= f.text_field :pastor,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "pastor" },
-                placeholder: 'Rev. Debra Rose'%>
-    <%= f.input :pastor_email,
+                placeholder: 'Rev. Debra Rose',
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          </div>
+        </div>
+    
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="street_address" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Pastor Email Address
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm">
+               <%= f.email_field :pastor_email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "pastor email" },
-                placeholder: 'pastor@cornerchurch.com'%>
-  	<%= f.input :fb,
+                placeholder: 'pastor@cornerchurch.com' ,
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+       
+       
+       
+      </div>
+    </div>
+   
+    
+  </div>
+   <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Social Connections
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          Fill out your social media connections
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="first_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Facebook
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+               <%= f.text_field :fb,
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "Facebook" },
-                placeholder: 'https://facebook.com/cornerchurch'%>
-    <%= f.input :twitter,
+                placeholder: 'https://facebook.com/cornerchurch',
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          </div>
+        </div>
+    
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="street_address" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Twitter
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm">
+               <%= f.text_field :twitter,
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "Twitter" },
-                placeholder: '@cornerchurchMA'%>
-    <%= f.input :instagram,
+                placeholder: '@cornerchurchMA',
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+       
+       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="street_address" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Instagram
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm">
+                <%= f.text_field :instagram,
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "Instagram" },
-                placeholder: '@cornerchurchMA'%>
+                placeholder: '@cornerchurchMA' ,
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+       
+       
+      </div>
+    </div>
+  
+      
+  <div class="mt-8 border-t border-gray-200 pt-5">
+    <div class="flex justify-end">
+    
+      <span class="ml-3 inline-flex rounded-md shadow-sm">
+        <%= f.button :submit,
+                        class: "inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
+
+        
+          
+      </span>
+    </div>
   </div>
 
 
-  <div class="form-actions">
-    <%= f.button :submit ,:class => "btn btn-primary"%>
+
+
+
+
+    
+
+  	
+    
+    
+    
+    
+ 
+    
+    
+
+   
+    
+  	
+    
+   
   </div>
+
+
+
 <% end %>
 

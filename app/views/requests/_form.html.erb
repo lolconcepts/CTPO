@@ -1,34 +1,109 @@
+<div class="mx-5">
+<%= form_for(@request) do |f| %>
+  <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Who?
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+             
+                <%= f.text_field :who,
+                required: true,
+                autofocus: true,
+                placeholder: 'Sally Fenton',
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
 
-<%= simple_form_for(@request) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Reason
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+             
+                <%= f.text_field :reason ,
+                required: true,
+                autofocus: true,
+                placeholder: 'Fall',
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
 
-  <div class="form-inputs bg-white">
-    <%= f.input :who,
-                required: true,
-                autofocus: true,
-                placeholder: 'Sally Fenton'%>
-    <%= f.input :reason ,
-                required: true,
-                autofocus: true,
-                placeholder: 'Fall'%>
-    <%= f.input :call_back ,
-                required: false,
-                autofocus: true %>
-    <%= f.input :visit ,
-                required: false,
-                autofocus: true %>
-    <%= f.input :email ,
-                required: true,
-                autofocus: true,
-                placeholder: 'bob@example.com'%>
-    <%= f.input :phone ,
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Call Back?
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div>
+             
+                <%= f.check_box :call_back ,
                 required: false,
                 autofocus: true,
-                placeholder: '508-888-5555'%>
+                class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Visit?
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div>
+             
+                <%= f.check_box :visit ,
+                required: false,
+                autofocus: true,
+                class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Email Address
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+             
+                <%= f.email_field :email ,
+                required: true,
+                autofocus: true,
+                placeholder: 'bob@example.com',
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Telephone
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+             
+                <%= f.telephone_field :phone ,
+                required: false,
+                autofocus: true,
+                placeholder: '508-888-5555',
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+    
+    
+    
+    
+    
+    
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div>
+    <%= f.button :submit,
+                        class: "inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out mt-2" %>
   </div>
 <% end %>
+</div>

@@ -1,5 +1,4 @@
-
-<h1>Hi There, 
+<h1 class="text-center text-gray-900 mt-2 text-xl">Hi There, 
 <%if current_user.fname %>
     <%= current_user.fname %>
 <%else%>
@@ -7,56 +6,335 @@
 <%end%>
 
 </h1>
-<p>Please take a few moments to update your details so that we can keep in touch!</p>
+<p class="text-red-500 m-2 text-center">Please take a few moments to update your details so that we can keep in touch!</p>
+<div class="mx-5">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :multipart => true }) do |f| %>
+  <div>
+    <div>
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Profile
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          This information will be displayed publicly so be careful what you share.
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Email Address
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+             
+                <%= f.email_field :email, 
+                                required: true, 
+                                autofocus: true,
+                                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Pronouns
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                <%= f.collection_select :pronoun_id, 
+                                        Pronoun.all, 
+                                        :id, 
+                                        :description
+                                         %>
+            </div>
+          </div>
+        </div>
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Role
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+             
+                <%= f.text_field :role ,
+                                    label: 'Role' , 
+                                    required: false,
+                                    placeholder: 'SPRC', 
+                                    class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="about" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Special Skills
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+                <%= f.text_field :skill ,
+                                label: 'Skills', 
+                                required: false, 
+                                placeholder: 'Carpentry, Painting',
+                                class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+            <p class="mt-2 text-sm text-gray-500">Do you have any skills that would be helpful to the church?</p>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="photo" class="block text-sm leading-5 font-medium text-gray-700">
+            Photo
+          </label>
+          <div class="mt-2 sm:mt-0 sm:col-span-2">
+            <div class="flex items-center">
+            
+              <span class="ml-5 rounded-md shadow-sm">
+                <%= f.file_field :avatar,
+                                 class: "py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out" %>
+               
+              </span>
+            </div>
+          </div>
+        </div>  
+    <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Personal Information
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          Use a permanent address where you can receive mail.
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="first_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            First name
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= f.text_field :fname ,
+                                label: 'First Name', 
+                                required: true,
+                                placeholder: 'John',
+                                class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="last_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Last name
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= f.text_field :lname ,
+                                label: 'Last Name', 
+                                required: true,
+                                placeholder: 'Smith',
+                                class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="street_address" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Street address
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm">
+                <%= f.text_field :address ,
+                                    label: 'Address' , 
+                                    required: true,
+                                    placeholder: '158 Washington St',
+                                    class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+                <%= f.text_field :address2 ,
+                                    label: 'Address' , 
+                                    required: false,
+                                    placeholder: 'Apt 102',
+                                    class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :multipart => true }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= image_tag(current_user.avatar_url) if current_user.avatar? %><br>
-    Photo<%= f.file_field :avatar %>
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :fname ,label: 'First Name', required: true,placeholder: 'John' %>
-    <%= f.input :lname ,label: 'Last Name', required: true,placeholder: 'Smith' %>
-    Pronouns <%= f.collection_select :pronoun_id, Pronoun.all, :id, :description %>
-    <%= f.input :role ,label: 'Role' , required: false,placeholder: 'SPRC' %>
-    <%= f.input :skill , label: 'Skills', required: false, placeholder: 'Carpentry, Painting' %>
-    <%= f.input :address ,label: 'Address' , required: true,placeholder: '158 Washington St' %>
-    <%= f.input :address2 ,label: 'Address2' , required: false, placeholder: 'Apt223' %>
-    <%= f.input :city ,label: 'City', required: true, placeholder: 'Whitman' %>
-    <%= f.input :state ,label: 'State', required: true, placeholder: 'MA' %>
-    <%= f.input :zip , label: 'Zip', required: true, placeholder: '02382' %>
-    <%= f.input :telephone ,label: 'Telephone', required: true, placeholder: '508-826-8385' %>
-    <%= f.label :carrier %>
-    <%= f.collection_select :carrier_id, Carrier.all, :id, :name %>
-    <%= f.input :sms_ok, label: 'SMS Ok?' %>
-    <%= f.input :custom_gift, label: 'Custom Gift Amount (Whole Dollars Only)',placeholder: '15' %>
-    <%= f.input :cover, label: 'Cover cost of transaction?' %>
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="city" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            City
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= f.text_field :city ,
+                                label: 'City', 
+                                required: true, 
+                                placeholder: 'Whitman',
+                                class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="state" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            State
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                <%= f.text_field :state ,
+                                    label: 'State', 
+                                    required: true, 
+                                    placeholder: 'MA',
+                                    class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>  
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="zip" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            ZIP
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= f.text_field :zip , 
+                                label: 'Zip', 
+                                required: true, 
+                                placeholder: '02382',
+                                class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Notifications
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          We use an SMS (Text Messaging) Notification System
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="state" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Mobile Phone
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                <%= f.telephone_field :telephone ,
+                                        label: 'Telephone', 
+                                        required: true, 
+                                        placeholder: '508-826-8385',
+                                        class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+                                      
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="state" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Carrier
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                <%= f.collection_select :carrier_id, 
+                                        Carrier.all, 
+                                        :id, 
+                                        :name,
+                                        class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+                                      
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="state" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Text Messages Ok
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div>
+                <%= f.check_box :sms_ok, 
+                                label: 'SMS Ok?',
+                                class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Giving
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          Out of your abundance
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <div role="group" aria-labelledby="label-email">
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <div class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700" id="label-email">
+                  Custom Amount
+                </div>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="relative flex items-start">
+                    <div class="flex items-center h-5">
+                      <%= f.text_field :custom_gift, 
+                                        label: 'Custom Gift Amount (Whole Dollars Only)',placeholder: '15',
+                                        class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+                      
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:border-t sm:border-gray-200 sm:pt-5">
+          <div role="group" aria-labelledby="label-notifications">
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <div class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700" id="label-notifications">
+                  Cover the transaction cost
+                </div>
+              </div>
+              <div class="sm:col-span-2">
+                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div>
+                        <%= f.check_box :cover, 
+                                        class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>  
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
   </div>
+   <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Provide Current Password To Save
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+             
+                <%= f.password_field :current_password, 
+                                required: true, 
+                                autofocus: true,
+                                hint: "we need your current password to confirm your changes",
+                                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+  <div class="mt-8 border-t border-gray-200 pt-5">
+    <div class="flex justify-end">
+    
+      <span class="ml-3 inline-flex rounded-md shadow-sm">
+        <%= f.button :submit,
+                        class: "inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" , :class => "btn btn-primary" %>
-  </div><!-- END FORM ACTION BUTTON -->
+        
+          
+      </span>
+    </div>
+  </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
