@@ -1,19 +1,20 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
 <div class="row text-center d-flex justify-content-center">
-	<div class="col-6">
-		<h1><%=@church.name%></h1>
-		<h2>Online Signup</h2>
-		<p class="lead text-left">We are pleased to announce that we have created a notifications system. Please take a moment to scan the code below and create an account.</p>
-		<p class="lead text-left">We will be able to use this information to send important notifications to you about our church. You will also be able to use the system to send in prayer requests for <%=@church.pastor %>, as well as see a list of upcoming events being held.</p>
-		<p class="lead text-left">If you have any questions or concerns, please feel free to reach out to the church at</p>
-		<p class="lead text-left">
-			Email: <%=@church.email%><br>
-			Telephone: <%=@church.telephone%><br>
-		</p>
-		<p class="lead text-left">Blessings,<br>
+	<div class=" text-center rounded border shadow p-12">
+		<h1 class="text-blue-900 text-xl"><%=@church.name%></h1>
+		<h2 class="mb-4">Online Signup</h2>
+		<p class="text-left text-lg">We are pleased to announce that we have created a notifications system. Please take a moment to scan the code below and create an account.<br><br>
+		We will be able to use this information to send important notifications to you about our church.<br> You will also be able to use the system to send in prayer requests for <%=@church.pastor %>, as well as see a list of upcoming events being held.<br>
+		If you have any questions or concerns, please feel free to reach out to the church at<br><br>
+		
+			<strong>Email:</strong> <%=@church.email%><br>
+			<strong>Telephone:</strong> <%=@church.telephone%><br>
+		
+		<p class="text-xl">Blessings,<br>
 			<%=@church.pastor%>
 		</p>
 <% @url = "<img src=" + "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=#{new_user_registration_url}" %>
 			<% @alternate_text = "Give to #{@church.name}" %>
-			<div id="tnet-QR" class="border"><%= raw(@url) %> title=<%= @alternate_text %> /></img>
+			<div id="tnet-QR"><%= raw(@url) %> title=<%= @alternate_text %> /></img>
 	</div><!-- END COL -->
 </div><!-- END ROW -->

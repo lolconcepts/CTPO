@@ -3,13 +3,17 @@
 	background:white!important;
 }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
 <div class="row text-center">
-	<div class="col-4 border rounded">
-		<h1><%=@church.name%></h1>
-		<h2>Online Giving</h2>
-		<p class="lead">If you go to church and don't have cash or a check for offering, fear not! Simply scan the code below with your smartphone to give today.If you have an account already, then first login. By signing up and logging, in we will be able to send you a statement at the end of the year for your generous gifts.</p>
+	<div class="col-4 border rounded-lg shadow">
+		<h1 class="text-blue-900 text-lg mt-4"><%=@church.name%></h1>
+		<h2>Online Giving - Pew Card</h2>
+		<p class="p-8 text-xl">If you go to church and don't have cash or a check for offering, fear not! Simply scan the code below with your smartphone to give today.If you have an account already, then first login. By signing up and logging, in we will be able to send you a statement at the end of the year for your generous gifts.</p>
 <% @url = "<img src=" + "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=#{root_url}" %>
 			<% @alternate_text = "Give to #{@church.name}" %>
-			<div id="tnet-QR"><%= raw(@url) %> title=<%= @alternate_text %> /></img>
+			<div id="tnet-QR"><%= raw(@url) %> title=<%= @alternate_text %> />
 	</div><!-- END COL -->
 </div><!-- END ROW -->
+
+
+

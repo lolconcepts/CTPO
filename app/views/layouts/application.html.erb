@@ -4,6 +4,7 @@
     <title>CTPO - <%= name %></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -23,6 +24,7 @@
  z-index: -2;
 }
     </style>
+
   </head>
 
   <body>
@@ -52,6 +54,7 @@
                    <%=link_to '<i class="far fa-calendar"></i> Calendly (Scheduling)'.html_safe,'https://www.calendly.com',:class => "dropdown-item"  %>
                    <div class="dropdown-divider"></div>
                    <%=link_to ' <i class="fas fa-users"></i> Show Parishoners'.html_safe,'/all_users',:class => "dropdown-item"  %>
+                   <%=link_to ' <i class="fas fa-pray"></i> Active Prayer Requests'.html_safe,'/requests',:class => "dropdown-item"  %>
                    <%=link_to '<i class="far fa-calendar-plus"></i> Create New Event'.html_safe,new_event_url,:class => "dropdown-item"  %>
                    <div class="dropdown-divider"></div>
                    <%=link_to '<i class="fas fa-church"></i> Edit Church Info'.html_safe,edit_church_url(1),:class => "dropdown-item"  %>
@@ -100,7 +103,7 @@
           </ul>
           <% if current_user && current_user.fullname %>
                 <% if current_user.admin %>
-                <%= link_to "Logged in as #{current_user.fullname} <span class='badge badge-primary'>Administrator</span>".html_safe, destroy_user_session_path, method: :delete, :class => "navbar-text" %>
+                <%= link_to "Logged in as #{current_user.fullname} <span class='badge badge-primary'> Administrator</span>".html_safe, destroy_user_session_path, method: :delete, :class => "navbar-text" %>
                 <% else %>
                 <%= link_to "Logged in as #{current_user.fullname}", destroy_user_session_path, method: :delete, :class => "navbar-text" %>
                 <% end %>
