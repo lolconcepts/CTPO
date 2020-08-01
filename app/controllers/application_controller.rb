@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
  end
 
+ def checkin
+ 	if current_user
+ 		Checkin.new(:user => current_user)
+ 	end
+ end
+
+ def get_checkins
+ 	return Checkin.all.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+ end
+
  def after_sign_in_path_for(resource)
  	if User.count == 1
  		#Make Admin

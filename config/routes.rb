@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :checkins
   resources :pronouns
   resources :volunteers
   resources :requests
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :messages
   root to: 'pages#home'
   devise_for :users
+  match '/checkin',:to => 'checkins#checkin', :via => :get
   match 'nametag/', :to => 'pages#nametag', :via => :get
   match 'nametags/', :to => 'pages#nametags', :via => :get
   match 'all_users/', :to => 'pages#all_users', :via => :get
