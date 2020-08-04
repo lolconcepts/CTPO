@@ -28,7 +28,7 @@
        <% if  @church_count == 1 %>
           <!-- SHOW PRAYER REQUESTS FOR ADMIN USERS ONLY -->
           <% if current_user && current_user.admin %>
-            <a href="/requests"><span>You have <%= @requests %> Prayer Request</span></a>
+            <a href="/requests"><span>You have <%= @requests %> Prayer Request</span></a><br>
           <% end %>
           <!-- SHOW OFFERING ONLY IF USER HAS FINANCE ATTRIBUTE -->
           <% if current_user && current_user.finance %>

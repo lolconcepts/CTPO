@@ -4,7 +4,19 @@ class CheckinsController < ApplicationController
   # GET /checkins
   # GET /checkins.json
   def index
+    @checkin_dates = []
+    @checkin_hash = {} #date,attendees
+      Checkin.all.each do |c|
+        @checkin_dates << c.short_date 
+      end
+    # GET changed list of unique dates!
+    @checkin_dates.uniq!
     @checkins = Checkin.all
+    @checkin_dates.each do |d|
+      count = Checkin.all.where('short_date' => d).count
+      @checkin_hash.store(d,count)   
+    end
+    # HOW MANY PPL PER DAY
   end
 
   # GET /checkins/1
@@ -21,9 +33,23 @@ class CheckinsController < ApplicationController
   def edit
   end
 
+  def alert
+    @day = params[:d]
+    
+    respond_to do |format|
+    if UserMailer.alert(@day).deliver
+      format.html do
+        redirect_to '/'
+      end
+    else
+
+    end
+  end
+  end
+
   def checkin
   if current_user
-    @checkin = Checkin.new(:user => current_user)
+    @checkin = Checkin.new(:user => current_user, :short_date => Time.now.strftime("%m/%d/%Y"))
     respond_to do |format|
       if @checkin.save
         format.html { redirect_to root_url, notice: 'Check-In Successful!' }

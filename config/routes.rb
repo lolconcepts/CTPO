@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :messages
   root to: 'pages#home'
   devise_for :users
+  match '/alert',:to => 'checkins#alert', :via => :get
   match '/checkin',:to => 'checkins#checkin', :via => :get
   match 'nametag/', :to => 'pages#nametag', :via => :get
   match 'nametags/', :to => 'pages#nametags', :via => :get
