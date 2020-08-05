@@ -120,7 +120,7 @@
     <div class="container-fluid">
           <% flash.each do |type, msg| %>
       <div class="alert alert-info">
-        <i class="fas fa-concierge-bell"></i>  <%= msg %>
+        <%= msg %>
       </div>
     <% end %>
         <%= yield %>
