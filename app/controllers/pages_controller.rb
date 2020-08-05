@@ -33,14 +33,25 @@ class PagesController < ApplicationController
 
   def adminify
     @user = User.find(params[:id])
+    if !@user.admin
+      flash[:notice] = "#{@user.fullname} has been granted Admin Rights."
+    else
+      flash[:notice] = "#{@user.fullname} no longer has Admin Rights."
+    end
     @user.makeAdmin 
-    flash[:notice] = "#{@user.fullname} has been granted Admin Rights."
     redirect_to all_users_url
   end
+
+
   def financify
     @user = User.find(params[:id])
+    if !@user.finance
+      flash[:notice] = "#{@user.fullname} has been granted Finance Team Rights."
+    else
+      flash[:notice] = "#{@user.fullname} no longer has Finance Team Rights."
+    end
     @user.makeFinance 
-    flash[:notice] = "#{@user.fullname} has been granted Finance Team Rights."
+    
     redirect_to all_users_url
   end
 

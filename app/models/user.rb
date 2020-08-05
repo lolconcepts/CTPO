@@ -20,11 +20,19 @@ class User < ApplicationRecord
    end
 
    def makeAdmin
-    self.admin = true
+    if self.admin #already and admin; remove admin
+      self.admin = false
+    else
+      self.admin = true
+    end
     self.save
    end
    def makeFinance
-    self.finance = true
+    if self.finance #already finance; remove finance
+      self.finance = false
+    else
+      self.finance = true
+    end
     self.save
    end
 

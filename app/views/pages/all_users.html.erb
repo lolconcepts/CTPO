@@ -25,7 +25,19 @@
 	
 <% @users.each do |user| %>
 	<tr class="bg-white">
-			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> | <%= link_to 'Make Admin', adminify_path(:id => user.id) %> | <%= link_to 'Make Finance', financify_path(:id => user.id) %>
+			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> |
+				 <% if user.admin %>
+				 <%= link_to 'Remove Admin', adminify_path(:id => user.id) %> 
+				 <% else %>
+				 	<%= link_to 'Make Admin', adminify_path(:id => user.id) %>
+				 	<% end %>
+				 |
+				 <% if user.finance %>
+				 <%= link_to 'Remove Finance', financify_path(:id => user.id) %>
+				 <% else %>
+				 <%= link_to 'Make Finance', financify_path(:id => user.id) %>
+				 <% end %>
+				  
 			</td>
 			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.fullname%>
 			<% if user.admin %>
