@@ -10,6 +10,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+        $body = $("body");
+
+        $(document).on({
+          ajaxStart: function() { $body.addClass("loading");    },
+          ajaxStop: function() { $body.removeClass("loading"); }    
+        });
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
     <%= favicon_link_tag asset_path('apple-touch-icon.png'), :rel => 'icon', :type =>  'image/png' %>
     <style type="text/css">
@@ -22,6 +30,36 @@
  object-fit: cover;
  top: 0;
  z-index: -2;
+}
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .modal {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
 }
     </style>
 
@@ -103,17 +141,16 @@
              </li>
             
           </ul>
+          <!-- Show Logout link and badges-->
           <% if current_user && current_user.fullname %>
+            <%= link_to "Logged in as #{current_user.fullname}", destroy_user_session_path, method: :delete, :class => "navbar-text" %>
                 <% if current_user.admin %>
-                <%= link_to "Logged in as #{current_user.fullname} <span class='badge badge-primary'> Administrator</span>".html_safe, destroy_user_session_path, method: :delete, :class => "navbar-text" %>
-                <% else %>
-                <%= link_to "Logged in as #{current_user.fullname}", destroy_user_session_path, method: :delete, :class => "navbar-text" %>
+                  <span class='badge badge-primary ml-2'>Administrator</span>
                 <% end %>
                  <% if current_user.finance %>
-                  <span class="badge badge-success"> Finance Team</span>
-                <% end %>
-                
-              <% end %>
+                  <span class="badge badge-success ml-2">Finance Team</span>
+                 <% end %>      
+          <% end %>
        </div>
     </nav>
     
@@ -126,5 +163,7 @@
         <%= yield %>
       
     </div>
+    <div class="modal"><!-- Place at bottom of page --></div>
   </body>
+ 
 </html>
