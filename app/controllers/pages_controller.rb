@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  PER_PAGE = 10
+  PER_PAGE = 4
   def home
   	@church = Church.first
     @church_count = Church.count
