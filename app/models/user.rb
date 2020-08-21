@@ -18,6 +18,10 @@ class User < ApplicationRecord
    		return ""
    	end
    end
+   
+   def pretty_address
+    return "#{self.address} #{self.city},#{self.state} #{self.zip}"
+   end
 
    def makeAdmin
     if self.admin #already and admin; remove admin

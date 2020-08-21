@@ -1,31 +1,42 @@
-<div class="flex flex-col">
-  <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-<h1 class="mb-2 text-white text-xl">Listing of Parishioners</h1>
-<table class="min-w-full">
-	<thead>
-		<tr>
-			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
-			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
-			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Address</th>
-			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">City</th>
-			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</th>
-			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Skills</th>
-			<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
-			<% if current_user.finance %>
-				<th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Year To Date Online Gifts</th>
-			<% end %>
-		</tr>
-	</thead>
-	<tbody>
-		
 
-
-	
+<h1 class="text-center text-black text-2xl mt-4 mb-4 text-uppercase">Listing of Parishioners</h1>
+<div class="mb-2">
+	<%= link_to "Next Page", all_users_path(page: @page + 1) %>
+|
+<%= link_to "Last Page", all_users_path(page: @page - 1) %>
+</div>
 <% @users.each do |user| %>
-	<tr class="bg-white">
-			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> |
+<ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  <li class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow">
+    <div class="flex-1 flex flex-col p-8">
+    	<% if user.avatar? %>
+    		<%= image_tag user.avatar_url , class: 'w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full' %>
+    	<% else %>
+    		<%= image_tag "no_photo.jpg", class: 'w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full' %>
+
+    	<% end %>
+      <h3 class="mt-6 text-gray-900 text-sm leading-5 font-medium"><%= user.fullname %></h3>
+      <dl class="mt-1 flex-grow flex flex-col justify-between">
+        <dt class="sr-only">Title</dt>
+        <dd class="text-gray-500 text-sm leading-5"><%= user.role.empty? ? "Parishioner" : user.role %></dd>
+        <dt class="sr-only">Role</dt>
+        <dd class="mt-3">
+        	<% if user.admin || user.finance %>
+	          <% if user.admin %>
+	          <span class="px-2 py-1 text-blue-800 text-xs leading-4 font-medium bg-blue-100 rounded-full">Admin</span>
+	          <% end %>
+	          <% if user.finance %>
+	          <span class="px-2 py-1 text-green-800 text-xs leading-4 font-medium bg-green-100 rounded-full">Finance</span>
+	          <% end %>
+	        <% else %>
+	        <span class="px-2 py-1 text-orange-800 text-xs leading-4 font-medium bg-orange-100 rounded-full">User</span>
+	        <% end %>
+        </dd>
+        <dd class="mt-3">
+        	<span class="text-gray-400"><%= user.pretty_address %></span>
+        </dd>
+        <dd class="mt-3">
+        	<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= link_to '<i class="fas fa-id-card-alt"></i> Print NameTag'.html_safe, nametag_path(:uid => user.id) %> |
 				 <% if user.admin %>
 				 <%= link_to 'Remove Admin', adminify_path(:id => user.id) %> 
 				 <% else %>
@@ -39,32 +50,36 @@
 				 <% end %> | 
 				  <%= link_to 'Delete User', admin_destroy_user_path(user), method: :delete, data: { confirm: "You sure, you want to delete #{user.fullname}?" } %>
 			</td>
-			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.fullname%>
-			<% if user.admin %>
-				<span class="badge badge-primary">Administrator</span>
-			<% end %>
-			<% if user.finance %>
-				<span class="badge badge-success">Finance Team</span>
-			<% end %>
-			</td>
-			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.address%> </td>
-			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.city%> </td>
-			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.email%> </td>
-			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.telephone %> </td>
-			<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"><%= user.skill %> </td>
-			<% if current_user.finance %>
-				<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">$<%= user.gifts %></td>
-			<% end %>
-		</tr>
-		</tbody>
-<% end %>
-</table>
-<div>
-	<%= link_to "Next Page", all_users_path(page: @page + 1) %>
-|
-<%= link_to "Last Page", all_users_path(page: @page - 1) %>
-</div>
+        </dd>
+      </dl>
+    </div>
+    <div class="border-t border-gray-200">
+      <div class="-mt-px flex">
+        <div class="w-0 flex-1 flex border-r border-gray-200">
+          <a href=mailto:<%= user.email %> class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150">
+            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+            <span class="ml-3">Email</span>
+          </a>
+        </div>
+        <div class="-ml-px w-0 flex-1 flex">
+          <a href=tel:<%= user.telephone %> class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150">
+            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            <span class="ml-3">Call</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </li>
 
-</div>
-</div>
-</div>
+  
+<% end %>
+
+ 
+
+
+
