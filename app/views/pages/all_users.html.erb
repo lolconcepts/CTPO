@@ -59,6 +59,11 @@
 		</tbody>
 <% end %>
 </table>
+<div>
+	<%= link_to "Next Page", all_users_path(page: @page + 1) %>
+|
+<%= link_to "Last Page", all_users_path(page: @page - 1) %>
+</div>
 
 </div>
 </div>

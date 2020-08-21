@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  PER_PAGE = 10
   def home
   	@church = Church.first
     @church_count = Church.count
@@ -66,7 +67,8 @@ class PagesController < ApplicationController
     end
   end
   def all_users
-    @users = User.all
+    @page = params.fetch(:page, 0).to_i
+    @users = User.all.offset(@page * PER_PAGE).limit(PER_PAGE)
   end
   def calc_cover(amount)
     cash = amount.to_f
