@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :churches
   resources :carriers
   resources :messages
+  resources :offerings
   root to: 'pages#home'
   devise_for :users
   match '/alert',:to => 'checkins#alert', :via => :get

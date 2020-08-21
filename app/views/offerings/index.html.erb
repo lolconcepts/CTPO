@@ -1,3 +1,4 @@
+<% if !@offerings.empty? %>
 <h1>Offerings Received (Year-To-Date)</h1>
 <table class="table table-striped">
 	<thead>
@@ -7,6 +8,7 @@
 			<td>Donor</td>
 		</tr>
 	</thead>
+	
 	<% @offerings.each do |o| %>
 	<tr>
 		<td><%= o.created_at.strftime("%m/%d/%Y") %></td>
@@ -22,4 +24,16 @@
 		<% end %>
 	</tr>
 	<% end %>
+	
 </table>
+<% else %>
+	<div class="text-red-800 text-2xl">No more records</div>
+	<% end %>
+
+
+<div>
+	<%= link_to "Next Page", offerings_path(page: @page + 1) %>
+|
+<%= link_to "Last Page", offerings_path(page: @page - 1) %>
+</div>
+
