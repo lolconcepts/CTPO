@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :churches
   resources :carriers
   resources :messages
-  resources :offerings
+  #resources :offerings
   root to: 'pages#home'
   devise_for :users
   match '/alert',:to => 'checkins#alert', :via => :get
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   match '/card', :to => 'pages#offeringcard', :via => :get
   match '/sucard', :to => 'pages#sucard', :via => :get
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+  match '/offerings',:to => 'offerings#index', :via => :get
   #resources :sessions, only: [:create,:destroy]
   post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'
