@@ -9,8 +9,9 @@
 <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
   <li class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow">
-  	<% @users.each do |user| %>
+
     <div class="flex-1 flex flex-col p-8">
+    	<% @users.each do |user| %>
     	<% if user.avatar? %>
     		<%= image_tag user.avatar_url , class: 'w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full' %>
     	<% else %>
