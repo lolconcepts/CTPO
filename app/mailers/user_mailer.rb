@@ -85,11 +85,9 @@ class UserMailer < ApplicationMailer
     end
     @email_list = @email_list.uniq
     message = "We just wanted to drop a quick note to check up on you."
-    message += " We last saw you #{@lastCheckin}. Please reach out to the church "
+    message += " We last saw you #{@lastCheckin} ago. Please reach out to the church "
     message += " at #{@church_telephone} to let us know you are ok."
-    message += "<br>"
-    message += "In Christ,<br>"
-    message += "#{@pastor}"
+    message += "--#{@pastor}"
     mail(:bcc => @email_list, :subject => @subj, :body => message)
   end
 end
