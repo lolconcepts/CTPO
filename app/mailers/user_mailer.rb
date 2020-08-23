@@ -76,7 +76,7 @@ class UserMailer < ApplicationMailer
     @pastor = Church.first.pastor
     @subj = "We Miss You!"
     @users.each do |s|
-      email = s.smsAddress
+      #email = s.smsAddress
       if email != ""
         @email_list << email
       end
