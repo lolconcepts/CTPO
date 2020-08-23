@@ -1,6 +1,24 @@
 class PagesController < ApplicationController
   PER_PAGE = 4
+  def missing
+    @missing_members = []
+    @users = User.all
+    @users.each do |u|
+      if u.isMissing
+        @missing_members << u
+      end
+    end
+  end
   def home
+    # 
+    @missing_members = []
+    @users = User.all
+    @users.each do |u|
+      if u.isMissing
+        @missing_members << u
+      end
+    end
+    #
   	@church = Church.first
     @church_count = Church.count
     @events = Event.all.where('estart >= ?', DateTime.now)
@@ -43,7 +61,14 @@ class PagesController < ApplicationController
     redirect_to all_users_url
   end
 
+  def checkinEmail
+    user = params[:uid]
+    UserMailer.missingCheckin(user).deliver
 
+    flash[:notice] = "A Checkin Note Has Been Sent to #{User.find(user.to_i).email}"
+    redirect_to root_path
+  end
+  
   def financify
     @user = User.find(params[:id])
     if !@user.finance

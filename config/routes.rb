@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   match '/sucard', :to => 'pages#sucard', :via => :get
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   match '/offerings',:to => 'offerings#index', :via => :get
+  match '/missing',:to => 'pages#missing', :via => :get
+  match '/checkinEmail',:to => 'pages#checkinEmail', :via => :get
   #resources :sessions, only: [:create,:destroy]
   post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'

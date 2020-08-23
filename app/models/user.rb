@@ -1,4 +1,8 @@
+require 'action_view'
+require 'action_view/helpers'
+include ActionView::Helpers::DateHelper
 class User < ApplicationRecord
+  
   # Include default devise modules. Others available are:
   #:confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,6 +23,27 @@ class User < ApplicationRecord
    	end
    end
    
+   def lastSeen
+    @checkins = Checkin.where(user: self)
+    if @checkins.empty?
+      return "Never Checked In"
+    else
+        return time_ago_in_words(@checkins.last.created_at)
+    end
+   end
+   def isMissing
+    #get all checkins 
+    @checkins = Checkin.where(user: self)
+    #ensure that there is at least one
+      if (@checkins.count > 0 && (@checkins.last.created_at < Date.today-15.days))# they have come to church via checkin
+      #return true if the the last time they checked in was 
+      #more that 15 days ago
+        return true
+      else
+        return false
+      end
+   end
+
    def pretty_address
     return "#{self.address} #{self.city},#{self.state} #{self.zip}"
    end
