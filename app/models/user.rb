@@ -83,6 +83,13 @@ class User < ApplicationRecord
     return cover + gift
    end
 
+    def get_cover(gift)
+    cover = (gift.to_f * 0.0305) + 0.30
+    cover = cover.round(2)
+    cover = (cover * 100).to_i
+    return cover/100.00
+   end
+
    def gifts
     @offeringsToday = 0
     @gifts = Offering.all.where(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_day,uid: self.id)

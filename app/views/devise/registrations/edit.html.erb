@@ -291,13 +291,19 @@
               <div>
                 <div class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700" id="label-notifications">
                   Cover the transaction cost
+                  <% if current_user.custom_gift %>
+                  ($<%=current_user.get_cover(current_user.custom_gift) %>)
+                  <% end %>
                 </div>
               </div>
               <div class="sm:col-span-2">
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div>
                         <%= f.check_box :cover, 
-                                        class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>  
+                                        class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+                                        <% if current_user.custom_gift %>
+                                         $<%=current_user.get_cover(current_user.custom_gift) %>
+                                         <% end %>
                     </div>
                 </div>
               </div>
