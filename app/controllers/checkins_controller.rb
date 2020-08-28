@@ -59,6 +59,7 @@ class CheckinsController < ApplicationController
     respond_to do |format|
       if @checkin.save
         format.html { redirect_to root_url, notice: 'Check-In Successful!' }
+        format.text { redirect_to root_url, notice: 'Check-In Successful!' }
         format.json { render :show, status: :created, location: @checkin }
       else
         format.html { render :new }
