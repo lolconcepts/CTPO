@@ -48,10 +48,9 @@ class CheckinsController < ApplicationController
   end
 
   def checkin
+    userid = current_user
     if params[:uid]
       userid = User.find(params[:uid])
-    else
-      userid = current_user
     end
 
   if current_user
