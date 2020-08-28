@@ -53,7 +53,7 @@ class CheckinsController < ApplicationController
       userid = User.find(params[:uid])
     end
 
-  if current_user
+  #if current_user
     @checkin = Checkin.new(:user => userid, :short_date => Time.now.strftime("%m/%d/%Y"))
     respond_to do |format|
       if @checkin.save
@@ -65,7 +65,7 @@ class CheckinsController < ApplicationController
         format.json { render json: @checkin.errors, status: :unprocessable_entity }
       end
     end
-  end
+  #end
  end
 
   # POST /checkins
