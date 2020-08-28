@@ -48,8 +48,14 @@ class CheckinsController < ApplicationController
   end
 
   def checkin
+    if params[:uid]
+      user = User.find(params[:uid])
+    else
+      user = current_user
+    end
+
   if current_user
-    @checkin = Checkin.new(:user => current_user, :short_date => Time.now.strftime("%m/%d/%Y"))
+    @checkin = Checkin.new(:user => user, :short_date => Time.now.strftime("%m/%d/%Y"))
     respond_to do |format|
       if @checkin.save
         format.html { redirect_to root_url, notice: 'Check-In Successful!' }

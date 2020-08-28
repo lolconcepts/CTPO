@@ -4,6 +4,11 @@
 	bottom:90;
 	right:-150;
 }
+#tnet-QR{
+	    position: absolute;
+    top: 456px;
+    width:100px;
+}
 body{
 	background:white!important;
 }
@@ -31,7 +36,9 @@ body{
 							<% end %>
 							<div class="h3 text-primary"><%= @pronouns %></div>
 							<div class="display-8"><%= @user.role %></div>
-
+							<% @url = "<img src=" + "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=#{root_url}checkin?uid=#{@user.id}" %>
+			<% @alternate_text = "Self - Checkin" %>
+			<div id="tnet-QR"><%= raw(@url) %> title=<%= @alternate_text %> />
 							
 						</div>
 						
