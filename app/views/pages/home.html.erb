@@ -200,6 +200,7 @@
        <!-- OPTIONS FOR LOGGED IN USERS -->
         <% if current_user %>
         <%=link_to '<i class="fas fa-concierge-bell"></i> CHECKIN'.html_safe, "/checkin",:class =>"btn btn-primary opacity-100 text-white mt-4" %>
+        <%=link_to '<i class="fas fa-pray"></i> Prayer Request'.html_safe, new_request_url,:class =>"btn btn-danger text-light opacity-100 text-white mt-4" %>
           <!-- SHOW IF THERE ARE ANY EVENTS -->
 				  <% if @events.count > 0 %>
           
