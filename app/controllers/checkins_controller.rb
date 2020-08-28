@@ -116,6 +116,6 @@ class CheckinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def checkin_params
-      params.require(:checkin).permit(:user_id)
+      params.require(:checkin).permit(:user_id,:uid)
     end
 end
