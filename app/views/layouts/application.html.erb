@@ -68,7 +68,14 @@ body.loading .modal {
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
-       <div class="navbar-brand"><%=image_tag('apple-touch-icon.png',size: '75x75',:class => "bg-transparent mr-2 rounded")%>Church 2.0&nbsp;</div>
+       <div class="navbar-brand"><%=image_tag('apple-touch-icon.png',size: '75x75',:class => "bg-transparent mr-2 rounded")%>
+        <% if @church %>
+          <h1 class="text-xs mt-2">
+          <%= @church.name %>
+        <% else %>
+            <span class="text-monospace bg-warning">The Church has not been configured completely.</span>
+        <% end %>
+       &nbsp;</div>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
        </button>
@@ -107,11 +114,7 @@ body.loading .modal {
                 </div>
              </li>
              <%end%>
-             <% if current_user %>
-              <li class="nav-item">
-                
-             </li>
-             <% end %>
+             
              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarGive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Give
@@ -141,6 +144,7 @@ body.loading .modal {
              </li>
             
           </ul>
+          
           <!-- Show Logout link and badges-->
           <% if current_user && current_user.fullname %>
             <%= link_to "Logged in as #{current_user.fullname}", destroy_user_session_path, method: :delete, :class => "navbar-text" %>

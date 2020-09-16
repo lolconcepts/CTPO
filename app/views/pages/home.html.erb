@@ -1,15 +1,20 @@
   
   <div class="jumbotron jumbotron-fluid text-center opacity-80 rounded">
+    <% if @church.name && @church.address && @church.city && @church.state && @church.zip && @church.pastor %>
+      <p>
+        <h1 class="font-extrabold text-blue-600">Your Virtual Church Connection To:</h1>
+        <%= @church.name %><br>
+        <%= @church.address %><br>
+        <%=@church.city %>, <%=@church.state%> <%=@church.zip%>&nbsp;
+      </p>
+      <span class="font-bold italic">Your Pastor:</span> <%=@church.pastor %> <%=mail_to @church.email, '<i class="far fa-envelope"></i>'.html_safe  %>
+      <% else %>
+      <p>
+        ReThink. ReImagine. ReVitalize.
+        Your Virtual Church Connection
+      </p>
+      <% end %>
        
-        <% if @church %>
-          <h1 class="display-4">
-          <%= @church.name %>
-        <% else %>
-            <span class="text-monospace bg-warning">The Church has not been configured completely.</span>
-        <% end %>
-
-      &nbsp;</h1>
-       <p class="display-4">Welcome ;)&nbsp;</p>
        <hr class="my-4">
 
 
@@ -159,7 +164,9 @@
         <%= link_to 'Complete Profile', edit_registration_url, :class => "nav-link" %>
        <% end %>
        <!-- GENERAL INFORMATION -->
+       <% if current_user && current_user.admin %>
        <p class="text-monospace text-muted mb-4">If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
+       <%end%>
 
        <!-- ONLY DISPLAY IF CHURCH HAS BEEN CONFIGURED -->
        <% if  @church_count == 1 %>
