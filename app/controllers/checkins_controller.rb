@@ -4,6 +4,7 @@ class CheckinsController < ApplicationController
   # GET /checkins
   # GET /checkins.json
   def index
+    @church = Church.first
     @checkin_dates = []
     @checkin_hash = {} #date,attendees
       Checkin.all.each do |c|
@@ -26,6 +27,7 @@ class CheckinsController < ApplicationController
 
   # GET /checkins/new
   def new
+    @church = Church.first
     @checkin = Checkin.new
   end
 
@@ -48,6 +50,7 @@ class CheckinsController < ApplicationController
   end
 
   def checkin
+    @church = Church.first
     userid = current_user
     if params[:uid]
       userid = User.find(params[:uid])

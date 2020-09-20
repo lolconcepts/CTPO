@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   PER_PAGE = 4
   def missing
+    @church = Church.first
     @missing_members = []
     @users = User.all
     @users.each do |u|
@@ -33,6 +34,7 @@ class PagesController < ApplicationController
 
   end
   def nametag
+    @church = Church.first
   	@user = User.find(params[:uid])
   	@church = Church.first
     if @user.pronoun_id == nil
@@ -47,6 +49,7 @@ class PagesController < ApplicationController
     end
   end
   def nametags
+    @church = Church.first
     @users = User.all
   end
 
@@ -82,6 +85,7 @@ class PagesController < ApplicationController
   end
 
   def offering
+    @church = Church.first
   	@amount = params[:amount] || "0"
   	@cover = params[:cover] || 0
     @church = Church.first
@@ -92,6 +96,7 @@ class PagesController < ApplicationController
     end
   end
   def all_users
+    @church = Church.first
     @page = params.fetch(:page, 0).to_i
     @users = User.all.offset(@page * PER_PAGE).limit(PER_PAGE)
   end

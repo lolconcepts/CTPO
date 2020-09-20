@@ -4,12 +4,14 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
+    @church = Church.first
     @requests = Request.all
   end
 
   # GET /requests/1
   # GET /requests/1.json
   def show
+    @church = Church.first
   end
 
   # GET /requests/new

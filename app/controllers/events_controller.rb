@@ -4,16 +4,19 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    @church = Church.first
     @events = Event.all
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @church = Church.first
   end
 
   # GET /events/new
   def new
+    @church = Church.first
     @event = Event.new
   end
 
