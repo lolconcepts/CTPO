@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
+    @church = Church.first
     @request = Request.new
   end
 
