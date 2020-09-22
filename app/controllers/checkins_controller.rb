@@ -111,6 +111,13 @@ class CheckinsController < ApplicationController
     end
   end
 
+  def list
+    @church = Church.first
+    @datetoshow = params[:for]
+    @checkins = Checkin.all.where('short_date' => @datetoshow)
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_checkin

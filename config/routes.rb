@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   devise_for :users
   match '/alert',:to => 'checkins#alert', :via => :get
   match '/checkin',:to => 'checkins#checkin', :via => :get
+  match '/list',:to => 'checkins#list', :via => :get
   match 'nametag/', :to => 'pages#nametag', :via => :get
   match 'nametags/', :to => 'pages#nametags', :via => :get
   match 'all_users/', :to => 'pages#all_users', :via => :get

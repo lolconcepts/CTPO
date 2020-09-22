@@ -41,6 +41,11 @@ class ChurchesController < ApplicationController
   # PATCH/PUT /churches/1
   # PATCH/PUT /churches/1.json
   def update
+    #if params[:shorturl]
+      token = 'o_3r4t3bv8kj:o_3r4t3bv8kj'
+      client = Bitly::API::Client.new(token: token)
+      bitlink = client.shorten(long_url: params[:shorturl])
+    #end
     respond_to do |format|
       if @church.update(church_params)
         format.html { redirect_to @church, notice: 'Church was successfully updated.' }
@@ -70,6 +75,6 @@ class ChurchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def church_params
-      params.require(:church).permit(:name, :address, :city, :state, :zip, :email, :website, :telephone, :service_time, :pastor, :pastor_email, :fb, :twitter, :instagram, :avatar,:calendly_url)
+      params.require(:church).permit(:name, :address, :city, :state, :zip, :email, :website, :telephone, :service_time, :pastor, :pastor_email, :fb, :twitter, :instagram, :avatar, :calendly_url, :shorturl)
     end
 end

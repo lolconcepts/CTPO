@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_19_203035) do
+ActiveRecord::Schema.define(version: 2020_09_20_201749) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_09_19_203035) do
     t.datetime "updated_at", null: false
     t.string "avatar"
     t.string "calendly_url"
+    t.string "shorturl"
   end
 
   create_table "events", force: :cascade do |t|
