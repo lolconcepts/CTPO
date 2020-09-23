@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   match '/offerings',:to => 'offerings#index', :via => :get
   match '/missing',:to => 'pages#missing', :via => :get
   match '/checkinEmail',:to => 'pages#checkinEmail', :via => :get
+  match '/thankyou',:to => 'pages#thankyouEmail', :via => :get
+  match '/ackgift',:to => 'offerings#ack', :via => :get
   #resources :sessions, only: [:create,:destroy]
   post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'

@@ -90,4 +90,29 @@ class UserMailer < ApplicationMailer
     message += "--#{@pastor}"
     mail(:bcc => @email_list, :subject => @subj, :body => message)
   end
+
+  def gift_thanks(user,amount,offering)
+    @users = User.where(:sms_ok => true,:disabled => false).where.not(telephone: [nil,""],carrier_id: [nil]).where(id: user.to_i)
+    @offering = Offering.find(offering)
+    @offering.acknowledge = true
+    @offering.save
+    @email_list = []
+    @church = Church.first
+    @amount = amount
+    @subj = "Thank You For Your #{amount} Gift"
+    @users.each do |s|
+      #email = s.smsAddress
+      #if email != ""
+       # @email_list << email
+      #end
+      @email_list << s.email
+      @subj = "Thank You!, #{s.fullname}"
+    end
+    @email_list = @email_list.uniq
+    message = " You gave #{amount}! "
+    message += @church.thankyou
+    message += "- #{@church.name}"
+    mail(:bcc => @email_list, :subject => @subj, :body => message)
+  end
+
 end

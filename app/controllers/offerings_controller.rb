@@ -7,4 +7,9 @@ class OfferingsController < ApplicationController
 	end
 	def new
 	end
+	def ack
+		offering = Offering.find(params[:id])
+		offering.acknowledge = true
+		offering.save
+	end
 end

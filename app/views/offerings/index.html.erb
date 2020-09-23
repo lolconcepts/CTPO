@@ -6,6 +6,7 @@
 			<td>Date</td>
 			<td>Amount</td>
 			<td>Donor</td>
+			<td>Thank Them!</td>
 		</tr>
 	</thead>
 	
@@ -22,6 +23,13 @@
 		<% else %>
 			<td>Guest</td>
 		<% end %>
+		<td>
+			<% if o.acknowledge %>
+			Note Sent
+			<% else %>
+			<%=link_to 'Send Thank You',thankyou_url(uid: o.uid, amount: o.normalized_amount, oid: o.id) %>
+			<% end %>
+		</td>
 	</tr>
 	<% end %>
 	

@@ -71,6 +71,16 @@ class PagesController < ApplicationController
     flash[:notice] = "A Checkin Note Has Been Sent to #{User.find(user.to_i).email}"
     redirect_to root_path
   end
+
+   def thankyouEmail
+    user = params[:uid]
+    amount = params[:amount]
+    offering = params[:oid]
+    UserMailer.gift_thanks(user,amount,offering).deliver
+
+    flash[:notice] = "A Thank You Note Has Been Sent to #{User.find(user.to_i).email}"
+    redirect_to root_path
+  end
   
   def financify
     @user = User.find(params[:id])
