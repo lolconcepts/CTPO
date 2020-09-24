@@ -13,6 +13,7 @@ class CheckinsController < ApplicationController
     # GET changed list of unique dates!
     @checkin_dates.uniq!
     @checkins = Checkin.all
+    @checkedin_users = []
     @checkin_dates.each do |d|
       count = Checkin.all.where('short_date' => d).count
       @checkin_hash.store(d,count)   
@@ -57,8 +58,17 @@ class CheckinsController < ApplicationController
     end
 
   #if current_user
-    @checkin = Checkin.new(:user => userid, :short_date => Time.now.strftime("%m/%d/%Y"))
-    respond_to do |format|
+    if Checkin.where('short_date' => Time.now.strftime("%m/%d/%Y")).where(:user => userid).count > 0
+      # Already Checked in!
+      respond_to do |format|
+        format.html { redirect_to root_url, notice: 'We already checked you in!' }
+        format.text { redirect_to root_url, notice: 'We already checked you in!' }
+        format.json { render :show, status: :created, location: @checkin }
+      end
+    else
+      #Check in!
+      @checkin = Checkin.new(:user => userid, :short_date => Time.now.strftime("%m/%d/%Y"))
+      respond_to do |format|
       if @checkin.save
         format.html { redirect_to root_url, notice: 'Check-In Successful!' }
         format.text { redirect_to root_url, notice: 'Check-In Successful!' }
@@ -67,8 +77,8 @@ class CheckinsController < ApplicationController
         format.html { render :new }
         format.json { render json: @checkin.errors, status: :unprocessable_entity }
       end
+      end
     end
-  #end
  end
 
   # POST /checkins
