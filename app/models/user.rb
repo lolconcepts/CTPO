@@ -14,6 +14,7 @@ class User < ApplicationRecord
    profanity_filter :fname, :lname, :address, :address2, :city, :state, :zip, :method => 'stars'
 
    has_one :pronoun
+   has_many :checkins, :dependent => :destroy
 
    def fullname
    	if self.fname && self.lname
