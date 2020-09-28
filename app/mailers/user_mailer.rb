@@ -81,7 +81,7 @@ class UserMailer < ApplicationMailer
        # @email_list << email
       #end
       @email_list << @user.email
-      @subj = "We Miss You, #{user.fullname}"
+      @subj = "We Miss You, #{@user.fullname}"
     
     @email_list = @email_list.uniq
     message = "We just wanted to drop a quick note to check up on you."
