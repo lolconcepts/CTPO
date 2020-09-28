@@ -69,20 +69,20 @@ class UserMailer < ApplicationMailer
 
   
   def missingCheckin(user)
-    @users = User.where(:sms_ok => true,:disabled => false).where.not(telephone: [nil,""],carrier_id: [nil]).where(id: user.to_i)
+    @user = User.find(user.to_i)
     @email_list = []
-    @lastCheckin = @users[0].lastSeen
+    @lastCheckin = @user.lastSeen
     @church_telephone = Church.first.telephone
     @pastor = Church.first.pastor
     @subj = "We Miss You!"
-    @users.each do |s|
+    
       #email = s.smsAddress
       #if email != ""
        # @email_list << email
       #end
-      @email_list << s.email
+      @email_list << @user.email
       @subj = "We Miss You, #{s.fullname}"
-    end
+    
     @email_list = @email_list.uniq
     message = "We just wanted to drop a quick note to check up on you."
     message += " We last saw you #{@lastCheckin} ago. Please reach out to the church "
