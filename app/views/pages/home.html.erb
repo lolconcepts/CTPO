@@ -1,6 +1,5 @@
   
   <div class="jumbotron jumbotron-fluid text-center opacity-80 rounded">
-    <% if !@church.nil %>
     <% if @church.name && @church.address && @church.city && @church.state && @church.zip && @church.pastor %>
       <p>
         <h1 class="font-extrabold text-blue-600">Your Virtual Church Connection To:</h1>
@@ -15,7 +14,7 @@
         Your Virtual Church Connection
       </p>
       <% end %>
-      <% end %>
+      
        
        <hr class="my-4">
 
