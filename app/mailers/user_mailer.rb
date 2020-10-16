@@ -1,6 +1,10 @@
 class UserMailer < ApplicationMailer
-  default from: Church.first.email || "notify@lolconcepts.com"
-  
+  if Church.count > 0 
+    default from: Church.first.email
+  else
+    default from: "notify@lolconcepts.com"
+  end
+
   def new_pr
     @users = User.all.where(:sms_ok => true,:disabled => false).where.not(telephone: [nil,""],carrier_id: [nil]).where(:admin => true)
     @email_list = []
