@@ -1,5 +1,6 @@
 <% if !@offerings.empty? %>
 <h1>Offerings Received (Year-To-Date)</h1>
+<%= line_chart Offering.group_by_day(:created_at).count %>
 <table class="table table-striped">
 	<thead>
 		<tr>

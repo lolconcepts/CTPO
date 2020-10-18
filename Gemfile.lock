@@ -119,6 +119,8 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.2.1)
+      activesupport (>= 5)
     httpclient (2.8.3)
     i18n (1.8.1)
       concurrent-ruby (~> 1.0)
@@ -311,6 +313,7 @@ DEPENDENCIES
   devise
   fb_graph2
   font-awesome-sass
+  groupdate
   jbuilder (~> 2.5)
   jquery-rails
   passenger
