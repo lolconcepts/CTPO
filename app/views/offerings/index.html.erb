@@ -26,9 +26,13 @@
 		<% end %>
 		<td>
 			<% if o.acknowledge %>
-			Note Sent
+				Note Sent
 			<% else %>
-			<%=link_to 'Send Thank You',thankyou_url(uid: o.uid, amount: o.normalized_amount, oid: o.id) %>
+				<% if User.find(o.uid).email == "" %>
+					User Doesn't Have Email
+				<% else %>
+					<%=link_to 'Send Thank You',thankyou_url(uid: o.uid, amount: o.normalized_amount, oid: o.id) %>
+				<% end %>
 			<% end %>
 		</td>
 	</tr>
