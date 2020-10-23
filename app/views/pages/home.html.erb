@@ -220,7 +220,7 @@
           <%=link_to '<i class="fas fa-ticket-alt"></i>  RESERVE A SPOT'.html_safe, @church.calendly_url,:class =>"btn bg-orange-400 opacity-100 text-white mt-4" %>
           <% end %>
         <% end %>
-        <%=link_to '<i class="fas fa-concierge-bell"></i> CHECKIN'.html_safe, "/checkin",:class =>"btn btn-primary opacity-100 text-white mt-4" %>
+        <%=link_to '<i class="fas fa-concierge-bell"></i> CHECKIN'.html_safe, "/checkin",:class =>"btn btn-primary opacity-100 text-white mt-4",:confirm => "Are you PHYSICALLY in the building?" %>
         <%=link_to '<i class="fas fa-pray"></i> Prayer Request'.html_safe, new_request_url,:class =>"btn btn-danger text-light opacity-100 text-white mt-4" %>
           <!-- SHOW IF THERE ARE ANY EVENTS -->
 				  <% if @events.count > 0 %>

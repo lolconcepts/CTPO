@@ -96,7 +96,7 @@ class UserMailer < ApplicationMailer
   end
 
   def gift_thanks(user,amount,offering)
-    @users = User.where(:sms_ok => true,:disabled => false).where.not(telephone: [nil,""],carrier_id: [nil]).where(id: user.to_i)
+    @users = User.where(:disabled => false).where.not(telephone: [nil,""],carrier_id: [nil]).where(id: user.to_i)
     @offering = Offering.find(offering)
     @offering.acknowledge = true
     @offering.save
