@@ -22,6 +22,7 @@
 				<td>User No Longer Active</td>
 			<% end %>
 		<% else %>
+			<% @guest = true %>
 			<td>Guest</td>
 		<% end %>
 		<td>
@@ -30,8 +31,9 @@
 			<% else %>
 				
 					
-				
+				   <% if !@guest %>
 					<%=link_to 'Send Thank You',thankyou_url(uid: o.uid, amount: o.normalized_amount, oid: o.id) %>
+					<% end %>
 			
 			<% end %>
 		</td>
