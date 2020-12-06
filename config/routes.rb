@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   resources :churches
   resources :carriers
   resources :messages
+  resources :users, only: [:index] do
+    post :impersonate, on: :member
+    post :stop_impersonating, on: :collection
+  end
   #resources :offerings
   root to: 'pages#home'
+
   devise_for :users
   match '/alert',:to => 'checkins#alert', :via => :get
   match '/checkin',:to => 'checkins#checkin', :via => :get
@@ -32,6 +37,7 @@ Rails.application.routes.draw do
   #resources :sessions, only: [:create,:destroy]
   post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'
+  
 
 
 end

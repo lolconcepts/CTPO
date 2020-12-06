@@ -54,6 +54,7 @@ gem 'font-awesome-sass'
 gem "chartkick"
 gem 'bitly'
 gem 'groupdate'
+gem 'pretender'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
