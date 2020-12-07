@@ -237,8 +237,10 @@
             <% end %>
           <% end %><!-- END OF EVENTS CHECK -->
 				<% else %><!-- SHOW WHEN NOT LOGGED IN -->
+        <div>
 					<%= link_to 'Sign up', new_user_registration_path, :class => "btn btn-primary text-light" %>
 					<%= link_to 'Sign In', new_user_session_path, :class => "btn btn-primary text-light" %>
+        </div>
 				<% end %><!-- END OF LOGGED IN USER CHECK -->
     </div>
 <%= video_tag "church.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
