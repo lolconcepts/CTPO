@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
+    @church = Church.first
     @messages = Message.all
     @users = User.all.where(:sms_ok => true).where.not(telephone: [nil,""],carrier_id: [nil])
   end
