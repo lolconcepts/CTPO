@@ -114,12 +114,11 @@ body.loading .modal {
                 </div>
              </li>
              <%end%>
-             
+             <% if  @church_count == 1 && !ENV['STRIPE_SK_TEST'].nil? %>
              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarGive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Give
                 </a>
-                <% if  @church_count == 1 && !ENV['STRIPE_SK_TEST'].nil? %>
                 <div class="dropdown-menu" aria-labelledby="navbarGive">
                    <%=link_to 'Give $5', offering_path(:amount => '500'),:class => "dropdown-item" %>
                    <%=link_to 'Give $10', offering_path(:amount => '1000'),:class => "dropdown-item" %>
@@ -127,8 +126,8 @@ body.loading .modal {
                    <%=link_to 'Give $50', offering_path(:amount => '5000'),:class => "dropdown-item" %>
                    <%=link_to 'Give $100', offering_path(:amount => '10000'),:class => "dropdown-item" %>
                 </div>
-                <% end %>
              </li>
+             <% end %>
              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarOptions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Options
