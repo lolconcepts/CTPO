@@ -12,10 +12,12 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @church = Church.first
   end
 
   # GET /messages/new
   def new
+    @church = Church.first
     @message = Message.new
   end
 
