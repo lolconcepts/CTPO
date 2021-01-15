@@ -170,7 +170,7 @@
 
        <!-- ANY USER AND NO PROFILE COMPLETED -- FILL IN ALL DETAILS -->
        <% if current_user && current_user.fullname == ""%>
-        <%= link_to 'Complete Profile', edit_registration_url, :class => "nav-link" %>
+        <%= link_to 'Complete Profile', edit_registration_url(current_user), :class => "nav-link" %>
        <% end %>
        <!-- GENERAL INFORMATION -->
        <% if current_user && current_user.admin %>
