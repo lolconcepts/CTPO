@@ -45,7 +45,7 @@
 	<div class="text-red-800 text-2xl">No more records</div>
 	<% end %>
 
-<%= @offerings.count < 1 %>
+<% if @offerings.count < 1 %>
 	<div>
 		<%= link_to "Next Page", offerings_path(page: @page + 1) %>
 	|
