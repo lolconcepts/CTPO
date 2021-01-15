@@ -9,9 +9,11 @@
           <%=@church.city %>, <%=@church.state%> <%=@church.zip%>&nbsp;
         </p>
         <span class="font-bold italic">Your Pastor:</span> <%=@church.pastor %>
-        <div>
-          <span class="text-green-800 mt-4 mb-4">Admin Login: <%= @demouser %>/<%= @demouserpass %></span>
-        </div>
+        <% if @demosite %>
+          <div>
+            <span class="text-green-800 mt-4 mb-4"><%= @democreds %></span>
+          </div>
+        <% end %>
         
         <% else %>
         <h1 class="font-extrabold text-blue-600">Please SIGN-UP to complete configuration</h1>
