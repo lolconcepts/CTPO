@@ -29,7 +29,7 @@
       <span>Amount: $<%=(@offering).to_f/100.00 %></span>
     </label>
   </article>
-  <%= text_field_tag 'Target', 'General Gift', class: 'outline-black' %>
+  <%= text_field_tag 'target', 'General Gift', class: 'outline-black' %>
   <% @desc = "Offering - #{@church.name}" %>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

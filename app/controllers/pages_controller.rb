@@ -120,6 +120,7 @@ class PagesController < ApplicationController
     @church = Church.first
     @amount = params[:amount]
     @amount = @amount.to_i
+    @target = params[:target]
     
 
     @description = "Offering - #{@church.name}"
@@ -138,7 +139,8 @@ class PagesController < ApplicationController
     offering = Offering.create({
       :stripe_id => params[:stripe_id],
       :uid => params[:id] || 9999,
-      :amount => @amount
+      :amount => @amount,
+      :target => @target
     })
     UserMailer.new_gift.deliver #deliver message
     flash[:notice] = "Thank you for your generous gift of $#{@amount/100}"
