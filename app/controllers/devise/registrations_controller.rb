@@ -38,6 +38,7 @@ class Devise::RegistrationsController < DeviseController
 
   # GET /resource/edit
   def edit
+    @church = Church.first
     render :edit
   end
 
