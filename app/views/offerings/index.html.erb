@@ -45,10 +45,11 @@
 	<div class="text-red-800 text-2xl">No more records</div>
 	<% end %>
 
-
-<div>
-	<%= link_to "Next Page", offerings_path(page: @page + 1) %>
-|
-<%= link_to "Last Page", offerings_path(page: @page - 1) %>
-</div>
+<%= @offerings.count < 1 %>
+	<div>
+		<%= link_to "Next Page", offerings_path(page: @page + 1) %>
+	|
+	<%= link_to "Last Page", offerings_path(page: @page - 1) %>
+	</div>
+<% end %>
 
