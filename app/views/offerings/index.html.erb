@@ -6,6 +6,7 @@
 		<tr>
 			<td>Date</td>
 			<td>Amount</td>
+			<td>For</td>
 			<td>Donor</td>
 			<td>Thank Them!</td>
 		</tr>
@@ -15,6 +16,7 @@
 	<tr>
 		<td><%= o.created_at.strftime("%m/%d/%Y") %></td>
 		<td><%= o.normalized_amount %></td>
+		<td><%= o.target %></td>
 		<% if o.uid && o.uid != "9999" %>
 			<% if User.find_by(id: o.uid) %>
 				<td><%= User.find(o.uid).fullname %></td>
