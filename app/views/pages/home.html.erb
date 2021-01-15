@@ -199,7 +199,7 @@
          <!-- ONLY ALLOW OFFERINGS IF STRIPE IS CONFIGURED -->
          <% if  @church_count == 1 && !ENV['STRIPE_SK_TEST'].nil? %>
            <p class="lead">
-            <% if current_user && current_user.custom_gift != "" && current_user.custom_gift != 0 %>
+            <% if current_user && current_user.custom_gift != "" && current_user.custom_gift != "0" %>
               <%=link_to "Give $#{current_user.custom_gift}", offering_path(:amount => current_user.custom),:class =>"btn btn-success" %>
             <% else %>
             <h3 class="mb-4 font-bold"> Always Available Options</h3>
