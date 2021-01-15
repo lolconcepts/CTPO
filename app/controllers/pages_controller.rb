@@ -12,6 +12,8 @@ class PagesController < ApplicationController
   end
   def home
     # 
+    @demouser = ENV['ADMIN_TEST_USER']
+    @demouserpass = ENV['ADMIN_TEST_USER_PASS']
     @missing_members = []
     @users = User.all
     @users.each do |u|
