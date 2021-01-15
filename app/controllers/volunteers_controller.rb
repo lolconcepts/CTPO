@@ -4,12 +4,14 @@ class VolunteersController < ApplicationController
   # GET /volunteers
   # GET /volunteers.json
   def index
+    @church = Church.first
     @volunteers = Volunteer.all
   end
 
   # GET /volunteers/1
   # GET /volunteers/1.json
   def show
+    @church = Church.first
   end
 
   # GET /volunteers/new
@@ -19,6 +21,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
+    @church = Church.first
   end
 
   # POST /volunteers

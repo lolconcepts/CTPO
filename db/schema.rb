@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_154829) do
+ActiveRecord::Schema.define(version: 2021_01_15_180215) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_154829) do
     t.datetime "updated_at", null: false
     t.boolean "cover"
     t.boolean "acknowledge", default: false
+    t.string "target", default: "General Gift"
   end
 
   create_table "pronouns", force: :cascade do |t|
