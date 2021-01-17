@@ -19,6 +19,7 @@
 
 # Ignore /public/uploads/*
 /public/uploads/*
+/uploads/*
 
 # Ignore uploaded files in development
 /storage/*
