@@ -19,6 +19,7 @@
 
 # Ignore /public/uploads/*
 /public/uploads/*
+# Added /uploads to try and get the updates to stop killing avatars
 /uploads/*
 
 # Ignore uploaded files in development
