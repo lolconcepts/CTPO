@@ -1,7 +1,7 @@
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
-
+# This is the local storage
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>

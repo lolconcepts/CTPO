@@ -11,7 +11,8 @@ class PagesController < ApplicationController
     end
   end
   def home
-    # 
+    # version
+    @version = '21.01'
     if ENV['ADMIN_TEST_USER']
        @demouser = ENV['ADMIN_TEST_USER']
        @demouserpass = ENV['ADMIN_TEST_USER_PASS']

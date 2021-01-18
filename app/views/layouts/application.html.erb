@@ -71,7 +71,10 @@ body.loading .modal {
        <div class="navbar-brand"><%=image_tag('apple-touch-icon.png',size: '75x75',:class => "bg-transparent mr-2 rounded")%>
         <% if @church %>
           <h1 class="text-xs mt-2">
-          <%= @church.name %>
+          <%= @church.name %> 
+          <% if @version %>
+            - v<%=@version%>
+          <% end %>
         <% else %>
             <span class="text-monospace bg-warning">The Church has not been configured completely.</span>
         <% end %>
