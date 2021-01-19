@@ -106,7 +106,7 @@ class UserMailer < ApplicationMailer
     @email_list = @email_list.uniq
     message = "Please pray for"
     @requests.each do |r|
-      message += " #{r.pretty} "
+      message += " #{r.pretty} </br>"
     end
     mail(:bcc => @email_list, :subject => @subj, :body => message)
   end
