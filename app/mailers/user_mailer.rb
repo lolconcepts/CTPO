@@ -108,7 +108,8 @@ class UserMailer < ApplicationMailer
     @requests.each do |r|
       message += " #{r.pretty} </br>"
     end
-    mail(:bcc => @email_list, :subject => @subj, :body => message)
+    mail(:bcc => @email_list, :subject => @subj, :body => message do |format|
+      format.html {render 'PrayerChainEmail'})
   end
 
   def gift_thanks(user,amount,offering)
