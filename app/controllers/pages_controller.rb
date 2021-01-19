@@ -137,7 +137,7 @@ class PagesController < ApplicationController
     end
     
 
-    @description = "Offering - #{@target}"
+    @description = "Offering - #{@target} - #{@user}"
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
       source: params[:stripeToken],
