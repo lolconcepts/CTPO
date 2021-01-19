@@ -2,7 +2,7 @@
 <% if @requests.count > 0 %>
 <h1 class="text-xl text-black">Prayer Requests</h1>
 <span class="text-lg text-black">When complete, click icon under tools to remove.</span><br>
-<% if @church.prayer_chain.nil? %>
+<% if @church.prayer_chain.nil? || @church.prayer_chain == "" %>
 <%= link_to 'Want to setup a prayer chain?', edit_church_url(1), class: 'text-blue-800 text-xl text-center' %>
 <% else %>
 <div class="text-lg text-blue-800">
