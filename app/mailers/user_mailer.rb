@@ -100,7 +100,7 @@ class UserMailer < ApplicationMailer
     @church = Church.first
     @subj = "#{@church.name} Prayer Chain"
     @requests = Request.all
-    @email_list << @church.prayer_list
+    @email_list << @church.prayer_chain
     
     
     @email_list = @email_list.uniq
