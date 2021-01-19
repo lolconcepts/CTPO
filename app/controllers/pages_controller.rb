@@ -130,9 +130,14 @@ class PagesController < ApplicationController
     @amount = params[:amount]
     @amount = @amount.to_i
     @target = params[:target]
+    if current_user
+      @user = current_user.fullname
+    else
+      @user = "Guest"
+    end
     
 
-    @description = "Offering - #{@church.name}"
+    @description = "Offering - #{@target}"
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
       source: params[:stripeToken],
