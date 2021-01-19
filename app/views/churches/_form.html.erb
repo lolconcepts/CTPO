@@ -171,7 +171,7 @@
           </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <div>
-                <%= f.file_field :avatar %>
+                <%= f.file_field :avatar %> <%= image_tag(@church.avatar_url, size: '100x100') if @church.avatar? %>
             </div>
           </div>
         </div>
