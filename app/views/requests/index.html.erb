@@ -2,12 +2,17 @@
 <% if @requests.count > 0 %>
 <h1 class="text-xl text-black">Prayer Requests</h1>
 <span class="text-lg text-black">When complete, click icon under tools to remove.</span><br>
+<% if @church.prayer_chain.nil? %>
+<%= link_to 'Want to setup a prayer chain?', edit_church_url(1), class: 'text-blue-800 text-xl text-center' %>
+<% else %>
 <div class="text-lg text-blue-800">
   <%= link_to '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
   <path fill="#FFF" d="M19.253 9.542c-.388-.416-2.265-2.271-3.122-3.118A1.49 1.49 0 0015.098 6H4.902c-.394 0-.77.165-1.033.424-.858.847-2.734 2.701-3.122 3.118-.485.521-.723.902-.624 1.449s.466 2.654.556 3.074c.088.419.684.935 1.24.935h16.162c.556 0 1.152-.516 1.241-.935.089-.42.457-2.527.556-3.074s-.139-.929-.625-1.449zm-5.239.461a.271.271 0 00-.238.133L12.966 12H7.034l-.809-1.864a.271.271 0 00-.238-.133H2.473L4.495 8h11.01l2.023 2.003h-3.514z"/>
 </svg>
   <span>Email Prayer List</span>'.html_safe, '/PrayerChainEmail', class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center m-4" %>
 </div>
+<% end %>
+
 
 <div class="table table-bordered text-center bg-white" id="requests">
   <table>
