@@ -75,6 +75,6 @@ class ChurchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def church_params
-      params.require(:church).permit(:name, :address, :city, :state, :zip, :email, :website, :telephone, :service_time, :pastor, :pastor_email, :fb, :twitter, :instagram, :avatar, :calendly_url, :shorturl, :thankyou)
+      params.require(:church).permit(:name, :address, :city, :state, :zip, :email, :website, :telephone, :service_time, :pastor, :pastor_email, :fb, :twitter, :instagram, :avatar, :calendly_url, :shorturl, :thankyou, :prayer_chain)
     end
 end
