@@ -1,0 +1,6 @@
+<%= @church.name %> - Prayer Chain
+===============================================
+Please take a moment to pray for these brothers and sisters
+ <% @requests.each do  |r| %>
+        <%= r.pretty %></br>
+ <% end %>

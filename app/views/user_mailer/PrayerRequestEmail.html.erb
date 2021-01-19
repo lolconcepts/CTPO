@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @church.name %> Prayer List</h1>
+    <p>
+      Please pray for the following members of our church and community<br>
+    </p>
+    <p>
+      <% @requests.each do  |r| %>
+        <%= r.pretty %></br>
+      <% end %>
+    </p>
+  </body>
+</html>
