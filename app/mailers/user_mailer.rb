@@ -95,6 +95,22 @@ class UserMailer < ApplicationMailer
     mail(:bcc => @email_list, :subject => @subj, :body => message)
   end
 
+  def PrayerChainEmail
+    @email_list = []
+    @church = Church.first
+    @subj = "#{@church.name} Prayer Chain"
+    @requests = Request.all
+    @email_list << @church.prayer_list
+    
+    
+    @email_list = @email_list.uniq
+    message = "Please pray for"
+    @requests.each do |r|
+      message += " #{r.pretty} "
+    end
+    mail(:bcc => @email_list, :subject => @subj, :body => message)
+  end
+
   def gift_thanks(user,amount,offering)
     @users = User.where(:disabled => false).where.not(telephone: [nil,""],carrier_id: [nil]).where(id: user.to_i)
     @offering = Offering.find(offering)

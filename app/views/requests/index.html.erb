@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 <% if @requests.count > 0 %>
 <h1 class="text-xl text-black">Prayer Requests</h1>
-<span class="text-lg text-black">When complete, click icon under tools to remove.</span>
+<span class="text-lg text-black">When complete, click icon under tools to remove.</span><br>
+<div class="text-lg text-blue-800">
+  <%= link_to 'Send to Prayer Chain', PrayerChainEmail_url %>
+</div>
 
 <div class="table table-bordered text-center bg-white" id="requests">
   <table>
