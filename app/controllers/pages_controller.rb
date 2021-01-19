@@ -84,7 +84,7 @@ class PagesController < ApplicationController
   def PrayerChainEmail
     UserMailer.PrayerChainEmail.deliver
 
-    flash[:notice] = "The Prayer List Chain Has Been Sent to #{Church.first.prayer_list}"
+    flash[:notice] = "The Prayer List Chain Has Been Sent to #{Church.first.prayer_chain}"
     redirect_to root_path
   end
 
