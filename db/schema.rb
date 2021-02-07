@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_143818) do
+ActiveRecord::Schema.define(version: 2021_02_07_122058) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "name"
@@ -27,29 +27,8 @@ ActiveRecord::Schema.define(version: 2021_01_19_143818) do
     t.index ["user_id"], name: "index_checkins_on_user_id"
   end
 
-  create_table "churches", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.string "email"
-    t.string "website"
-    t.string "telephone"
-    t.string "service_time"
-    t.string "pastor"
-    t.string "pastor_email"
-    t.string "fb"
-    t.string "twitter"
-    t.string "instagram"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "avatar"
-    t.string "calendly_url"
-    t.string "shorturl"
-    t.string "thankyou", default: "Thank you so much for your generous gift."
-    t.string "prayer_chain"
-  end
+# Could not dump table "churches" because of following StandardError
+#   Unknown type 'bool' for column 'logo'
 
   create_table "events", force: :cascade do |t|
     t.text "description"

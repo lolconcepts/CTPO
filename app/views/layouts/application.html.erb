@@ -10,14 +10,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script type="text/javascript">
-        $body = $("body");
-
-        $(document).on({
-          ajaxStart: function() { $body.addClass("loading");    },
-          ajaxStop: function() { $body.removeClass("loading"); }    
-        });
-    </script>
+   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
     <%= favicon_link_tag asset_path('apple-touch-icon.png'), :rel => 'icon', :type =>  'image/png' %>
     <style type="text/css">
@@ -68,7 +61,12 @@ body.loading .modal {
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
-       <div class="navbar-brand"><%=image_tag('apple-touch-icon.png',size: '75x75',:class => "bg-transparent mr-2 rounded")%>
+       <div class="navbar-brand">
+        <% if @church && @church.logo? %>
+          <%=image_tag(@church.avatar.url ,size: '75x75',:class => "bg-transparent mr-2 rounded")%>
+        <% else %>
+          <%=image_tag('apple-touch-icon.png',size: '75x75',:class => "bg-transparent mr-2 rounded")%>
+        <% end %>
         <% if @church %>
           <h1 class="text-xs mt-2">
           <%= @church.name %> 
