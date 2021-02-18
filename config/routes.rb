@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   match '/offerings',:to => 'offerings#index', :via => :get
   match '/missing',:to => 'pages#missing', :via => :get
+  match '/stopped',:to => 'pages#stopped', :via => :get
   match '/checkinEmail',:to => 'pages#checkinEmail', :via => :get
   match '/PrayerChainEmail',:to => 'pages#PrayerChainEmail', :via => :get
   match '/thankyou',:to => 'pages#thankyouEmail', :via => :get

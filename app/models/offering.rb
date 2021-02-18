@@ -7,4 +7,5 @@ class Offering < ApplicationRecord
 		end
 		
 	end
+
 end

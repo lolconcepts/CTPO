@@ -15,7 +15,6 @@ class User < ApplicationRecord
 
    has_one :pronoun
    has_many :checkins, :dependent => :destroy
-
    def fullname
    	if self.fname && self.lname
    		return self.fname + " " + self.lname
@@ -30,6 +29,14 @@ class User < ApplicationRecord
       return "Never Checked In"
     else
         return time_ago_in_words(@checkins.last.created_at)
+    end
+   end
+   def lastGift
+    @offerings = self.offerings
+    if @offerings.empty?
+      return "Never Gave Online"
+    else
+        return time_ago_in_words(@offerings.last.created_at)
     end
    end
    def isMissing
@@ -107,5 +114,21 @@ class User < ApplicationRecord
       @sms = ""
     end
     return @sms
-  end
+   end
+
+   def offerings
+    return Offering.all.where(:uid => self.id)
+   end
+   def stopped_giving
+    # Having Given Online
+    if(self.gave && self.offerings.last.created_at < 2.weeks.ago )
+    # No Giving in the last two weeks
+      return true
+    else
+      return false
+    end
+   end
+   def gave
+    return self.offerings.count > 0
+   end
 end

@@ -10,9 +10,19 @@ class PagesController < ApplicationController
       end
     end
   end
+  def stopped
+    @church = Church.first
+    @stopped_giving = []
+    @users = User.all
+    @users.each do |u|
+      if u.stopped_giving
+        @stopped_giving << u
+      end
+    end
+  end
   def home
     # version
-    @version = '21.02.1'
+    @version = '21.02.2'
     if ENV['ADMIN_TEST_USER']
        @demouser = ENV['ADMIN_TEST_USER']
        @demouserpass = ENV['ADMIN_TEST_USER_PASS']
@@ -22,10 +32,14 @@ class PagesController < ApplicationController
        @demosite = false
     end
     @missing_members = []
+    @stopped_giving = []
     @users = User.all
     @users.each do |u|
       if u.isMissing
         @missing_members << u
+      end
+      if u.stopped_giving
+        @stopped_giving << u
       end
     end
     #

@@ -190,6 +190,9 @@
             <a href="/requests"><span>You have <%= @requests %> Prayer Request</span></a><br>
             <% if !@missing_members.empty? %>
               <a href="/missing"><span>You have <%= @missing_members.count %> Missing Members</span></a><br>
+              <% end %>
+              <% if !@stopped_giving.empty? %>
+              <a href="/stopped"><span>You have <%= @stopped_giving.count %> Member<% if @stopped_giving.count > 1 %>s<% end %> who ha<% if @stopped_giving.count > 1 %>ve<% else %>s<% end %> stopped giving</span></a><br>
             <% end %>
           <% end %>
           <!-- SHOW OFFERING ONLY IF USER HAS FINANCE ATTRIBUTE -->
