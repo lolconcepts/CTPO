@@ -3,11 +3,10 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-  	<%= f.label "Limit of 160 chars" %>
-    <%= f.input :body %>
+    <%= f.input :body, label: "Message" %>
   </div>
 
-  <div class="form-actions btn btn-primary">
+  <div class="mt-2">
     <%= f.button :submit %>
   </div>
 <% end %>

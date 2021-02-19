@@ -139,6 +139,11 @@ class PagesController < ApplicationController
     @church = Church.first
     @page = params.fetch(:page, 0).to_i
     @users = User.all.offset(@page * PER_PAGE).limit(PER_PAGE)
+    @userss = User.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @userss.to_csv }
+    end
   end
   def calc_cover(amount)
     cash = amount.to_f

@@ -17,6 +17,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
+    @scope = User.all.where(:sms_ok => true).count
     @church = Church.first
     @message = Message.new
   end

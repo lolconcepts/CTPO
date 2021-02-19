@@ -1,10 +1,9 @@
 <div class="container mt-4">
 
-<h1 class="text-dark">New Message</h1>
-	<div class="jumbotron text-center shadow">
-		<p>Messages created will be sent to every user who has a registered mobile phone and has opted in to SMS (Text Messages)</p>
+<h1 class="text-dark mb-2 text-xl">Creating A New Text Message</h1>
+	<div class="jumbotron bg-blue-900 text-center shadow">
+		<p class="text-white text-lg font-mono">Messages created will be sent to every user who has a registered mobile phone and has opted in to SMS (Text Messages), which is a total of <%= @scope %></p>
 	</div>
 <%= render 'form', message: @message %>
 
-<%= link_to 'Back', messages_path %>
 </div>

@@ -39,6 +39,19 @@ class User < ApplicationRecord
         return time_ago_in_words(@offerings.last.created_at)
     end
    end
+   
+   def self.to_csv
+    attributes = %w(id fname lname address address2 city state zip telephone email role skill)
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << user.attributes.values_at(*attributes)
+      end
+    end
+   end
+   
    def isMissing
     #get all checkins 
     @checkins = Checkin.where(user: self)
