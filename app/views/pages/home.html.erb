@@ -180,7 +180,7 @@
        <% end %>
        <!-- GENERAL INFORMATION -->
        <% if current_user && current_user.admin %>
-       <p class="text-monospace text-muted mb-4">If you have any issus with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
+       <p class="text-monospace text-muted mb-4">If you have any issues with CTPO, contact support @ <a href="mailto:info@lolconcepts.com">info@lolconcepts.com</a>&nbsp;&nbsp;</p>
        <%end%>
 
        <!-- ONLY DISPLAY IF CHURCH HAS BEEN CONFIGURED -->
@@ -199,7 +199,7 @@
           <% if current_user && current_user.finance %>
             <!-- ONLY SHOW IF OFFERING HAVE BEEN MADE ONLINE -->
             <% if @offeringsToday > 0 %>
-              <h3>Today's Offerings: $<%= @offeringsToday %></h3>
+              <h3>Today's Offerings: $<%= @offeringsToday.round(2) %></h3>
               <h3>Stripe Fee's: $<%= @stripe_fees %></h3>
               <h3>Deposits: $<%= @offeringsToday - @stripe_fees %></h3>
             <% end %>
