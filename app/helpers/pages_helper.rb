@@ -36,6 +36,6 @@ module PagesHelper
 		if lastweek == 0
 			return "100"
 		end
-		return ((thisweek.to_f / lastweek.to_f) * 100) - 100
+		return (((thisweek.to_f / lastweek.to_f) * 100) - 100).round(2)
 	end
 end
