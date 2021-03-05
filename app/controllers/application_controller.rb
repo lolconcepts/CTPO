@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	 before_action :configure_permitted_parameters, if: :devise_controller?
 	 impersonates :user
+	 @version = '21.03'
  protected
 
  def configure_permitted_parameters

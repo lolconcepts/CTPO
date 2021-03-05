@@ -7,12 +7,12 @@ class CheckinsController < ApplicationController
     @church = Church.first
     @checkin_dates = []
     @checkin_hash = {} #date,attendees
-      Checkin.all.each do |c|
+      Checkin.all.order(created_at: :desc).each do |c|
         @checkin_dates << c.short_date 
       end
     # GET changed list of unique dates!
     @checkin_dates.uniq!
-    @checkins = Checkin.all
+    @checkins = Checkin.all.order(created_at: :desc)
     @checkedin_users = []
     @checkin_dates.each do |d|
       count = Checkin.all.where('short_date' => d).count
