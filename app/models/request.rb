@@ -1,5 +1,5 @@
 class Request < ApplicationRecord
 	def pretty
-		return "#{self.who} (#{self.reason})"
+		return "#{self.who}"
 	end
 end
