@@ -22,7 +22,16 @@ class User < ApplicationRecord
    		return ""
    	end
    end
-   
+   def status
+    if(self.isMissing || self.stopped_giving)
+      return "Warning"
+    else
+      return "Active"
+    end
+   end
+   def pronouns
+     return "(#{Pronoun.find(self.pronoun_id).description})"
+   end
    def lastSeen
     @checkins = Checkin.where(user: self)
     if @checkins.empty?
@@ -67,6 +76,10 @@ class User < ApplicationRecord
 
    def pretty_address
     return "#{self.address} #{self.city},#{self.state} #{self.zip}"
+   end
+   
+   def pretty_phone
+    
    end
 
    def makeAdmin

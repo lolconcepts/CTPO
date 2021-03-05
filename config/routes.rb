@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   match '/PrayerChainEmail',:to => 'pages#PrayerChainEmail', :via => :get
   match '/thankyou',:to => 'pages#thankyouEmail', :via => :get
   match '/ackgift',:to => 'offerings#ack', :via => :get
+  match '/parishioners',:to => 'pages#parishioners', :via => :get
+  match 'edit',:to => 'users#edit', :via => :get
+  match 'edit',:to => 'users#update', :via => :put
   #resources :sessions, only: [:create,:destroy]
   post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'

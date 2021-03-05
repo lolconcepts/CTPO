@@ -10,6 +10,18 @@ class PagesController < ApplicationController
       end
     end
   end
+  def parishioners
+    if params[:search].present?
+      if params[:search].blank?  
+        redirect_to(parishioners_path, alert: "Empty field!") and return  
+      else 
+        @users = User.where("lname LIKE ?", "%#{params[:search]}%").or(User.where("skill LIKE ?", "%#{params[:search]}%")) 
+      end
+    else
+      @users = User.all
+    end
+    @church = Church.first
+  end
   def stopped
     @church = Church.first
     @stopped_giving = []
@@ -22,7 +34,7 @@ class PagesController < ApplicationController
   end
   def home
     # version
-    @version = '21.02.3'
+    @version = '21.03'
     if ENV['ADMIN_TEST_USER']
        @demouser = ENV['ADMIN_TEST_USER']
        @demouserpass = ENV['ADMIN_TEST_USER_PASS']
