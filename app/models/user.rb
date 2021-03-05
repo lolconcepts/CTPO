@@ -30,7 +30,11 @@ class User < ApplicationRecord
     end
    end
    def pronouns
-     return "(#{Pronoun.find(self.pronoun_id).description})"
+      if self.pronoun_id
+        return "(#{Pronoun.find(self.pronoun_id).description})"
+      else
+        return ""
+      end
    end
    def lastSeen
     @checkins = Checkin.where(user: self)
