@@ -105,6 +105,8 @@ body.loading .modal {
                    <%=link_to ' <i class="fas fa-pray"></i> Active Prayer Requests'.html_safe,'/requests',:class => "dropdown-item"  %>
                    <%=link_to '<i class="far fa-calendar-plus"></i> Create New Event'.html_safe,new_event_url,:class => "dropdown-item"  %>
                    <div class="dropdown-divider"></div>
+                   <%=link_to '<i class="fas fa-boxes"></i> Inventory'.html_safe,inventories_path,:class => "dropdown-item"  %>
+                   <div class="dropdown-divider"></div>
                    <%=link_to '<i class="fas fa-church"></i> Edit Church Info'.html_safe,edit_church_url(1),:class => "dropdown-item"  %>
                    <% if current_user && current_user.finance %>
                    <a class="dropdown-item" href="/offerings">View Online Giving</a>

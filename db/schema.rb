@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_185154) do
+ActiveRecord::Schema.define(version: 2021_03_30_115350) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "name"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2021_03_02_185154) do
     t.text "description"
     t.string "cost"
     t.datetime "estart"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.string "item"
+    t.string "serial_number"
+    t.string "location"
+    t.date "warranty_ends"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

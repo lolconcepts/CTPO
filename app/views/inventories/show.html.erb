@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @inventory.item %>
+</p>
+
+<p>
+  <strong>Serial number:</strong>
+  <%= @inventory.serial_number %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @inventory.location %>
+</p>
+
+<p>
+  <strong>Warranty ends:</strong>
+  <%= @inventory.warranty_ends %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @inventory.active %>
+</p>
+
+<%= link_to 'Edit', edit_inventory_path(@inventory) %> |
+<%= link_to 'Back', inventories_path %>

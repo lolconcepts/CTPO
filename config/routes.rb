@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :inventories
   resources :checkins
   resources :pronouns
   resources :volunteers

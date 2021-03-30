@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: MyString
+  serial_number: MyString
+  location: MyString
+  warranty_ends: 2021-03-30
+  active: false
+
+two:
+  item: MyString
+  serial_number: MyString
+  location: MyString
+  warranty_ends: 2021-03-30
+  active: false
