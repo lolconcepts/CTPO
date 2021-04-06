@@ -1,4 +1,12 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
+<div class="m-4 bg-gray-100 border-dashed border-4 border-light-blue-500 rounded-full p-4">
+<h4 class="h4">Import User Data</h4>
+<%= form_tag import_users_path, multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "Import From CSV", class: "p-4 text-blue-800 text-lg leading-4 font-medium bg-blue-100 rounded-full" %>
+<% end %>
+<span class="text-gray-500">The csv file must be formatted properly. [email,fname,lname,address,address2,city,state,zip,telephone,password,password_confirmation]</span>
+</div>
 <%= form_tag(parishioners_path, :method => "get",   
     class: 'navbar-form navbar-left') do %>  
   <div class="input-group">  

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index] do
     post :impersonate, on: :member
     post :stop_impersonating, on: :collection
+    post :import, on: :collection
   end
   #resources :offerings
   root to: 'pages#home'
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
   match '/parishioners',:to => 'pages#parishioners', :via => :get
   match 'edit',:to => 'users#edit', :via => :get
   match 'edit',:to => 'users#update', :via => :put
+  
+  mount ActionCable.server => '/cable'
   #resources :sessions, only: [:create,:destroy]
   post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'

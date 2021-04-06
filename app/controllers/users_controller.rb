@@ -38,6 +38,14 @@ class UsersController < ApplicationController
         @user = User.first
       end
     end
+    def import
+      if User.import(params[:file])
+        redirect_to root_url, notice: "User Data Imported"
+      else
+        edirect_to root_url, notice: "Error Occured"
+      end
+
+    end
     def set_user
       @user = User.find(params[:id])
     end

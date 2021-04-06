@@ -1,5 +1,6 @@
 require 'action_view'
 require 'action_view/helpers'
+require 'csv'
 include ActionView::Helpers::DateHelper
 class User < ApplicationRecord
   
@@ -29,6 +30,11 @@ class User < ApplicationRecord
       return "Active"
     end
    end
+   def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      User.create! row.to_hash
+    end
+  end
    def pronouns
       if self.pronoun_id
         return "(#{Pronoun.find(self.pronoun_id).description})"
