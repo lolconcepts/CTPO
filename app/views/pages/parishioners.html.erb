@@ -62,9 +62,12 @@
                   <div class="ml-4">
                     <div class="text-lg font-medium text-gray-900">
                       <% if u.pronouns == "(Prefer Not To Use)" %>
-                        <%= link_to(u.fullname, impersonate_user_path(u), method: :post, :class =>"font-bold") %>
+                        <%= link_to(u.fullname, impersonate_user_path(u), method: :post, :class =>"font-bold") %> <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:no-underline">
+                  <%= link_to 'Print Name Tag', nametag_path(:uid => u.id) %>
+                </span>
                       <% else %>
-                        <%= link_to(u.fullname, impersonate_user_path(u), method: :post, :class =>"font-bold") %> <%= u.pronouns %>
+                        <%= link_to(u.fullname, impersonate_user_path(u), method: :post, :class =>"font-bold") %> <%= u.pronouns %> <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:no-underline">
+                  <%= link_to 'Print Name Tag', nametag_path(:uid => u.id) %>
                       <% end %>
                     </div>
                     <div class="text-sm text-gray-500">
