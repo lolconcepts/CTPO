@@ -88,6 +88,13 @@
                       <br/>
                       Skills: <%= u.skill %>
                       <% end %>
+                      <% if u.mediarelease %>
+                      <br>
+                      <i class="fas fa-video"></i>
+                      <% else %>
+                      <br>
+                      <i class="fas fa-video-slash"></i>
+                      <% end %>
                     </div>
                   </div>
                 </div>
