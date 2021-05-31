@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 	 before_action :configure_permitted_parameters, if: :devise_controller?
 	 impersonates :user
-	 @version = '21.03.1'
+	 @version = '21.05'
  protected
 
  def configure_permitted_parameters
@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
  		Checkin.new(:user => current_user)
  	end
  end
+
 
  def get_checkins
  	return Checkin.all.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)

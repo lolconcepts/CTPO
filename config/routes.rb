@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   match '/offerings',:to => 'offerings#index', :via => :get
   match '/missing',:to => 'pages#missing', :via => :get
   match '/stopped',:to => 'pages#stopped', :via => :get
+  match '/mediareminder', :to => 'pages#MediaReleaseEmail', :via => :get
   match '/checkinEmail',:to => 'pages#checkinEmail', :via => :get
   match '/PrayerChainEmail',:to => 'pages#PrayerChainEmail', :via => :get
   match '/thankyou',:to => 'pages#thankyouEmail', :via => :get
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
   match '/parishioners',:to => 'pages#parishioners', :via => :get
   match 'edit',:to => 'users#edit', :via => :get
   match 'edit',:to => 'users#update', :via => :put
+  match '/mediarelease', :to => 'pages#mediarelease', :via => :get
   
   mount ActionCable.server => '/cable'
   #resources :sessions, only: [:create,:destroy]

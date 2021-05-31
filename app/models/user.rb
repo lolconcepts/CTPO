@@ -92,6 +92,17 @@ class User < ApplicationRecord
     
    end
 
+   def toggleMediaRelease
+    if self.mediarelease? #already released; remove release
+      self.mediarelease = false
+      self.save
+    else
+      self.mediarelease = true
+      self.save
+    end
+   end
+
+
    def makeAdmin
     if self.admin #already and admin; remove admin
       self.admin = false

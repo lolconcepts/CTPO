@@ -71,6 +71,20 @@ class UserMailer < ApplicationMailer
     mail(:bcc => @email_list, :subject => @subj, :body => message)
   end
 
+  def mediarelease_email_blast(subject,message)
+    @users = User.all.where(:sms_ok => true,:disabled => false,:mediarelease => false).where.not(telephone: [nil,""],carrier_id: [nil])
+    @email_list = []
+    @users.each do |s|
+      email = s.smsAddress
+      if email != ""
+        @email_list << email
+      end
+    end
+    @email_list = @email_list.uniq
+    @subj = subject
+    mail(:bcc => @email_list, :subject => @subj, :body => message)
+  end
+
   
   def missingCheckin(user)
     @user = User.find(user.to_i)

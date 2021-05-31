@@ -22,6 +22,23 @@ class PagesController < ApplicationController
     end
     @church = Church.first
   end
+  def mediarelease
+  
+      current_user.toggleMediaRelease
+
+  
+    if current_user.save
+        respond_to do |format|
+          format.html { redirect_to root_url, notice: 'Media Release Updated' }
+          format.text { redirect_to root_url, notice: 'Media Release Updated' }
+        end
+    else
+      respond_to do |format|
+          format.html { redirect_to root_url, notice: 'Media Release Update Failed' }
+          format.text { redirect_to root_url, notice: 'Media Release Update Failed' }
+        end
+    end
+  end
   def stopped
     @church = Church.first
     @stopped_giving = []
@@ -34,7 +51,8 @@ class PagesController < ApplicationController
   end
   def home
     # version
-    @version = '21.03.1'
+    @version = '21.05'
+    @mediarelease_waiting = User.where(:mediarelease => false)
     if ENV['ADMIN_TEST_USER']
        @demouser = ENV['ADMIN_TEST_USER']
        @demouserpass = ENV['ADMIN_TEST_USER_PASS']
@@ -104,6 +122,23 @@ class PagesController < ApplicationController
     UserMailer.missingCheckin(user).deliver
 
     flash[:notice] = "A Checkin Note Has Been Sent to #{User.find(user.to_i).email}"
+    redirect_to root_path
+  end
+
+  def MediaReleaseEmail
+    church = Church.first
+    subject = "#{church.name} - Media Release Notice"
+    message = "Hello.<br>"
+    message += "We have not recieved your MEDIA RELEASE as of today.<br>"
+    message += "Please login to CHURCH2 and click the (RED) MEDIA RELEASE Button To Approve.<br>"
+    message += "This helps us manage our social media presence.<br>"
+    message += "If you have any questions, please call the church office.<br>"
+    message += "Telephone: #{church.telephone}<br>"
+    message += "Blessings,<br>"
+    message += "#{church.pastor}"
+    UserMailer.mediarelease_email_blast(subject,message).deliver
+
+    flash[:notice] = "Media Release Reminders Have Been Sent"
     redirect_to root_path
   end
 

@@ -1,0 +1,7 @@
+33692:C 30 May 2021 13:07:49.009 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+33692:C 30 May 2021 13:07:49.009 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=33692, just started
+33692:C 30 May 2021 13:07:49.009 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+33692:M 30 May 2021 13:07:49.010 * Increased maximum number of open files to 10032 (it was originally set to 256).
+33692:M 30 May 2021 13:07:49.012 * Running mode=standalone, port=6379.
+33692:M 30 May 2021 13:07:49.012 # Server initialized
+33692:M 30 May 2021 13:07:49.012 * Ready to accept connections
