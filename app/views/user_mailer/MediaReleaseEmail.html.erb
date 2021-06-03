@@ -4,11 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <img src="apple-touch-icon.png">
+    <img src="https://ctpodemo.lolconcepts.com/apple-touch-icon.png">
     <h1><%= @church.name %> Media Release Reminder</h1>
     <p>
       <%= @message.html_safe() %>
     </p>
+    <p><%= link_to(root_url, 'Login to Change This Setting')</p>
   
   </body>
 </html>
