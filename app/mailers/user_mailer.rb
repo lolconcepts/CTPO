@@ -71,7 +71,7 @@ class UserMailer < ApplicationMailer
     mail(:bcc => @email_list, :subject => @subj, :body => message)
   end
 
-  def mediarelease_email_blast(subject,message)
+  def MediaReleaseEmail(subject,message)
     @users = User.all.where(:disabled => false,:mediarelease => false)
     @email_list = []
     @users.each do |s|

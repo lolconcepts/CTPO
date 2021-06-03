@@ -136,7 +136,7 @@ class PagesController < ApplicationController
     message += "Telephone: #{church.telephone}<br>"
     message += "Blessings,<br>"
     message += "#{church.pastor}"
-    UserMailer.mediarelease_email_blast(subject,message).deliver
+    UserMailer.MediaReleaseEmail(subject,message).deliver
 
     flash[:notice] = "Media Release Reminders Have Been Sent"
     redirect_to root_path
