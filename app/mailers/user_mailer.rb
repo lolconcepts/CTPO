@@ -43,10 +43,10 @@ class UserMailer < ApplicationMailer
     @email_list = []
     @users.each do |s|
       email = s.smsAddress
-      if email != ""
+      if helper.is_email_valid?(email)
         @email_list << email
       end
-      if s.email != ""
+      if helper.is_email_valid?(s.email)
         @email_list << s.email
       end
     end
@@ -72,10 +72,10 @@ class UserMailer < ApplicationMailer
   end
 
   def mediarelease_email_blast(subject,message)
-    @users = User.all.where(:sms_ok => true,:disabled => false,:mediarelease => false).where.not(telephone: [nil,""],carrier_id: [nil])
+    @users = User.all.where(:disabled => false,:mediarelease => false)
     @email_list = []
     @users.each do |s|
-      email = s.smsAddress
+      email = s.email
       if email != ""
         @email_list << email
       end

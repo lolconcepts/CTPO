@@ -14,6 +14,7 @@
             <span class="text-green-800 mt-4 mb-4"><%= @democreds %></span>
           </div>
         <% end %>
+        <%= @church.social_links.html_safe()%>
         
         <% else %>
         <h1 class="font-extrabold text-blue-600">Please SIGN-UP to complete configuration</h1>
@@ -78,6 +79,7 @@
         </dl>
       </div>
     </div>
+    <% if !@church.custom_tithing %>
     <div class="border-t border-gray-200 md:border-0 md:border-l">
       <div class="px-4 py-5 sm:p-6">
         <dl>
@@ -121,6 +123,9 @@
         </dl>
       </div>
     </div>
+    <% else %>
+    <span class="self-center text-gray-300 uppercase text-2xl">No Giving Data Available</span>
+    <% end %>
     <div class="border-t border-gray-200 md:border-0 md:border-l">
       <div class="px-4 py-5 sm:p-6">
         <dl>
@@ -165,6 +170,7 @@
   </div>
 </div>
 
+
 <% end %>
 
 
@@ -200,14 +206,21 @@
               <a href="/mediareminder"><i class="fas fa-video"></i> <span class="uppercase text-lg text-red-800"><%= @mediarelease_waiting.count %> Members Without Media Releases On File </span></a><br>
             <% end %>
             
+              <% if !@church.custom_tithing %>
+                <% if !@stopped_giving.empty? %>
+                  <a href="/stopped"><span>You have <%= @stopped_giving.count %> Member<% if @stopped_giving.count > 1 %>s<% end %> who ha<% if @stopped_giving.count > 1 %>ve<% else %>s<% end %> stopped giving</span></a><br>
+                <% end %>
+              <% end %>
           <% end %>
           <!-- SHOW OFFERING ONLY IF USER HAS FINANCE ATTRIBUTE -->
           <% if current_user && current_user.finance %>
             <!-- ONLY SHOW IF OFFERING HAVE BEEN MADE ONLINE -->
-            <% if @offeringsToday > 0 %>
-              <h3>Today's Offerings: $<%= @offeringsToday.round(2) %></h3>
-              <h3>Stripe Fee's: $<%= @stripe_fees %></h3>
-              <h3>Deposits: $<%= @offeringsToday - @stripe_fees %></h3>
+            <% if !@church.custom_tithing %>
+              <% if @offeringsToday > 0 %>
+                <h3>Today's Offerings: $<%= @offeringsToday.round(2) %></h3>
+                <h3>Stripe Fee's: $<%= @stripe_fees %></h3>
+                <h3>Deposits: $<%= @offeringsToday - @stripe_fees %></h3>
+              <% end %>
             <% end %>
           <% end %>
 
@@ -224,8 +237,10 @@
               <%=link_to 'Give $50', offering_path(:amount => '5000'),:class =>"btn btn-success text-light" %>
               <%=link_to 'Give $100', offering_path(:amount => '10000'),:class =>"btn btn-success text-light" %>
             <% end %>
-            
            </p>
+         <% end %>
+         <% if @church.custom_tithing %>
+          <%=link_to '<i class="fas fa-dollar-sign"></i> Give Online'.html_safe, @church.giving_override,:class =>"btn btn-success mt-4 text-white" %>
          <% end %>
        <% end %><!-- END OF MAKING SURE THERE IS A CHURCH -->
 

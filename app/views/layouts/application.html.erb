@@ -85,7 +85,7 @@ body.loading .modal {
              <li class="nav-item">
                 <%=link_to 'Home <span class="sr-only"></span>'.html_safe,root_url,:class => "nav-link"  %>
              </li>
-             <% if current_user && current_user.finance %>
+             <% if current_user && current_user.finance && !@church.custom_tithing %>
                <li class="nav-item">
                   <%=link_to 'Offerings List','/offerings',:class => "nav-link"  %>
                </li>
@@ -175,6 +175,7 @@ body.loading .modal {
       
     </div>
     <div class="modal"><!-- Place at bottom of page --></div>
+    <a class="text-xs text-monospace text-gray-500" href="https://icons8.com/icon/13963/twitter">Icons by Icons8</a>
   </body>
  
 </html>
