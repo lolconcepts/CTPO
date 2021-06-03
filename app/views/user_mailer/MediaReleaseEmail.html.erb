@@ -5,9 +5,9 @@
   </head>
   <body>
     <% if @church && @church.logo? %>
-          <%=image_tag(@church.avatar.url ,size: '75x75',:class => "bg-transparent mr-2 rounded")%>
+          <%=image_tag(@church.avatar.url ,size: '75x75')%>
         <% else %>
-          <%=image_tag('apple-touch-icon.png',size: '75x75',:class => "bg-transparent mr-2 rounded")%>
+          <%=image_tag('apple-touch-icon.png',size: '75x75')%>
     <% end %>
     <h1><%= @church.name %> Media Release Reminder</h1>
     <p>
