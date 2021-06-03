@@ -136,10 +136,17 @@ class PagesController < ApplicationController
     message += "Telephone: #{church.telephone}<br>"
     message += "Blessings,<br>"
     message += "#{church.pastor}"
-    UserMailer.MediaReleaseEmail(subject,message).deliver
 
-    flash[:notice] = "Media Release Reminders Have Been Sent"
-    redirect_to root_path
+    respond_to do |format|
+    if UserMailer.MediaReleaseEmail(subject,message).deliver
+      format.html do
+         flash[:notice] = "Media Release Reminders Have Been Sent"
+        redirect_to root_path
+      end
+    else
+
+    end
+  end
   end
 
   def PrayerChainEmail
