@@ -74,6 +74,7 @@ class UserMailer < ApplicationMailer
   def MediaReleaseEmail(subject,message)
     @users = User.all.where(:disabled => false,:mediarelease => false)
     @email_list = []
+    @church = Church.first
     @users.each do |s|
       email = s.email
       if email != ""
