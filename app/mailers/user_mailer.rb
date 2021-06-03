@@ -75,13 +75,13 @@ class UserMailer < ApplicationMailer
     @users = User.all.where(:disabled => false,:mediarelease => false)
     @email_list = []
     @church = Church.first
-    @message = "Hello.<br>"
-    @message += "We have not recieved your MEDIA RELEASE as of today.<br>"
-    @message += "Please login to CHURCH2 and click the (RED) MEDIA RELEASE Button To Approve.<br>"
-    @message += "This helps us manage our social media presence.<br>"
-    @message += "If you have any questions, please call the church office.<br>"
-    @message += "Telephone: #{@church.telephone}<br>"
-    @message += "Blessings,<br>"
+    @message = "Hello.</br>"
+    @message += "We have not recieved your MEDIA RELEASE as of today.</br>"
+    @message += "Please login to CHURCH2 and click the (RED) MEDIA RELEASE Button To Approve.</br>"
+    @message += "This helps us manage our social media presence.</br>"
+    @message += "If you have any questions, please call the church office.</br>"
+    @message += "Telephone: #{@church.telephone}</br>"
+    @message += "Blessings,</br>"
     @message += "#{@church.pastor}"
     @users.each do |s|
       email = s.email
