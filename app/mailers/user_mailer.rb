@@ -82,7 +82,7 @@ class UserMailer < ApplicationMailer
     end
     @email_list = @email_list.uniq
     @subj = subject
-    mail(:bcc => @email_list, :subject => @subj, :body => message)
+    mail(:bcc => @email_list, :subject => @subj)
   end
 
   
@@ -146,7 +146,7 @@ class UserMailer < ApplicationMailer
     message = " You gave #{amount}! "
     message += @church.thankyou
     message += "- #{@church.name}"
-    mail(:bcc => @email_list, :subject => @subj)
+    mail(:bcc => @email_list, :subject => @subj, :body => message)
   end
 
 end
