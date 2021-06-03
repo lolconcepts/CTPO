@@ -4,6 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <% if @church && @church.logo? %>
+          <%=image_tag(@church.avatar.url ,size: '75x75',:class => "bg-transparent mr-2 rounded")%>
+        <% else %>
+          <%=image_tag('apple-touch-icon.png',size: '75x75',:class => "bg-transparent mr-2 rounded")%>
+    <% end %>
     <h1><%= @church.name %> Media Release Reminder</h1>
     <p>
       <%= @message.html_safe() %>
