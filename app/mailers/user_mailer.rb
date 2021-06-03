@@ -82,7 +82,7 @@ class UserMailer < ApplicationMailer
     @message += "If you have any questions, please call the church office.<br>"
     @message += "Telephone: #{@church.telephone}<br>"
     @message += "Blessings,<br>"
-    @message += "#{church.pastor}"
+    @message += "#{@church.pastor}"
     @users.each do |s|
       email = s.email
       if email != ""
