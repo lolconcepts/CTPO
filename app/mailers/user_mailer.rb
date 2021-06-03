@@ -80,7 +80,7 @@ class UserMailer < ApplicationMailer
     @message += "Please login to CHURCH2 and click the (RED) MEDIA RELEASE Button To Approve.<br>"
     @message += "This helps us manage our social media presence.<br>"
     @message += "If you have any questions, please call the church office.<br>"
-    @message += "Telephone: #{church.telephone}<br>"
+    @message += "Telephone: #{@church.telephone}<br>"
     @message += "Blessings,<br>"
     @message += "#{church.pastor}"
     @users.each do |s|
