@@ -32,19 +32,19 @@ class Church < ApplicationRecord
 			spots += 1
 		end
 		response = "<div class='grid grid-cols-#{spots} gap-2 place-items-center mt-2'>"
-		if self.fb
+		if self.fb?
 			# Facebook
 			response += "<div><a href='#{self.fb}'><img src='https://img.icons8.com/color/50/000000/facebook.png'/></a></div>"
 		end
-		if self.yt
+		if self.yt?
 			# YouTube
 			response += "<div><a href='#{self.yt}'><img src='https://img.icons8.com/color/48/000000/youtube-play.png'/></a></div>"
 		end
-		if self.instagram
+		if self.instagram?
 			# InstaFace
 			response += "<div><a href='#{doInstagram(self.instagram)}'><img src='https://img.icons8.com/color/48/000000/instagram-new--v1.png'/></a></div>"
 		end
-		if self.twitter
+		if self.twitter?
 			#twitter
 			response += "<div><a href='#{doTwitter(self.twitter)}'><img src='https://img.icons8.com/color/48/000000/twitter--v1.png'/></a></div>"
 		end
