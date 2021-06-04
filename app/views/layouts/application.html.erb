@@ -117,7 +117,7 @@ body.loading .modal {
                 </div>
              </li>
              <%end%>
-             <% if  @church_count == 1 && !ENV['STRIPE_SK_TEST'].nil? %>
+             <% if  @church_count == 1 && !ENV['STRIPE_SK_TEST'].nil? && !@church.custom_tithing %>
              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarGive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Give
