@@ -111,10 +111,10 @@ class UserMailer < ApplicationMailer
       @subj = "We Miss You, #{@user.fullname}"
     
     @email_list = @email_list.uniq
-    @message = "We just wanted to drop a quick note to check up on you.</br>"
+    @message = "<p>We just wanted to drop a quick note to check up on you."
     @message += " We last saw you #{@lastCheckin} ago. Please reach out to the church"
-    @message += " at #{@church_telephone} to let us know you are ok.</br>"
-    @message += "Blessings,</br>"
+    @message += " at #{@church_telephone} to let us know you are ok.</p>"
+    @message += "<p>Blessings,</p>"
     @message += "--#{@pastor}"
     mail(:bcc => @email_list, :subject => @subj)
   end
