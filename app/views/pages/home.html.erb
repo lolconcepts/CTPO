@@ -231,11 +231,13 @@
               <%=link_to "Give $#{current_user.custom_gift}", offering_path(:amount => current_user.custom),:class =>"btn btn-success" %>
             <% else %>
             <h3 class="mb-4 font-bold"> Always Available Options</h3>
+            <% if !@church.custom_tithing %>
               <%=link_to 'Give $5', offering_path(:amount => '500'),:class =>"btn btn-success text-light" %>
               <%=link_to 'Give $10', offering_path(:amount => '1000'),:class =>"btn btn-success text-light" %>
               <%=link_to 'Give $25', offering_path(:amount => '2500'),:class =>"btn btn-success text-light" %>
               <%=link_to 'Give $50', offering_path(:amount => '5000'),:class =>"btn btn-success text-light" %>
               <%=link_to 'Give $100', offering_path(:amount => '10000'),:class =>"btn btn-success text-light" %>
+              <% end %>
             <% end %>
            </p>
          <% end %>
