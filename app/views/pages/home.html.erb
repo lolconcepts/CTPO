@@ -79,8 +79,7 @@
         </dl>
       </div>
     </div>
-    <% if @church %>
-        <% if !@church.custom_tithing %>
+    <% if !@church.custom_tithing %>
     <div class="border-t border-gray-200 md:border-0 md:border-l">
       <div class="px-4 py-5 sm:p-6">
         <dl>
@@ -127,9 +126,6 @@
     <% else %>
     <span class="self-center text-gray-300 uppercase text-2xl">No Giving Data Available</span>
     <% end %>
-    <% else %>
-    <% end %>
-
     <div class="border-t border-gray-200 md:border-0 md:border-l">
       <div class="px-4 py-5 sm:p-6">
         <dl>

@@ -73,6 +73,9 @@ class PagesController < ApplicationController
       end
     end
     #
+    if Church.count < 1
+      Church.create
+    end
   	@church = Church.first
     @church_count = Church.count
     @events = Event.all.where('estart >= ?', DateTime.now)
