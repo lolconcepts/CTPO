@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   match 'nametag/', :to => 'pages#nametag', :via => :get
   match 'nametags/', :to => 'pages#nametags', :via => :get
   match 'all_users/', :to => 'pages#all_users', :via => :get
+  match 'get_user/', :to => 'pages#single_user', :via => :get
   match 'offering/', :to => 'pages#offering', :via => :get
   match 'charge/', :to => 'pages#charge', :via => :post
   match 'test/',:to => 'pages#test', :via => :get

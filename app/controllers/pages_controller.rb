@@ -199,6 +199,15 @@ class PagesController < ApplicationController
       format.csv { send_data @userss.to_csv }
     end
   end
+  
+  def single_user
+    @church = Church.first
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def calc_cover(amount)
     cash = amount.to_f
     cash = (cash * 0.0305 + 0.30)
