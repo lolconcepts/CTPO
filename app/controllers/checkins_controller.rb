@@ -4,6 +4,7 @@ class CheckinsController < ApplicationController
   # GET /checkins
   # GET /checkins.json
   def index
+    @church_count = Church.count
     @church = Church.first
     @checkin_dates = []
     @checkin_hash = {} #date,attendees
@@ -122,6 +123,7 @@ class CheckinsController < ApplicationController
   end
 
   def list
+     @church_count = Church.count
     @church = Church.first
     @datetoshow = params[:for]
     @checkins = Checkin.all.where('short_date' => @datetoshow)

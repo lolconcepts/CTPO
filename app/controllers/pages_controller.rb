@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   PER_PAGE = 4
+  @church_count = Church.count
   def missing
     @church = Church.first
     @missing_members = []

@@ -44,7 +44,8 @@
 	
 </table>
 <% else %>
-	<div class="text-red-800 text-2xl">No more records</div>
+	<h1 class="text-red-800 mb-5"><i class="far fa-times-circle"></i> No records found.</h1>
+	<h3 class="mb-12">You do not have any recorded online donations.</h3>
 	<% end %>
 
 <% if @offerings.count > 1 %>

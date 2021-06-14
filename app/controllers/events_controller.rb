@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    @church_count = Church.count
     @church = Church.first
     @event = Event.new
   end

@@ -51,4 +51,38 @@ class Church < ApplicationRecord
 		response += "</div>"
 		return response
 	end
+	def muted_social
+		@links = ""
+
+		if self.twitter?
+			@links += '<a href="' + doTwitter(self.twitter) + '" class="me-4 text-reset">
+        	<i class="fab fa-twitter"></i></a>'
+  		end
+
+  		if self.fb?
+			@links += '<a href="' + self.fb + '" class="me-4 text-reset">
+        	<i class="fab fa-facebook-f"></i></a>'
+  		end
+
+  		if self.yt?
+			@links += '<a href="' + self.yt + '" class="me-4 text-reset">
+        	<i class="fab fa-youtube"></i></a>'
+  		end
+
+  		if self.instagram?
+			@links += '<a href="' + doInstagram(self.instagram) + '" class="me-4 text-reset">
+        	<i class="fab fa-instagram"></i></a>'
+  		end
+
+  		return @links.html_safe()
+	end
+	def pretty_address_long
+    	return "#{self.address} </br> #{self.city}, #{self.state} #{self.zip}".html_safe()
+   	end
+   	def pretty_address
+    	return "#{self.address} #{self.city}, #{self.state}"
+   	end
+   	def pretty_phone
+   		return "(#{self.telephone[0..2]}) #{self.telephone[3..5]}-#{self.telephone[6..9]}"
+   	end
 end

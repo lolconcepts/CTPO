@@ -1,6 +1,6 @@
-<h1 class="text-blue-400 text-2xl"> Attendees for In Person Worship</h1>
-<h2 class="text-xl mb-4"><%=@datetoshow%></h2>
-<p class="text-gray-500 mb-4">These parishioners were marked as attending worship for the above date. You may contact them individually below or click the alert button from the Checkins Admin Page.</p>
+<h1> Attendees for In Person Worship <span class="text-xl"><%=@datetoshow%></span></h1>
+
+<p class="text-gray-500 m-8 p-4 text-2xl bg-teal-100 rounded-lg">These parishioners were marked as attending worship for the above date. You may contact them individually below or click the alert button from the Checkins Admin Page.</p>
 
 
 <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -9,8 +9,8 @@
     <div class="w-full flex items-center justify-between p-6 space-x-6">
       <div class="flex-1 truncate">
         <div class="flex items-center space-x-3">
-          <h3 class="text-gray-900 text-sm leading-5 font-medium truncate"><%=c.user.fullname%></h3>
-          <span class="flex-shrink-0 inline-block px-2 py-0.5 text-teal-800 text-xs leading-4 font-medium bg-teal-100 rounded-full">
+          <h3><%=c.user.fullname%></h3>
+          <span class="flex-shrink-0 inline-block px-2 py-0.5 text-teal-800 text-lg leading-4 font-medium bg-teal-100 rounded-full">
           	<% if c.user.admin || c.user.finance %>
           		Admin
           	<% else %>
@@ -19,7 +19,7 @@
           		
           	</span>
         </div>
-        <p class="mt-1 text-gray-500 text-sm leading-5 truncate">
+        <p class="mt-1 text-gray-500 text-lg leading-5 truncate">
         <% if c.user.role != "" %>
         	<%= c.user.role %>
         <% else %>
@@ -29,9 +29,9 @@
       </div>
 
       <% if c.user.avatar? %>
-    		<%= image_tag c.user.avatar_url , class: 'w-10 h-10 bg-gray-300 rounded-full flex-shrink-0' %>
+    		<%= image_tag c.user.avatar_url , class: 'w-32 h-32 bg-gray-300 rounded-full flex-shrink-0' %>
     	<% else %>
-    		<%= image_tag "no_photo.jpg", class: 'w-10 h-10 bg-gray-300 rounded-full flex-shrink-0' %>
+    		<%= image_tag "no_photo.jpg", class: 'w-32 h-32 bg-gray-300 rounded-full flex-shrink-0' %>
 
     	<% end %>
     </div>
@@ -44,7 +44,7 @@
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
             </svg>
-            <span class="ml-3">Email</span>
+            <span class="ml-3 text-2xl">Email</span>
           </a>
         </div>
         <div class="-ml-px w-0 flex-1 flex">
@@ -53,7 +53,7 @@
             <svg class="w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
             </svg>
-            <span class="ml-3">Call</span>
+            <span class="ml-3 text-2xl">Call</span>
           </a>
         </div>
       </div>

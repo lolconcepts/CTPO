@@ -3,7 +3,7 @@
     <% if !@church.nil? %>
       <% if @church.name && @church.address && @church.city && @church.state && @church.zip && @church.pastor %>
         <p>
-          <h1 class="font-extrabold text-blue-600">Your Virtual Church Connection To:</h1>
+          <h2 class="font-extrabold text-blue-600">Your Virtual Church Connection</h2>
           <%= @church.name %><br>
           <%= @church.address %><br>
           <%=@church.city %>, <%=@church.state%> <%=@church.zip%>&nbsp;
@@ -36,20 +36,20 @@
 
   <div>
   <% if current_user && (current_user.admin || current_user.finance) %>
-  <h3 class="text-lg leading-6 font-medium text-gray-900">
+  <h3 class="text-xlg leading-6 font-medium text-gray-900">
     CHURCH STATISTICS
   </h3>
   <div class="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow md:grid-cols-3 mb-4">
     <div>
       <div class="px-4 py-5 sm:p-6">
         <dl>
-          <dt class="text-base leading-6 font-normal text-gray-900">
+          <dt class="text-base leading-6 font-normal text-gray-900 text-2xl">
             <i class="fas fa-users"></i> Total Users
           </dt>
           <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
             <div class="flex items-baseline text-2xl leading-8 font-semibold text-indigo-600">
               <%= user_count %>
-              <span class="ml-2 text-sm leading-5 font-medium text-gray-500">
+              <span class="ml-2 text-2xl leading-5 font-medium text-gray-500 ">
                 from <%= users_last_week %>
               </span>
             </div>
@@ -62,7 +62,7 @@
                   Increased by
                 </span>
               <% else %>
-                <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-red-100 text-red-800 md:mt-2 lg:mt-0">
+                <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-lg font-medium leading-5 bg-red-100 text-red-800 md:mt-2 lg:mt-0">
                 <svg class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
@@ -73,7 +73,7 @@
               <%= difference(users_last_week,user_count) %>%
             </div>
           </dd>
-          <dd class="text-gray-300 mt-2">
+          <dd class="text-gray-300 mt-2 text-2xl">
             Number of parishioners who have accounts in your Virtual Church.
           </dd>
         </dl>
@@ -83,19 +83,19 @@
     <div class="border-t border-gray-200 md:border-0 md:border-l">
       <div class="px-4 py-5 sm:p-6">
         <dl>
-          <dt class="text-base leading-6 font-normal text-gray-900">
+          <dt class="text-base leading-6 font-normal text-gray-900 text-2xl">
             <i class="fas fa-hand-holding-usd"></i> Online Giving
           </dt>
           <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
             <div class="flex items-baseline text-2xl leading-8 font-semibold text-indigo-600">
               $<%= @offeringsToday.round(2) %>
-              <span class="ml-2 text-sm leading-5 font-medium text-gray-500">
+              <span class="ml-2 text-2xl leading-5 font-medium text-gray-500">
                 from $<%= giving_last_week %>
               </span>
             </div>
 
             <% if difference(giving_last_week,@offeringsToday).to_i > 1 %>
-              <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-green-100 text-green-800 md:mt-2 lg:mt-0">
+              <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-lg font-medium leading-5 bg-green-100 text-green-800 md:mt-2 lg:mt-0">
                 <svg class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                 </svg>
@@ -103,7 +103,7 @@
                   Increased by
                 </span>
               <% else %>
-                <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-red-100 text-red-800 md:mt-2 lg:mt-0">
+                <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-lg font-medium leading-5 bg-red-100 text-red-800 md:mt-2 lg:mt-0">
                 <svg class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
@@ -117,7 +117,7 @@
               <%= difference(giving_last_week,@offeringsToday) %>%
             </div>
           </dd>
-           <dd class="text-gray-300 mt-2">
+           <dd class="text-gray-300 mt-2 text-2xl">
             Online giving this week compared to last week.
           </dd>
         </dl>
@@ -129,18 +129,18 @@
     <div class="border-t border-gray-200 md:border-0 md:border-l">
       <div class="px-4 py-5 sm:p-6">
         <dl>
-          <dt class="text-base leading-6 font-normal text-gray-900">
+          <dt class="text-base leading-6 font-normal text-gray-900 text-2xl">
             <i class="fas fa-church"></i> Worship Attendance
           </dt>
           <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
             <div class="flex items-baseline text-2xl leading-8 font-semibold text-indigo-600">
               <%= attendee_count %>
-              <span class="ml-2 text-sm leading-5 font-medium text-gray-500">
+              <span class="ml-2 text-2xl leading-5 font-medium text-gray-500">
                 from <%= attendance_last_week %>
               </span>
             </div>
             <% if difference(attendance_last_week,attendee_count).to_i > 1 %>
-              <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-green-100 text-green-800 md:mt-2 lg:mt-0">
+              <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-lg font-medium leading-5 bg-green-100 text-green-800 md:mt-2 lg:mt-0">
                 <svg class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                 </svg>
@@ -148,7 +148,7 @@
                   Increased by
                 </span>
               <% else %>
-                <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-red-100 text-red-800 md:mt-2 lg:mt-0">
+                <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-lg font-medium leading-5 bg-red-100 text-red-800 md:mt-2 lg:mt-0">
                 <svg class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
@@ -159,7 +159,7 @@
               <%= difference(attendance_last_week,attendee_count) %>%
             </div>
           </dd>
-           <dd class="text-gray-300 mt-2">
+           <dd class="text-gray-300 mt-2 text-2xl">
             Number of parishioners who were checked in as having attended in-person worship
           </dd>
         </dl>
