@@ -1,5 +1,5 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="m-4 bg-gray-100 border-dashed border-4 border-light-blue-500 rounded-full p-4">
+<div class="m-4 bg-gray-100 border-dashed border-4 border-light-blue-500 p-4">
 <h4 class="h4">Import User Data</h4>
 <%= form_tag import_users_path, multipart: true do %>
 <%= file_field_tag :file %>
@@ -18,23 +18,23 @@
 <% end %>
 <span class="px-2 py-1 text-blue-800 text-xs leading-4 font-medium bg-blue-100 rounded-full"><%= link_to 'Download List','/all_users.csv' %></span>
 
-<div class="flex flex-col">
+<div class="flex-1 mb-8">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-2xl font-medium text-gray-500 uppercase tracking-wider">
                 Name
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-2xl font-medium text-gray-500 uppercase tracking-wider">
                 Contact Details
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-2xl font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-2xl font-medium text-gray-500 uppercase tracking-wider">
                 Role
               </th>
               <th scope="col" class="relative px-6 py-3">
@@ -60,17 +60,17 @@
       <% end %>
                   </div>
                   <div class="ml-4">
-                    <div class="text-lg font-medium text-gray-900">
+                    <div class="text-2xl font-medium text-gray-900">
                       <% if u.pronouns == "(Prefer Not To Use)" %>
-                        <%= link_to(u.fullname, impersonate_user_path(u), method: :post, :class =>"font-bold") %> <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:no-underline">
+                        <%= link_to(u.fullname, impersonate_user_path(u), method: :post, :class =>"font-bold") %> <span class="px-2 py-2 inline-flex text-2xl leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:no-underline">
                   <%= link_to 'Print Name Tag', nametag_path(:uid => u.id) %>
                 </span>
                       <% else %>
-                        <%= link_to(u.fullname, impersonate_user_path(u), method: :post, :class =>"font-bold") %> <%= u.pronouns %> <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:no-underline">
+                        <%= link_to(u.fullname, impersonate_user_path(u), method: :post, :class =>"font-bold") %> <%= u.pronouns %> <span class="px-2 py-2 inline-flex text-2xl leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:no-underline">
                   <%= link_to 'Print Name Tag', nametag_path(:uid => u.id) %>
                       <% end %>
                     </div>
-                    <div class="text-sm text-gray-500">
+                    <div class="text-2xl text-gray-500">
                       <% if u.spouse == nil %>
                       Spouse: none.<br/>
                       <% else %>
@@ -100,30 +100,30 @@
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-500"><%= u.pretty_address %></div>
-                <div class="text-sm text-gray-900">
+                <div class="text-2xl text-gray-500"><%= u.pretty_address %></div>
+                <div class="text-2xl text-gray-900">
                    <a href=tel:<%= number_to_phone(u.telephone) %>><%= number_to_phone(u.telephone) %></a>
 
                    | <%= mail_to u.email, u.email %></div>
-                   <div class="text-uppercase text-blue-800 text-xs font-bold">How Heard About Us:<%= u.how_heard %></div>
+                   <div class="text-uppercase text-blue-800 text-2xl font-bold">How Heard About Us:<%= u.how_heard %></div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 <% if u.status == "Active" %>
-                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                 <span class="px-2 inline-flex text-2xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                   <%= u.status %>
                 </span>
                 <% else %>
-                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                 <span class="px-2 inline-flex text-2xl leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                   <%= u.status %>
                 </span>
                 <% end %>
                
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="px-6 py-4 whitespace-nowrap text-2xl text-gray-500">
                 <% if u.role == "" %>
-                  <dd class="text-gray-500 text-sm leading-5">Parishioner</dd>
+                  <dd class="text-gray-500 text-2xl leading-5">Parishioner</dd>
                 <% else %>
-                  <dd class="text-gray-500 text-sm leading-5"><%= u.role %></dd>
+                  <dd class="text-gray-500 text-2xl leading-5"><%= u.role %></dd>
                 <% end %>
               </td>
               <td><%= link_to 'Edit', "/users/edit/#{u.id}" %></td>

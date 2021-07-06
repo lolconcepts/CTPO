@@ -12,11 +12,13 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @church = Church.first
+    @church_count = Church.count
   end
 
   # GET /requests/new
   def new
     @church = Church.first
+    @church_count = Church.count
     @request = Request.new
   end
 

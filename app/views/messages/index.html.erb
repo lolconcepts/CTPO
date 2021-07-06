@@ -23,9 +23,11 @@
 
 <br>
 <% if @users.count > 0 %>
-  <span class="px-2 py-1 text-blue-800 text-xs leading-4 font-medium bg-blue-100 rounded-full">
+<div class="mb-12">
+  <span class="px-2 py-1 text-blue-800 text-2xl leading-4 font-medium bg-blue-100 rounded-full">
     <%= link_to 'New Message', new_message_path %>
   </span>
+</div>
   <% else %>
   <div class="jumbotron">
     <h1>Unable to create messages. You do not have any active users, who allow SMS.</h1>

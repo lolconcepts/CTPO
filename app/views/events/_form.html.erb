@@ -3,23 +3,28 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
             
-  <div class="form-inputs bg-white p-4">
+  <div class="form-group text-2xl">
   <%= f.input :description,
                 required: true,
                 autofocus: true,
                 placeholder: 'My Event',
-                class: "mr-4 bg-green" %>
+                class: "form-control text-2xl" %>
+  </div>
+  <div class="form-group">
   <%= f.input :cost,
                 required: true,
                 autofocus: true,
-                placeholder: 'Free or $10'%>
+                placeholder: 'Free or $10',
+                class: "form-control text-2xl"%>
+  </div>
+  <div class="form-group">
   <%= f.input :estart,
               label: 'Event Date and Time ',
               required: true,
-              autofocus: true %>  
-  </div>
-
-  <div class="form-actions bg-white">
+              autofocus: true,
+              class: "form-control text-2xl" %>
+  </div> 
+  
     <%= f.button :submit %>
-  </div>
+  
 <% end %>
