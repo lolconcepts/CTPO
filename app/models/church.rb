@@ -83,6 +83,11 @@ class Church < ApplicationRecord
     	return "#{self.address} #{self.city}, #{self.state}"
    	end
    	def pretty_phone
-   		return "(#{self.telephone[0..2]}) #{self.telephone[3..5]}-#{self.telephone[6..9]}"
+   		if self.telephone
+   			return "(#{self.telephone[0..2]}) #{self.telephone[3..5]}-#{self.telephone[6..9]}"
+   		else
+   			return "Not Configured Yet"
+   		end
+
    	end
 end
