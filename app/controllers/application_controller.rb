@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
  protected
 
  def set_globals
-   @version = '21.05'
+   @version = '21.07'
    @church_count = Church.count
  end
 

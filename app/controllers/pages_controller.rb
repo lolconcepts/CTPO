@@ -52,7 +52,6 @@ class PagesController < ApplicationController
   end
   def home
     # version
-    @version = '21.06'
     @mediarelease_waiting = User.where(:mediarelease => false)
     if ENV['ADMIN_TEST_USER']
        @demouser = ENV['ADMIN_TEST_USER']
