@@ -89,40 +89,38 @@
                       Skills: <%= u.skill %>
                       <% end %>
                       <% if u.mediarelease? %>
-                      <br>
-                      <i class="fas fa-video"></i> |
-                        <% if user.admin %>
-                          <%= link_to 'Remove Admin', adminify_path(:id => user.id) %> 
-                        <% else %>
-                          <%= link_to 'Make Admin', adminify_path(:id => user.id) %>
-                        <% end %>
-                        |
-                        <% if user.finance %>
-                          <%= link_to 'Remove Finance', financify_path(:id => user.id) %>
-                        <% else %>
-                          <%= link_to 'Make Finance', financify_path(:id => user.id) %>
-                         <% end %>
+                        <br>
+                          <i class="fas fa-video"></i>
                       <% else %>
-                      <br>
-                      <i class="fas fa-video-slash"></i>
-                        <% if user.admin %>
-                          <%= link_to 'Remove Admin', adminify_path(:id => user.id) %> 
-                        <% else %>
-                          <%= link_to 'Make Admin', adminify_path(:id => user.id) %>
-                        <% end %>
-                        |
-                        <% if user.finance %>
-                          <%= link_to 'Remove Finance', financify_path(:id => user.id) %>
-                        <% else %>
-                          <%= link_to 'Make Finance', financify_path(:id => user.id) %>
-                         <% end %>
-                      <% else %>
+                        <br>
+                          <i class="fas fa-video-slash"></i>
                       <% end %>
+                      <% if u.admin %>
+                          <%= link_to 'Remove Admin', adminify_path(:id => u.id) %> 
+                        <% else %>
+                          <%= link_to 'Make Admin', adminify_path(:id => u.id) %>
+                        <% end %>
+                        |
+                        <% if u.finance %>
+                          <%= link_to 'Remove Finance', financify_path(:id => u.id) %>
+                        <% else %>
+                          <%= link_to 'Make Finance', financify_path(:id => u.id) %>
+                         <% end %>
                     </div>
                   </div>
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
+                <% if u.admin || u.finance %>
+            <% if u.admin %>
+            <span class="px-2 py-1 text-blue-800 text-lg leading-4 font-medium bg-blue-100 rounded-full">Admin</span>
+            <% end %>
+            <% if u.finance %>
+            <span class="px-2 py-1 text-green-800 text-lg leading-4 font-medium bg-green-100 rounded-full">Finance</span>
+            <% end %>
+          <% else %>
+          <span class="px-2 py-1 text-orange-800 text-lg leading-4 font-medium bg-orange-100 rounded-full">User</span>
+          <% end %>
                 <div class="text-2xl text-gray-500"><%= u.pretty_address %></div>
                 <div class="text-2xl text-gray-900">
                    <a href=tel:<%= number_to_phone(u.telephone) %>><%= number_to_phone(u.telephone) %></a>
