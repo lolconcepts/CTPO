@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
  def set_globals
    @version = '21.07'
    @church_count = Church.count
+   @church = Church.first
  end
 
  def configure_permitted_parameters
