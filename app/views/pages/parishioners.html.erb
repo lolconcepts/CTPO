@@ -90,10 +90,33 @@
                       <% end %>
                       <% if u.mediarelease? %>
                       <br>
-                      <i class="fas fa-video"></i>
+                      <i class="fas fa-video"></i> |
+                        <% if user.admin %>
+                          <%= link_to 'Remove Admin', adminify_path(:id => user.id) %> 
+                        <% else %>
+                          <%= link_to 'Make Admin', adminify_path(:id => user.id) %>
+                        <% end %>
+                        |
+                        <% if user.finance %>
+                          <%= link_to 'Remove Finance', financify_path(:id => user.id) %>
+                        <% else %>
+                          <%= link_to 'Make Finance', financify_path(:id => user.id) %>
+                         <% end %>
                       <% else %>
                       <br>
                       <i class="fas fa-video-slash"></i>
+                        <% if user.admin %>
+                          <%= link_to 'Remove Admin', adminify_path(:id => user.id) %> 
+                        <% else %>
+                          <%= link_to 'Make Admin', adminify_path(:id => user.id) %>
+                        <% end %>
+                        |
+                        <% if user.finance %>
+                          <%= link_to 'Remove Finance', financify_path(:id => user.id) %>
+                        <% else %>
+                          <%= link_to 'Make Finance', financify_path(:id => user.id) %>
+                         <% end %>
+                      <% else %>
                       <% end %>
                     </div>
                   </div>
