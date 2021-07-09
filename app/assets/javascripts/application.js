@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require popper
 //= require tether
-//= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require activestorage
