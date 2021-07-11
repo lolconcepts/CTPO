@@ -1,6 +1,14 @@
 class Church < ApplicationRecord
 	mount_uploader :avatar, AvatarUploader
 
+	def specialgift
+		if self.specialgiftamount?
+			return "#{self.specialgiftamount}00"
+		else
+			return "100"
+		end
+	end
+
 	def custom_tithing
 		if self.giving_override != nil && self.giving_override != ""
 			return true

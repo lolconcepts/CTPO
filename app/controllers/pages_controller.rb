@@ -183,6 +183,7 @@ class PagesController < ApplicationController
 
   def offering
     @church = Church.first
+    @customtext = params[:customtxt] || "General Gift"
   	@amount = params[:amount] || "0"
   	@cover = params[:cover] || 0
     @church = Church.first

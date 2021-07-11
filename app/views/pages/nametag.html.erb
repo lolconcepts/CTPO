@@ -6,27 +6,33 @@
 }
 #tnet-QR{
 	position: absolute;
-    top: 350px;
-    right: 200px;
+    top: 70px;
+    right: 380px;
     width:100px;
 }
 body{
 	background:white!important;
+}
+
+@media print {
+  .noprint {
+    display: none;
+  }
 }
 	
 </style>
 	<div class="container">
 		<div class="row align-middle">
 			<div class="center">
-				<h2 class="text-wrap">Please Print this nametag and cut it out for the parishoner</h2>
-				<div style="background-color: white; width: 5.5in; height: 4.25in; text-align: center; border: 1px solid black;">
+				<h2 class="text-wrap noprint">Please Print this nametag and cut it out for the parishoner</h2>
+				<div style="background-color: white; width: 3.75in; height: 3.25in; text-align: center; border: 1px solid black;">
 					<br>
 						<div class="align-top">
 							<% if !@user.mediarelease? %>
 							<h2 class="text-lg text-red-800 uppercase">No Media Release</h2>
 							<% end %>
 							<div><%= image_tag(@church.avatar_url, size: '100x100') if @church.avatar? %><br></div>
-							<div class="h2">
+							<div class="">
 								<% if @church %>	
 									<%= @church.name %>
 								<% else %>

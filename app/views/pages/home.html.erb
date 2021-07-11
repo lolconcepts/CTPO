@@ -253,6 +253,10 @@
           <%=link_to '<i class="fas fa-ticket-alt"></i>  RESERVE A SPOT'.html_safe, @church.calendly_url,:class =>"btn bg-orange-400 opacity-100 text-white mt-4" %>
           <% end %>
         <% end %>
+        <% if @church.customgiftenabled? %>
+        <%=link_to "#{@church.specialgifttext}", offering_path(:amount => @church.specialgift,:customtxt => @church.specialgifttext),:class =>"btn bg-purple-600 opacity-100 text-white mt-4" %>
+        <% end %>
+
         <%=link_to '<i class="fas fa-concierge-bell"></i> CHECKIN'.html_safe, "/checkin",:class =>"btn btn-primary opacity-100 text-white mt-4",:data =>{:confirm => "Are you PHYSICALLY in the building?"} %>
         <%=link_to '<i class="fas fa-pray"></i> Prayer Request'.html_safe, new_request_url,:class =>"btn btn-danger text-light opacity-100 text-white mt-4" %>
         <% if current_user.mediarelease? %>

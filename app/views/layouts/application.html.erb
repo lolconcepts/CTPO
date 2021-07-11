@@ -68,6 +68,12 @@ body.loading .modal {
 .navbar-nav{
   margin: 5px;
 }
+
+@media print {
+  .noprint {
+    display: none;
+  }
+}
     </style>
 
   </head>
@@ -195,7 +201,7 @@ body.loading .modal {
   
   </body>
  <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted noprint">
   <!-- Section: Social media -->
   <section
     class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"

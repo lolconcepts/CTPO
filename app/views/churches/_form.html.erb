@@ -415,6 +415,63 @@
         
       </div>
     </div>
+
+    <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Custom Gift
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          Create custom giving button for special fundraisers. The button will be available from the main menu.
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="first_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Custom Gift Text
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+               <%= f.text_field :specialgifttext,
+                required: false,
+                autofocus: true,
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+
+                <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div>
+              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Enable Custom Gift Button
+          </label>
+              <%= f.check_box :customgiftenabled, 
+                                label: 'Enable Custom Gift?',
+                                class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+            </div>
+          </div>
+<label for="first_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            Custom Gift Amount
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+               <%= f.text_field :specialgiftamount,
+                required: false,
+                autofocus: true,
+                class: "flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              
+            </div>
+          </div>
+
+              
+            </div>
+          </div>
+          
+
+        </div>
+
+    
+        
+      </div>
+    </div>
   
       
   <div class="mt-8 border-t border-gray-200 pt-5">
