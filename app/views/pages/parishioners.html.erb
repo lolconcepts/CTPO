@@ -105,7 +105,8 @@
                           <%= link_to 'Remove Finance', financify_path(:id => u.id) %>
                         <% else %>
                           <%= link_to 'Make Finance', financify_path(:id => u.id) %>
-                         <% end %>
+                         <% end %> |
+                         <%= link_to 'Delete User', admin_destroy_user_path(u), method: :delete, data: { confirm: "You sure, you want to delete #{u.fullname}?" } %>
                     </div>
                   </div>
                 </div>
